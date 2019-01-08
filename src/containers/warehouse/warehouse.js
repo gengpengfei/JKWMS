@@ -1,9 +1,9 @@
-// -- 商品转换列表
+// -- 库区管理
 import React, { Component } from 'react';
 import { Table, Pagination, Button, Input, Icon, Divider, message, Modal } from 'antd'
 import { Link } from 'react-router-dom'
 import { NetWork_Post } from '../../network/netUtils'
-export default class proFruit extends Component {
+export default class warehouse extends Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -11,42 +11,70 @@ export default class proFruit extends Component {
             page: 1,
             limit: 10,
             search_key: '',
-            deleteRowKeys: '',
+            selectedRowKeys: [],
+            loading: true,
         }
     }
     componentDidMount() {
-        //-- 获取商品转换列表
-        this._getProFruitList()
+        //-- 获取仓库列表
+        this._getWarehouseList()
     }
-    _getProFruitList = () => {
+    _getWarehouseList = () => {
         const formData = {
             search_key: this.state.search_key,
             limit: this.state.limit,
             page: this.state.page
         }
-        NetWork_Post('proFruitList', formData, (response) => {
+        NetWork_Post('warehouseList', formData, (response) => {
             const { status, data, msg } = response
+            console.log('warehouseList', response)
+
             if (status === '0000') {
                 this.setState({
-                    data: data.proFruitList,
-                    total: data.proFruitCount
+                    data: data.warehouseList,
+                    total: data.warehouseCount,
                 })
             } else {
                 if (status === '1003') return this.props.history.push('/');
                 message.error(msg)
             }
+            this.setState({
+                loading: false
+            })
         });
     }
-    _proFruitDel = () => {
-        const formData = {
-            id: this.state.deleteRowKeys
+    rowSelection = {
+        onChange: (index, row) => {
+            this.setState({
+                selectedRowKeys: index
+            })
         }
-        console.log(formData)
-        NetWork_Post('proFruitDel', formData, (response) => {
+    }
+    onChangePage = (pageNumber) => {
+        this.setState({
+            page: pageNumber
+        }, () => {
+            this._getWarehouseList()
+        })
+    }
+    onChangeLimit = (page, limit) => {
+        this.setState({
+            page: page,
+            limit: limit
+        }, () => {
+            this._getWarehouseList()
+        })
+    }
+    //-- 删除
+    _deleteWarehouse = () => {
+        const formData = {
+            id: this.state.selectedRowKeys
+        }
+        NetWork_Post('warehouseDel', formData, (response) => {
             const { status, msg } = response
             if (status === '0000') {
                 message.success(msg)
-                this._getProFruitList();
+                this._getWarehouseList();
             } else {
                 if (status === '1003') return this.props.history.push('/');
                 message.error(msg)
@@ -58,35 +86,37 @@ export default class proFruit extends Component {
             title: '系统提示',
             content: '您确定要删除所选数据？',
             okType: 'danger',
-            onOk: this._proFruitDel
+            onOk: this._deleteWarehouse
         });
     }
     columns = [
         {
             align: 'center',
-            title: '单一商品编号',
-            dataIndex: 'product_num',
-            key: 'product_num',
+            title: '仓库编号',
+            dataIndex: 'warehouse_num',
+            key: 'warehouse_num',
         }, {
             align: 'center',
-            title: '单一商品名称',
-            dataIndex: 'product_name',
-            key: 'product_name',
+            title: '仓库名称',
+            dataIndex: 'warehouse_name',
+            key: 'warehouse_name',
         }, {
             align: 'center',
-            title: '组合商品编号',
-            dataIndex: 'pro_code_mix',
-            key: 'pro_code_mix',
+            title: '负责人',
+            dataIndex: 'pic_name',
+            key: 'pic_name',
         }, {
             align: 'center',
-            title: '组合商品名称',
-            dataIndex: 'pro_name_mix',
-            key: 'pro_name_mix',
+            title: '负责人手机',
+            dataIndex: 'pic_mobile',
+            key: 'pic_mobile',
         }, {
             align: 'center',
-            title: '转换后的规格',
-            dataIndex: 'times',
-            key: 'times',
+            title: '仓库所在地',
+            key: 'province',
+            render: (text, record, index) => {
+                return text.city + '-' + text.area + '-' + text.address;
+            }
         }, {
             align: 'center',
             title: '备注',
@@ -96,53 +126,37 @@ export default class proFruit extends Component {
             align: 'center',
             title: '操作',
             key: 'action',
-            render: (text, record) => {
-                return (
-                    <span>
-                        <Link to={'/proFruitEdit/' + text.id}>
-                            编辑
+            render: (text, record) => (
+                <span>
+                    <Link to={'/warehouseEdit/' + text.id}>
+                        编辑
                         </Link>
-                        <Divider type="vertical" />
-                        <span style={{ cursor: 'pointer', color: '#4490ff' }} onClick={() => this.setState({ deleteRowKeys: [text.id] }, this._showDeleteConfirm)}>
-                            删除
-                        </span>
-                    </span >
-                )
-            },
+                    <Divider type="vertical" />
+                    <span style={{ cursor: 'pointer', color: '#4490ff' }} onClick={() => this.setState({ selectedRowKeys: [text.id] }, this._showDeleteConfirm)}>
+                        删除
+                    </span>
+                </span>
+            ),
         }
     ];
-    onChangePage = (pageNumber) => {
-        this.setState({
-            page: pageNumber
-        }, () => {
-            this._getProFruitList()
-        })
-    }
-    onChangeLimit = (page, limit) => {
-        this.setState({
-            page: page,
-            limit: limit
-        }, () => {
-            this._getProFruitList()
-        })
-    }
     render() {
         return (
             <div style={{ width: '100%' }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%', height: 50 }}>
                     <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                        <Button icon="plus" onClick={() => this.props.history.push('/proFruitAdd')}>新建</Button>
+                        <Button icon="plus" onClick={() => this.props.history.push('/warehouseAdd')}>新建</Button>
+                        <Button style={{ margin: '0 10px' }} icon='delete' onClick={this._showDeleteConfirm}>批量删除</Button>
                     </div>
                     <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                         <Input value={this.state.search_key} prefix={<Icon type="search" style={{ color: '#b2b2b2' }} />} placeholder="搜索" onChange={(e) => this.setState({ search_key: e.target.value })} />
-                        <Button style={{ margin: '0 10px' }} icon='search' onClick={() => { this._getProFruitList() }}>搜索</Button>
+                        <Button style={{ margin: '0 10px' }} icon='search' onClick={() => { this._getWarehouseList() }}>搜索</Button>
                     </div>
                 </div>
                 <Table
                     bordered
-                    loading={false}
+                    loading={this.state.loading}
                     pagination={false} //-- 不使用自带的分页器
-                    rowSelection={null} //-- 配置表格行是否可选
+                    rowSelection={this.rowSelection}
                     dataSource={this.state.data}
                     columns={this.columns}
                     rowKey={(row) => row.id}
@@ -158,7 +172,7 @@ export default class proFruit extends Component {
                         onShowSizeChange={this.onChangeLimit}
                     />
                 </div>
-            </div>
+            </div >
         )
     }
 }

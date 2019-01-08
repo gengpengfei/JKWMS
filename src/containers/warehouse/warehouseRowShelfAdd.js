@@ -1,35 +1,33 @@
-// -- 编辑商品类型
+// -- 添加仓库
 import React, { Component } from 'react';
 import { Form, Select, Button, Input, message } from 'antd'
 import { NetWork_Post } from '../../network/netUtils'
 const Option = Select.Option;
 const { TextArea } = Input;
 const FormItem = Form.Item;
-class goodsTypeEdit extends Component {
+class warehouseAreaAdd extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            goodTypeList: []
+            warehouseList: [],
+            warehouseAreaList: []
         }
     }
     componentDidMount() {
-        this._getParentCodeList()
-        this._getProTypeDetail()
+        //-- 获取仓库列表
+        this._getWarehouseList()
     }
-    _getProTypeDetail = () => {
+    _getWarehouseList = () => {
         const formData = {
-            pro_type_id: this.props.match.params.id
+            limit: 10000,
+            page: 1
         }
-        NetWork_Post('proTypeDetail', formData, (response) => {
+        NetWork_Post('warehouseList', formData, (response) => {
             const { status, data, msg } = response
-            console.log('proTypeDetail', data)
+            console.log('warehouseList', response)
             if (status === '0000') {
-                this.props.form.setFieldsValue({
-                    parent_code: data.parent_code,
-                    pro_type_code: data.pro_type_code,
-                    pro_type_name: data.pro_type_name,
-                    remark: data.remark,
-                    user_name: data.user_name
+                this.setState({
+                    warehouseList: data.warehouseList
                 })
             } else {
                 if (status === '1003') return this.props.history.push('/');
@@ -37,15 +35,22 @@ class goodsTypeEdit extends Component {
             }
         });
     }
-    _getParentCodeList = () => {
+    _getWarehouseAreaList = (value) => {
+        if (!value) return;
+        this.props.form.setFieldsValue({
+            warea_num: undefined
+        })
         const formData = {
+            warehouse_num: value,
+            limit: 10000,
+            page: 1
         }
-        NetWork_Post('getParentCode', formData, (response) => {
+        NetWork_Post('warehouseAreaList', formData, (response) => {
             const { status, data, msg } = response
-            console.log('getParentCode', response)
+            console.log('warehouseAreaList', response)
             if (status === '0000') {
                 this.setState({
-                    goodTypeList: data.goodTypeList
+                    warehouseAreaList: data.warehouseAreaList
                 })
             } else {
                 if (status === '1003') return this.props.history.push('/');
@@ -57,8 +62,7 @@ class goodsTypeEdit extends Component {
         e.preventDefault();
         this.props.form.validateFields((err, values) => {
             if (err) return;
-            values.pro_type_id = this.props.match.params.id
-            NetWork_Post('productTypeEdit', values, (response) => {
+            NetWork_Post('warehouseRowShelfAdd', values, (response) => {
                 const { status, msg } = response
                 if (status === '0000') {
                     message.success(msg)
@@ -86,64 +90,60 @@ class goodsTypeEdit extends Component {
             <Form onSubmit={this.handleSubmit} style={{ width: '100%' }}>
                 <FormItem
                     {...formItemLayout}
-                    label="父类型编号:"
+                    label="仓库选择:"
                 >
-                    {getFieldDecorator('parent_code', {
+                    {getFieldDecorator('warehouse_num', {
                         rules: [{
-                            required: true, message: '请选择父类型！',
+                            required: true, message: '请选择仓库！',
                         }],
                     })(
-                        <Select placeholder='请选择' disabled style={{ maxWidth: 300 }}>
+                        <Select placeholder='请选择' allowClear={true} style={{ maxWidth: 300 }} onChange={this._getWarehouseAreaList}>
                             {
-                                this.state.goodTypeList.map((e, i) => {
-                                    return <Option key={i} value={e.pro_type_code}>{e.pro_type_name}</Option>
-                                })
+                                this.state.warehouseList.map((item, index) => (
+                                    <Option key={index} value={item.warehouse_num}>{item.warehouse_name}</Option>
+                                ))
                             }
                         </Select>
                     )}
                 </FormItem>
                 <FormItem
-                    label="产品类型编号:"
                     {...formItemLayout}
+                    label="库区选择:"
                 >
-                    {getFieldDecorator('pro_type_code', {
+                    {getFieldDecorator('warea_num', {
                         rules: [{
-                            required: true, message: '请输入产品类型编号！',
+                            required: true, message: '请选择库区！',
                         }],
                     })(
-                        <Input disabled style={{ maxWidth: 300 }} />
+                        <Select placeholder='请选择' allowClear={true} style={{ maxWidth: 300 }}>
+                            {
+                                this.state.warehouseAreaList.map((item, index) => (
+                                    <Option key={index} value={item.warea_num}>{item.warea_name}</Option>
+                                ))
+                            }
+                        </Select>
                     )}
                 </FormItem>
                 <FormItem
-                    label="产品类型名称:"
+                    label="货架编号:"
                     {...formItemLayout}
                 >
-                    {getFieldDecorator('pro_type_name', {
+                    {getFieldDecorator('shelf_num', {
                         rules: [{
-                            required: true, message: '请输入产品类型名称！',
+                            required: true, message: '请输入货架编号！',
                         }],
                     })(
                         <Input style={{ maxWidth: 300 }} />
                     )}
                 </FormItem>
                 <FormItem
-                    label="产品类型备注:"
+                    label="备注:"
                     {...formItemLayout}
                 >
                     {getFieldDecorator('remark', {
                         rules: [],
                     })(
-                        <TextArea style={{ maxWidth: 300 }} rows={4} />
-                    )}
-                </FormItem>
-                <FormItem
-                    label="采购人员姓名:"
-                    {...formItemLayout}
-                >
-                    {getFieldDecorator('user_name', {
-                        rules: [],
-                    })(
-                        <Input style={{ maxWidth: 300 }} />
+                        <TextArea style={{ maxWidth: 300 }} rows={3} />
                     )}
                 </FormItem>
                 <FormItem wrapperCol={{ span: 8, offset: 3 }}>
@@ -160,5 +160,4 @@ class goodsTypeEdit extends Component {
         )
     }
 }
-const goodsTypeAdds = Form.create()(goodsTypeEdit)
-export default goodsTypeAdds
+export default Form.create()(warehouseAreaAdd)

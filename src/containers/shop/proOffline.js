@@ -2,18 +2,9 @@
 import React, { Component } from 'react';
 import { Table, Pagination, Button, Input, Icon, Divider, message, Modal } from 'antd'
 import { NetWork_Post } from '../../network/netUtils'
-export default class proOffline extends Component {
+class ProOffline extends Component {
     constructor(props) {
         super(props)
-        this.state = {
-            data: [],
-            page: 1,
-            limit: 10,
-            search_key: '',
-            deleteRowKeys: '',
-        }
-    }
-    componentWillMount() {
         //-- 根据路由判断当前显示的列表
         const arr = this.props.location.pathname.split('/')
         var apply_state;
@@ -33,9 +24,14 @@ export default class proOffline extends Component {
             default:
                 apply_state = -1
         }
-        this.setState({
-            apply_state: apply_state
-        })
+        this.state = {
+            apply_state: apply_state,
+            data: [],
+            page: 1,
+            limit: 10,
+            search_key: '',
+            deleteRowKeys: '',
+        }
     }
     componentDidMount() {
         //-- 获取商品下架列表
@@ -51,7 +47,6 @@ export default class proOffline extends Component {
         NetWork_Post('proOfflineList', formData, (response) => {
             const { status, data, msg } = response
             if (status === '0000') {
-                console.log(data)
                 this.setState({
                     data: data.proOfflineList,
                     total: data.proOfflineCount
@@ -211,32 +206,30 @@ export default class proOffline extends Component {
                 switch (text.apply_state) {
                     case 5:
                         return (
-                            <span>
-                                <a href='###' onClick={() => this.setState({ deleteRowKeys: text.id }, this._showDeleteConfirm)}>
-                                    删除
-                                </a>
-                            </span >
+                            <span style={{ cursor: 'pointer', color: '#4490ff' }} onClick={() => this.setState({ deleteRowKeys: text.id }, this._showDeleteConfirm)}>
+                                删除
+                                </span>
                         )
                     case 1:
                         return;
                     case null:
                         return (
-                            <span>
-                                <a href='###' onClick={() => this._proOffline(text)}>
-                                    申请下架
-                                </a>
-                            </span>
+
+                            <span style={{ cursor: 'pointer', color: '#4490ff' }} onClick={() => this._proOffline(text)}>
+                                申请下架
+                                </span>
+
                         )
                     default:
                         return (this.state.apply_state === -1 || this.state.apply_state === null) ? null : (
                             <span>
-                                <a href='###' onClick={() => this._proOfflineReviewed(text)}>
-                                    申请通过
-                                </a>
+                                <span style={{ cursor: 'pointer', color: '#4490ff' }} onClick={() => this._proOfflineReviewed(text)}>
+                                    通过
+                                </span>
                                 <Divider type="vertical" />
-                                <a href='###' onClick={() => this._proOfflineRefuse(text.id)}>
-                                    申请拒绝
-                                </a>
+                                <span style={{ cursor: 'pointer', color: '#4490ff' }} onClick={() => this._proOfflineRefuse(text.id)}>
+                                    拒绝
+                                </span>
                             </span >
                         )
                 }
@@ -274,7 +267,7 @@ export default class proOffline extends Component {
                     rowSelection={null} //-- 配置表格行是否可选
                     dataSource={this.state.data}
                     columns={this.columns}
-                    rowKey={(row) => row.product_id}
+                    rowKey={(row) => row.id + row.product_id}
                     size='small'
                 />
                 <div style={{ width: '100%', display: 'flex', justifyContent: 'flex-end', alignItems: 'center', height: 60 }}>
@@ -291,3 +284,4 @@ export default class proOffline extends Component {
         )
     }
 }
+export default (props) => <ProOffline {...props} key={props.location.pathname} />

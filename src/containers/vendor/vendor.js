@@ -1,9 +1,9 @@
-// -- 商品列表
+// -- 厂商列表管理
 import React, { Component } from 'react';
-import { Table, Pagination, Button, Input, Icon, Divider, message, Upload } from 'antd'
+import { Table, Pagination, Button, Input, Icon, Divider, message, Upload, Modal } from 'antd'
 import { Link } from 'react-router-dom'
 import { NetWork_File, NetWork_Post } from '../../network/netUtils'
-export default class goods extends Component {
+export default class vendor extends Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -22,13 +22,12 @@ export default class goods extends Component {
             fileName2: null,
         }
     }
-
     componentDidMount() {
-        //-- 获取商品列表
-        this._getGoodsList()
-        //-- 获取商品信息导入模版下载地址
-        this._getProductDownload()
-        //-- 获取商品供应商关系导入模版下载地址
+        //-- 获取厂商列表
+        this._getVendorList()
+        //-- 获取导入厂商模板下载地址
+        this._getVendorDownload()
+        //-- 获取厂商绑定商品导入模版下载地址
         this._getProductVenImport()
     }
     _getProductVenImport = () => {
@@ -46,14 +45,14 @@ export default class goods extends Component {
             }
         });
     }
-    _getProductDownload = () => {
+    _getVendorDownload = () => {
         const formData = {
         }
-        NetWork_Post('productDownload', formData, (response) => {
+        NetWork_Post('vendorDownload', formData, (response) => {
             const { status, data, msg } = response
             if (status === '0000') {
                 this.setState({
-                    productDownload: data,
+                    vendorDownload: data,
                 })
             } else {
                 if (status === '1003') return this.props.history.push('/');
@@ -61,18 +60,18 @@ export default class goods extends Component {
             }
         });
     }
-    _getGoodsList = () => {
+    _getVendorList = () => {
         const formData = {
             search_key: this.state.search_key,
             limit: this.state.limit,
             page: this.state.page
         }
-        NetWork_Post('getGoodsList', formData, (response) => {
+        NetWork_Post('vendorList', formData, (response) => {
             const { status, data, msg } = response
             if (status === '0000') {
                 this.setState({
-                    data: data.productList,
-                    total: data.productCount
+                    data: data.vendorList,
+                    total: data.vendorCount
                 })
             } else {
                 if (status === '1003') return this.props.history.push('/');
@@ -91,7 +90,7 @@ export default class goods extends Component {
         this.setState({
             page: pageNumber
         }, () => {
-            this._getGoodsList()
+            this._getVendorList()
         })
     }
     onChangeLimit = (page, limit) => {
@@ -99,69 +98,10 @@ export default class goods extends Component {
             page: page,
             limit: limit
         }, () => {
-            this._getGoodsList()
+            this._getVendorList()
         })
     }
-    columns = [
-        {
-            align: 'center',
-            title: '商品编号',
-            dataIndex: 'product_num',
-            key: 'product_num',
-        }, {
-            align: 'center',
-            title: '商品名称',
-            dataIndex: 'product_name',
-            key: 'product_name',
-        }, {
-            align: 'center',
-            title: '商品类型',
-            dataIndex: 'product_type',
-            key: 'product_type',
-        }, {
-            align: 'center',
-            title: '进价',
-            dataIndex: 'price',
-            key: 'price',
-        }, {
-            align: 'center',
-            title: '销售价',
-            dataIndex: 'sale_price',
-            key: 'sale_price',
-        }, {
-            align: 'center',
-            title: '保质期',
-            dataIndex: 'shelf_month',
-            key: 'shelf_month',
-        }, {
-            align: 'center',
-            title: '商品规格编码',
-            dataIndex: 'specifications_num',
-            key: 'specifications_num',
-        }, {
-            align: 'center',
-            title: '计量单位',
-            dataIndex: 'unit',
-            key: 'unit',
-        }, {
-            align: 'center',
-            title: '备注',
-            dataIndex: 'remark',
-            key: 'remark',
-        }, {
-            align: 'center',
-            title: '操作',
-            key: 'action',
-            render: (text, record) => (
-                <span>
-                    <Link to={'/goodsBindSupplier/' + text.id}>
-                        绑定供应商
-                    </Link>
-                </span>
-            ),
-        }
-    ];
-    //-- 商品信息导入文件上传
+    //-- 厂商信息导入文件上传
     _handleUpload1 = () => {
         const { fileList1 } = this.state;
         const formData = new FormData();
@@ -171,7 +111,8 @@ export default class goods extends Component {
         this.setState({
             uploading1: true,
         });
-        NetWork_File('productImport', formData, (response) => {
+        NetWork_File('vendorImport', formData, (response) => {
+            console.log(response)
             const { status, msg } = response
             if (status === '0000') {
                 message.success(msg)
@@ -188,7 +129,7 @@ export default class goods extends Component {
             });
         });
     }
-    //-- 商品供应商关系信息导入文件上传
+    //-- 厂商绑定商品导入文件上传
     _handleUpload2 = () => {
         const { fileList2 } = this.state;
         const formData = new FormData();
@@ -198,7 +139,7 @@ export default class goods extends Component {
         this.setState({
             uploading2: true,
         });
-        NetWork_File('productVenImport', formData, (response) => {
+        NetWork_File('VendorBindProductImport', formData, (response) => {
             const { status, msg } = response
             if (status === '0000') {
                 message.success(msg)
@@ -215,7 +156,7 @@ export default class goods extends Component {
             });
         });
     }
-    //-- 商品信息导出
+    //-- 厂商信息导出
     _productExport = () => {
         const formData = {
             data: this.state.selectedRowKeys
@@ -230,6 +171,88 @@ export default class goods extends Component {
             }
         });
     }
+    //-- 删除厂商
+    _deleteVendor = () => {
+        const formData = {
+            id: this.state.selectedRowKeys
+        }
+        NetWork_Post('vendorDel', formData, (response) => {
+            const { status, msg } = response
+            if (status === '0000') {
+                message.success(msg)
+                this._getVendorList();
+            } else {
+                if (status === '1003') return this.props.history.push('/');
+                message.error(msg)
+            }
+        });
+    }
+    _showDeleteConfirm = () => {
+        Modal.confirm({
+            title: '系统提示',
+            content: '您确定要删除所选数据？',
+            okType: 'danger',
+            onOk: this._deleteVendor
+        });
+    }
+    columns = [
+        {
+            align: 'center',
+            title: '厂商编号',
+            dataIndex: 'vendor_num',
+            key: 'vendor_num',
+        }, {
+            align: 'center',
+            title: '厂商名称',
+            dataIndex: 'vendor_name',
+            key: 'vendor_name',
+        }, {
+            align: 'center',
+            title: '联系人',
+            dataIndex: 'contact_name',
+            key: 'contact_name',
+        }, {
+            align: 'center',
+            title: '联系人电话',
+            dataIndex: 'contact_tel',
+            key: 'contact_tel',
+        }, {
+            align: 'center',
+            title: '厂商标记',
+            dataIndex: 'tag',
+            key: 'tag',
+            render: (text, record, index) => {
+                if (record.tag === 1) {
+                    return '供应商';
+                }
+                return '厂商';
+            }
+        }, {
+            align: 'center',
+            title: '备注',
+            dataIndex: 'remark',
+            key: 'remark',
+        }, {
+            align: 'center',
+            title: '操作',
+            key: 'action',
+            render: (text, record) => (
+                <span>
+                    <Link to={'/vendorEdit/' + text.id}>
+                        编辑
+                        </Link>
+                    <Divider type="vertical" />
+                    <Link to={'/vendorBindProduct/' + text.id}>
+                        绑定商品
+                    </Link>
+                    <Divider type="vertical" />
+                    <span style={{ cursor: 'pointer', color: '#4490ff' }} onClick={() => this.setState({ selectedRowKeys: [text.id] }, this._showDeleteConfirm)}>
+                        删除
+                    </span>
+                </span>
+            ),
+        }
+    ];
     render() {
         const { uploading1, uploading2 } = this.state;
         const uploadProps1 = {
@@ -278,13 +301,12 @@ export default class goods extends Component {
             <div style={{ width: '100%' }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%', height: 50 }}>
                     <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                        <Button icon="cloud-download">商品同步</Button>
-                        <Button style={{ margin: '0 10px' }} icon="cloud-download">类别同步</Button>
-                        <Button icon="cloud-download">供应商同步</Button>
+                        <Button icon="plus" onClick={() => this.props.history.push('/vendorAdd')}>新建</Button>
+                        <Button style={{ margin: '0 10px' }} icon='delete' onClick={this._showDeleteConfirm}>批量删除</Button>
                     </div>
                     <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                         <Input value={this.state.search_key} prefix={<Icon type="search" style={{ color: '#b2b2b2' }} />} placeholder="搜索" onChange={(e) => this.setState({ search_key: e.target.value })} />
-                        <Button style={{ margin: '0 10px' }} icon='search' onClick={() => { this._getGoodsList() }}>搜索</Button>
+                        <Button style={{ margin: '0 10px' }} icon='search' onClick={() => { this._getVendorList() }}>搜索</Button>
                         <Button icon='file-done' onClick={() => { this._productExport() }}>导出</Button>
                     </div>
                 </div>
@@ -323,10 +345,10 @@ export default class goods extends Component {
                             loading={uploading1}
                             icon='upload'
                         >
-                            商品信息导入
+                            厂商信息导入
                         </Button>
                         <Divider type="vertical" />
-                        <a href={this.state.productDownload}><Button size='small' icon='download'>商品信息导入模板下载</Button></a>
+                        <a href={this.state.vendorDownload}><Button size='small' icon='download'>导入厂商模板下载</Button></a>
                     </div>
                     <div style={{ margin: '10px 0', display: 'flex', justifyContent: 'flex-start', alignItems: 'center' }}>
                         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
@@ -342,10 +364,10 @@ export default class goods extends Component {
                             loading={uploading2}
                             icon='upload'
                         >
-                            商品供应商关系信息导入
+                            厂商绑定商品导入
                         </Button>
                         <Divider type="vertical" />
-                        <a href={this.state.productVenDownload}><Button size='small' icon='download'>商品供应商关系信息模板下载</Button></a>
+                        <a href={this.state.productVenDownload}><Button size='small' icon='download'>厂商绑定商品导入模板下载</Button></a>
                     </div>
                 </div>
             </div >

@@ -5,8 +5,9 @@ import { NetWork_Post } from '../../network/netUtils'
 const FormItem = Form.Item;
 class proExcludeEdit extends Component {
     componentDidMount() {
+        console.log(this.props.match.params)
         this.props.form.setFieldsValue({
-            pro_code: this.props.match.params.pro_code,
+            product_num: this.props.match.params.product_num,
         })
     }
     handleSubmit = (e) => {
@@ -41,10 +42,10 @@ class proExcludeEdit extends Component {
         return (
             <Form onSubmit={this.handleSubmit} style={{ width: '100%' }}>
                 <FormItem
-                    label="不推送商品编码:"
+                    label="不推送商品编码："
                     {...formItemLayout}
                 >
-                    {getFieldDecorator('pro_code', {
+                    {getFieldDecorator('product_num', {
                         rules: [{
                             required: true, message: '请输入不推送商品编号！',
                         }],

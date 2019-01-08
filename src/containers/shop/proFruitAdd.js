@@ -57,7 +57,7 @@ class proFruitAdd extends Component {
                     label="单一商品编码:"
                     {...formItemLayout}
                 >
-                    {getFieldDecorator('pro_code', {
+                    {getFieldDecorator('product_num', {
                         rules: [{
                             required: true, message: '请输入商品编号！',
                         }],
@@ -69,7 +69,7 @@ class proFruitAdd extends Component {
                     label="单一商品名称:"
                     {...formItemLayout}
                 >
-                    {getFieldDecorator('pro_name', {
+                    {getFieldDecorator('product_name', {
                         rules: [{
                             required: true, message: '请输入商品名称！',
                         }],

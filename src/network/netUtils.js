@@ -1,8 +1,13 @@
-let CryptoJS = require("crypto-js");
-export const BASEURL = 'http://10.20.10.81:8877/';
+// let CryptoJS = require("crypto-js");
+export const BASEURL = '/';
 var reqUrl = {
+    //-- 通用模块
+    areaList: BASEURL + 'api/WmsArea/areaList',//-- 下级地址列表
+
     //-- 登录模块
-    login: BASEURL + 'api/Product/productList',  //-- 用户登录
+    login: BASEURL + 'api/AdminUser/adminLogin',  //-- 用户登录
+    getMenuList: BASEURL + 'api/AdminUser/getUserActionList/',  //-- 用户权限列表
+
     //-- 商品模块
     getGoodsList: BASEURL + 'api/Product/productList',  //-- 商品列表
     productExport: BASEURL + 'api/Product/productExport',//-- 商品导出  
@@ -44,28 +49,82 @@ var reqUrl = {
     proOfflineReviewed: BASEURL + 'api/ProOffline/reviewed', //-- 商下架申请通过
     proOfflineRefuse: BASEURL + 'api/ProOffline/refuse', //-- 商下架申请拒绝
 
+    //-- 厂商管理模块
+    vendorList: BASEURL + 'api/Vendor/index',  //-- 厂商列表
+    vendorAdd: BASEURL + 'api/Vendor/vendorAdd',//-- 厂商添加  
+    vendorEdit: BASEURL + 'api/Vendor/vendorEdit',//-- 厂商编辑 
+    vendorDel: BASEURL + 'api/Vendor/vendorDel',//-- 厂商删除  
+    vendorDetail: BASEURL + 'api/Vendor/vendorDetail',  //-- 厂商详情
+    vendorProductList: BASEURL + 'api/Vendor/Product',  //-- 商品列表
+    vendorBindedProduct: BASEURL + 'api/Vendor/venProduct',  //-- 厂商绑定过商品列表
+    vendorBindProduct: BASEURL + 'api/Vendor/vendorGood',//-- 厂商绑定商品
+    vendorDownload: BASEURL + 'api/Vendor/vendorDownload',//-- 厂商信息导入模版下载
+    vendorImport: BASEURL + 'api/Vendor/vendorImport',//-- 厂商信息导入
+    vendorBindProductDownload: BASEURL + 'api/Vendor/venProDownload',//-- 厂商绑定商品模版下载
+    VendorBindProductImport: BASEURL + 'api/Vendor/venProImport',//-- 厂商绑定商品导入
+
+    //-- 仓库管理模块
+    warehouseList: BASEURL + 'api/Warehouse/index',//-- 仓库列表
+    warehouseDetail: BASEURL + 'api/Warehouse/warehouseDetail',//-- 仓库详情
+    warehouseAdd: BASEURL + 'api/Warehouse/warehouseAdd',//-- 仓库添加
+    warehouseEdit: BASEURL + 'api/Warehouse/warehouseEdit',//-- 仓库编辑
+    warehouseDel: BASEURL + 'api/Warehouse/warehouseDel',//-- 仓库删除
+    warehouseAreaList: BASEURL + 'api/WarehouseArea/index',//-- 库区列表
+    warehouseAreaDetail: BASEURL + 'api/WarehouseArea/warehouseAreaDetail',//-- 库区详情
+    warehouseAreaAdd: BASEURL + 'api/WarehouseArea/warehouseAreaAdd',//-- 库区添加
+    warehouseAreaEdit: BASEURL + 'api/WarehouseArea/warehouseAreaEdit',//-- 库区编辑
+    warehouseAreaDel: BASEURL + 'api/WarehouseArea/warehouseAreaDel',//-- 库区删除
+    warehouseRowShelfList: BASEURL + 'api/RowShelf/index',//-- 货架列表
+    warehouseRowShelfDetail: BASEURL + 'api/RowShelf/rowShelfDetail',//-- 货架详情
+    warehouseRowShelfAdd: BASEURL + 'api/RowShelf/rowShelfAdd',//-- 货架添加
+    warehouseRowShelfEdit: BASEURL + 'api/RowShelf/rowShelfEdit',//-- 货架编辑
+    warehouseRowShelfDel: BASEURL + 'api/RowShelf/rowShelfDel',//-- 货架删除
+    rowShelfDownload: BASEURL + 'api/RowShelf/rowShelfDownload',//-- 库区导入模版下载
+    rowShelfImport: BASEURL + 'api/RowShelf/rowShelfImport',//-- 库区导入
+    warehouseLibraryList: BASEURL + 'api/WLibrary/index',//-- 库位列表
+    warehouseLibraryDetail: BASEURL + 'api/WLibrary/wLibraryDetail',//-- 库位详情
+    warehouseLibraryAdd: BASEURL + 'api/WLibrary/wLibraryAdd',//-- 库位添加
+    warehouseLibraryEdit: BASEURL + 'api/WLibrary/wLibraryEdit',//-- 库位编辑
+    warehouseLibraryDel: BASEURL + 'api/WLibrary/wLibraryDel',//-- 库位删除
+    libraryDownload: BASEURL + 'api/WLibrary/wLibraryDownload',//-- 库位导入模版下载
+    libraryImport: BASEURL + 'api/WLibrary/wLibraryImport',//-- 库位导入
+
+    //-- 大客户专项模块
+    customerDemandOrderList: BASEURL + 'api/BigCustomer/demandOrderList',//-- 大客户需求订单列表
+    customerDemandOrderAdd: BASEURL + 'api/BigCustomer/demandOrderSave',//-- 大客户需求订单添加(编辑)
+    customerDemandOrderDetail: BASEURL + 'api/BigCustomer/demandOrderDetail',//-- 大客户需求订单详情
+    customerBindProduct: BASEURL + 'api/BigCustomer/Product',//-- 大客户需求订单搜索商品列表
+    customerProgrammeOrderList: BASEURL + 'api/BigCustomer/programmeOrderList',//-- 大客户方案列表
+    customerProgrammeOrderInfo: BASEURL + 'api/BigCustomer/programmeOrderDetail',//-- 大客户方案详情
+    customerProgrammeAdd: BASEURL + 'api/BigCustomer/programmeAdd',//-- 客户方案添加
+    customerProgrammeEdit: BASEURL + 'api/BigCustomer/programmeEdit',//-- 客户方案编辑
+    customerProgrammeDel: BASEURL + 'api/BigCustomer/programmeDel',//-- 客户方案删除
+    customerProgrammeMerge: BASEURL + 'api/BigCustomer/programmeMerge',//-- 客户方案合并
+
+    submitReviewedOrder: BASEURL + 'api/BigCustomer/submitReviewed',//-- 大客户需求订单提交审核
 }
+
 /*** 对请求数据进行加密*/
-function serviceRequestEncryption(bodyData) {
-    let preKey = '87749CECEA24B1C314CC27CF7952EBC3'; //Md5加密（32位大写）
-    let objKeys = Object.keys(bodyData);
-    objKeys.sort(); //排序
+// function serviceRequestEncryption(bodyData) {
+//     let preKey = '87749CECEA24B1C314CC27CF7952EBC3'; //Md5加密（32位大写）
+//     let objKeys = Object.keys(bodyData);
+//     objKeys.sort(); //排序
 
-    let signStr = '';
-    objKeys.forEach(item => {
-        signStr = signStr + bodyData[item];
-    });
-    signStr = signStr + preKey;
+//     let signStr = '';
+//     objKeys.forEach(item => {
+//         signStr = signStr + bodyData[item];
+//     });
+//     signStr = signStr + preKey;
 
-    let md51 = CryptoJS.MD5(signStr).toString();
-    let md51Super = md51.toUpperCase();
+//     let md51 = CryptoJS.MD5(signStr).toString();
+//     let md51Super = md51.toUpperCase();
 
-    md51Super = md51Super.substring(2, 18);
-    let md52 = CryptoJS.MD5(md51Super).toString();
+//     md51Super = md51Super.substring(2, 18);
+//     let md52 = CryptoJS.MD5(md51Super).toString();
 
-    bodyData['sign'] = md52.toUpperCase();
-    return bodyData;
-}
+//     bodyData['sign'] = md52.toUpperCase();
+//     return bodyData;
+// }
 
 export function NetWork_Post(net_api, bodyData, callback, netOptions) {
     // 加密
@@ -91,7 +150,6 @@ export function NetWork_Post(net_api, bodyData, callback, netOptions) {
         mode: 'cors',
         headers: post_header,
         body: JSON.stringify(bodyData),
-        // body: bodyData,
     }
     fetch(url, fetchOptions)
         .then((response) => response.text())
@@ -101,8 +159,7 @@ export function NetWork_Post(net_api, bodyData, callback, netOptions) {
         })
         .catch(error => {
             callback(post_error);
-        });
-
+        })
 }
 
 export function NetWork_Get(net_api, callback, netOptions) {

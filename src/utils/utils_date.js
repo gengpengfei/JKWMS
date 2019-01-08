@@ -20,7 +20,7 @@ function dateTransform(date, fmt) {
         fmt = fmt.replace(RegExp.$1, (date.getFullYear() + "").substr(4 - RegExp.$1.length));
     for (var k in o)
         if (new RegExp("(" + k + ")").test(fmt))
-            fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
+            fmt = fmt.replace(RegExp.$1, (RegExp.$1.length === 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
     return fmt;
 }
 
@@ -37,11 +37,9 @@ function getPreMonth(inputDate) {
     var day = inputDate.getDate(); //获取当前日期的日  
 
     /*******计算上一个月的年月日********/
-    var days = new Date(year, month, 0);
-    days = days.getDate(); //获取当前日期中月的天数  
     var year2 = year;
     var month2 = parseInt(month) - 1;
-    if (month2 == 0) {
+    if (month2 === 0) {
         year2 = parseInt(year2) - 1;
         month2 = 12;
     }
@@ -75,11 +73,9 @@ function getNextMonth(inputDate) {
     var day = inputDate.getDate(); //获取当前日期的日  
 
     /*******计算下一个月的年月日********/
-    var days = new Date(year, month, 0);
-    days = days.getDate(); //获取当前日期中的月的天数  
     var year2 = year;
     var month2 = parseInt(month) + 1;
-    if (month2 == 13) {
+    if (month2 === 13) {
         year2 = parseInt(year2) + 1;
         month2 = 1;
     }

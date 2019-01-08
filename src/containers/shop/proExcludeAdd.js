@@ -35,10 +35,10 @@ class proExcludeAdd extends Component {
         return (
             <Form onSubmit={this.handleSubmit} style={{ width: '100%' }}>
                 <FormItem
-                    label="不推送商品编码:"
+                    label="不推送商品编码："
                     {...formItemLayout}
                 >
-                    {getFieldDecorator('pro_code', {
+                    {getFieldDecorator('product_num', {
                         rules: [{
                             required: true, message: '请输入不推送商品编号！',
                         }],

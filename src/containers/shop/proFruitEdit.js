@@ -15,7 +15,7 @@ class proFruitEdit extends Component {
         //-- 获取商品转换详情
         this._getProFruitDetail()
         this.props.form.setFieldsValue({
-            pro_code: this.props.match.params.pro_code,
+            product_num: this.props.match.params.product_num,
         })
     }
     _getProFruitDetail = () => {
@@ -29,8 +29,8 @@ class proFruitEdit extends Component {
                     proFruitDetail: data
                 })
                 this.props.form.setFieldsValue({
-                    pro_code: data.pro_code,
-                    pro_name: data.pro_name,
+                    product_num: data.product_num,
+                    product_name: data.product_name,
                     pro_code_mix: data.pro_code_mix,
                     pro_name_mix: data.pro_name_mix,
                     remark: data.remark,
@@ -88,7 +88,7 @@ class proFruitEdit extends Component {
                     label="单一商品编码:"
                     {...formItemLayout}
                 >
-                    {getFieldDecorator('pro_code', {
+                    {getFieldDecorator('product_num', {
                         rules: [{
                             required: true, message: '请输入商品编号！',
                         }],
@@ -100,7 +100,7 @@ class proFruitEdit extends Component {
                     label="单一商品名称:"
                     {...formItemLayout}
                 >
-                    {getFieldDecorator('pro_name', {
+                    {getFieldDecorator('product_name', {
                         rules: [{
                             required: true, message: '请输入商品名称！',
                         }],

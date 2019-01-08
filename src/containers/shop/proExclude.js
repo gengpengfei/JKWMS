@@ -64,8 +64,8 @@ export default class proExclude extends Component {
         {
             align: 'center',
             title: '商品编码',
-            dataIndex: 'pro_code',
-            key: 'pro_code',
+            dataIndex: 'product_num',
+            key: 'product_num',
         }, {
             align: 'center',
             title: '修改时间',
@@ -78,13 +78,13 @@ export default class proExclude extends Component {
             render: (text, record) => {
                 return (
                     <span>
-                        <Link to={'/proExcludeEdit/' + text.id + '/' + text.pro_code}>
+                        <Link to={'/proExcludeEdit/' + text.id + '/' + text.product_num}>
                             编辑
                         </Link>
                         <Divider type="vertical" />
-                        <a href='###' onClick={() => this.setState({ deleteRowKeys: text.id }, this._showDeleteConfirm)}>
+                        <span style={{ cursor: 'pointer', color: '#4490ff' }} onClick={() => this.setState({ deleteRowKeys: text.id }, this._showDeleteConfirm)}>
                             删除
-                        </a>
+                        </span>
                     </span >
                 )
             },

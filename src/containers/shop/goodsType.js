@@ -154,9 +154,9 @@ export default class goodsType extends Component {
                             添加子类
                         </Link>
                         <Divider type="vertical" />
-                        <a href='###' onClick={() => this.setState({ selectedRowKeys: [text.id] }, this._showDeleteConfirm)}>
+                        <span style={{ cursor: 'pointer', color: '#4490ff' }} onClick={() => this.setState({ selectedRowKeys: [text.id] }, this._showDeleteConfirm)}>
                             删除
-                        </a>
+                        </span>
                     </span >
                 )
             },
