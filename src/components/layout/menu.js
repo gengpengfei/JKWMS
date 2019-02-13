@@ -62,8 +62,8 @@ export default class MenuLayout extends Component {
                 <SubMenu key="sub4" title={<span><Icon type="audit" /><span>大客户专项</span></span>}>
                     <Menu.Item key="1"><Link to='/customerDemandOrder'>大客户需求订单</Link></Menu.Item>
                     <Menu.Item key="2"><Link to='/customerProgrammeOrder'>大客户方案提交</Link></Menu.Item>
-                    <Menu.Item key="3"><Link to='/customerDemandOrder'>大客户方案审核</Link></Menu.Item>
-                    <Menu.Item key="4"><Link to='/customerProgrammeOrderReviewed'>大客户订单审核</Link></Menu.Item>
+                    <Menu.Item key="3"><Link to='/customerProgrammeReviewed'>大客户方案审核</Link></Menu.Item>
+                    <Menu.Item key="4"><Link to='/customerCreateOrderReviewed'>大客户订单审核</Link></Menu.Item>
                 </SubMenu>
                 <SubMenu key="sub5" title={<span><Icon type="setting" /><span>系统设置</span></span>}>
                     <Menu.Item key="9">Option 9</Menu.Item>

@@ -1,4 +1,4 @@
-// -- 查看大客户订单方案
+// -- 大客户方案生成订单
 import React, { Component } from 'react';
 import { Form, Button, Input, message, DatePicker, Radio, Checkbox, Row, Col } from 'antd'
 import { Link } from 'react-router-dom'
@@ -7,7 +7,7 @@ import moment from 'moment';
 const { TextArea } = Input;
 const FormItem = Form.Item;
 const RadioGroup = Radio.Group;
-class customerProgrammeOrderInfo extends Component {
+class customerCreateOrder extends Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -247,13 +247,9 @@ class customerProgrammeOrderInfo extends Component {
                 </Row>
                 <FormItem wrapperCol={{ span: 8, offset: 3 }}>
                     <div style={{ maxWidth: 300 }}>
-                        {
-                            this.state.orderDetail.in_flag === 1 ? <Link to={'/customerProgrammeAdd/' + this.props.match.params.id}>
-                                <Button icon='plus' style={{ float: "left" }}>
-                                    添加方案
-                        </Button>
-                            </Link> : null
-                        }
+                        <Link to={'/customerProgrammeAdd/' + this.props.match.params.id}>
+                            <Button icon='save' style={{ float: "left" }}>生成订单</Button>
+                        </Link>
                         <Button onClick={() => { this.props.history.goBack() }} style={{ marginLeft: 10, float: "right" }} icon='rollback'>
                             返回列表
                         </Button>
@@ -263,4 +259,4 @@ class customerProgrammeOrderInfo extends Component {
         )
     }
 }
-export default Form.create()(customerProgrammeOrderInfo)
+export default Form.create()(customerCreateOrder)

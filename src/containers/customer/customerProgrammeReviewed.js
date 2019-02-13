@@ -1,11 +1,11 @@
-// -- 大客户需求订单列表管理
+// -- 大客户订单方案审核列表
 import React, { Component } from 'react';
 import { Table, Pagination, Button, Input, Icon, DatePicker, message, Modal, Divider, Select } from 'antd'
 import { Link } from 'react-router-dom'
 import { NetWork_Post } from '../../network/netUtils'
 const { RangePicker } = DatePicker;
 const Option = Select.Option
-export default class CustomerDemandOrder extends Component {
+export default class CustomerProgrammeReviewed extends Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -20,7 +20,7 @@ export default class CustomerDemandOrder extends Component {
         }
     }
     componentDidMount() {
-        //-- 获取厂商列表
+        //-- 获取待审核列表
         this._getDemandOrderList()
     }
     _getDemandOrderList = () => {
@@ -39,7 +39,7 @@ export default class CustomerDemandOrder extends Component {
         this.setState({
             loading: true
         })
-        NetWork_Post('customerDemandOrderList', formData, (response) => {
+        NetWork_Post('programmeReviewedList', formData, (response) => {
             const { status, data, msg } = response
             console.log('CustomerDemandOrder', response)
             if (status === '0000') {
@@ -74,16 +74,17 @@ export default class CustomerDemandOrder extends Component {
     _showSubmitReviewedConfirm = () => {
         Modal.confirm({
             title: '系统提示',
-            content: '您确定要提交所选需求？',
+            content: '您确定要一键审核？',
             okType: 'danger',
             onOk: this._submitReviewedOrder
         });
     }
     _submitReviewedOrder = () => {
         const formData = {
-            order_num: this.state.selectedRowKeys
+            id: this.state.selectedRowKeys[0],
+            in_flag: 8
         }
-        NetWork_Post('submitReviewedOrder', formData, (response) => {
+        NetWork_Post('programmeReviewed', formData, (response) => {
             const { status, msg } = response
             if (status === '0000') {
                 message.success(msg)
@@ -164,18 +165,27 @@ export default class CustomerDemandOrder extends Component {
             render: (text, record) => {
                 return <span>
                     {
-                        record.in_flag === 0 ?
-                            <div>
-                                <Link to={'/customerDemandOrderEdit/' + text.id}>编辑</Link>
-                                <Divider type="vertical" />
-                                <span style={{ cursor: 'pointer', color: '#4490ff' }} onClick={() => this.setState({ selectedRowKeys: [text.order_num] }, this._showSubmitReviewedConfirm)}>提交需求</span>
-                            </div> : null
+                        record.in_flag === 2 ? <Link to={'/CustomerProgrammeReviewedInfo/' + text.id}>方案初审</Link> : null
                     }
                     {
-                        record.in_flag === 8 && record.sheng_yu === 0 ? <Link to={'customerCreateOrder/' + text.id}>生成订单</Link> : null
+                        record.in_flag === 3 ? <Link to={'/CustomerProgrammeReviewedInfo/' + text.id}>确认方案</Link> : null
                     }
                     {
-                        record.in_flag === 9 ? <Link to={'/DemandOrderEdit/' + text.id}>查看订单</Link> : null
+                        record.in_flag === 5 ? <Link to={'/CustomerProgrammeReviewedInfo/' + text.id}>确认方案初审</Link> : null
+                    }
+                    {
+                        record.in_flag === 6 ? <div>
+                            <span style={{ cursor: 'pointer', color: '#4490ff' }} onClick={() => this.setState({ selectedRowKeys: [text.id] }, this._showSubmitReviewedConfirm)}>一键审核</span>
+                            <Divider type="vertical" />
+                            <Link to={'/CustomerProgrammeReviewedInfo/' + text.id}>确认方案二审</Link>
+                        </div> : null
+                    }
+                    {
+                        record.in_flag === 7 ? <div>
+                            <span style={{ cursor: 'pointer', color: '#4490ff' }} onClick={() => this.setState({ selectedRowKeys: [text.id] }, this._showSubmitReviewedConfirm)}>一键审核</span>
+                            <Divider type="vertical" />
+                            <Link to={'/CustomerProgrammeReviewedInfo/' + text.id}>确认方案终审</Link>
+                        </div> : null
                     }
                 </span>
             },

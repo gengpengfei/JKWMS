@@ -40,6 +40,11 @@ import CustomerProgrammeOrder from './containers/customer/customerProgrammeOrder
 import CustomerProgrammeOrderInfo from './containers/customer/customerProgrammeOrderInfo'
 import CustomerProgrammeAdd from './containers/customer/customerProgrammeAdd'
 import CustomerProgrammeEdit from './containers/customer/customerProgrammeEdit'
+import CustomerProgrammeReviewed from './containers/customer/customerProgrammeReviewed'
+import CustomerProgrammeReviewedInfo from './containers/customer/customerProgrammeReviewedInfo'
+import CustomerCreateOrder from './containers/customer/customerCreateOrder'
+import CustomerCreateOrderReviewed from './containers/customer/customerCreateOrderReviewed'
+
 export default class App extends Component {
   render() {
     return (
@@ -88,6 +93,10 @@ export default class App extends Component {
               <Route path="/customerProgrammeOrderInfo/:id" component={CustomerProgrammeOrderInfo} />
               <Route path="/customerProgrammeEdit/:id/:select_fa" component={CustomerProgrammeEdit} />
               <Route path="/customerProgrammeAdd/:id" component={CustomerProgrammeAdd} />
+              <Route path="/CustomerProgrammeReviewed" component={CustomerProgrammeReviewed} />
+              <Route path="/CustomerProgrammeReviewedInfo/:id" component={CustomerProgrammeReviewedInfo} />
+              <Route path="/CustomerCreateOrder/:id" component={CustomerCreateOrder} />
+              <Route path="/CustomerCreateOrderReviewed/:id" component={CustomerCreateOrderReviewed} />
               <Route component={NoMatch} />
             </Switch>
           </Index>

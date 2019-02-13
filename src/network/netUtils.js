@@ -93,6 +93,7 @@ var reqUrl = {
     customerDemandOrderList: BASEURL + 'api/BigCustomer/demandOrderList',//-- 大客户需求订单列表
     customerDemandOrderAdd: BASEURL + 'api/BigCustomer/demandOrderSave',//-- 大客户需求订单添加(编辑)
     customerDemandOrderDetail: BASEURL + 'api/BigCustomer/demandOrderDetail',//-- 大客户需求订单详情
+    submitReviewedOrder: BASEURL + 'api/BigCustomer/submitReviewed',//-- 大客户需求订单提交
     customerBindProduct: BASEURL + 'api/BigCustomer/Product',//-- 大客户需求订单搜索商品列表
     customerProgrammeOrderList: BASEURL + 'api/BigCustomer/programmeOrderList',//-- 大客户方案列表
     customerProgrammeOrderInfo: BASEURL + 'api/BigCustomer/programmeOrderDetail',//-- 大客户方案详情
@@ -100,8 +101,8 @@ var reqUrl = {
     customerProgrammeEdit: BASEURL + 'api/BigCustomer/programmeEdit',//-- 客户方案编辑
     customerProgrammeDel: BASEURL + 'api/BigCustomer/programmeDel',//-- 客户方案删除
     customerProgrammeMerge: BASEURL + 'api/BigCustomer/programmeMerge',//-- 客户方案合并
-
-    submitReviewedOrder: BASEURL + 'api/BigCustomer/submitReviewed',//-- 大客户需求订单提交审核
+    programmeReviewedList: BASEURL + 'api/BigCustomer/programmeReviewedList',//-- 客户方案待审核列表
+    programmeReviewed: BASEURL + 'api/BigCustomer/programmeReviewed',//-- 客户方案状态更新（审核）
 }
 
 /*** 对请求数据进行加密*/

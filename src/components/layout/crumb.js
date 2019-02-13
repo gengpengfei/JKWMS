@@ -37,25 +37,26 @@ export default class CrumbLayout extends Component {
         "customerDemandOrder": ['大客户专项', '大客户需求订单'],
         "customerDemandOrderAdd": ['大客户专项', '大客户需求订单添加'],
         "customerDemandOrderEdit": ['大客户专项', '大客户需求订单编辑'],
+        "customerProgrammeOrderReviewed": ['大客户专项', '大客户订单审核'],
         "customerProgrammeOrder": ['大客户专项', '大客户方案'],
         "customerProgrammeOrderInfo": ['大客户专项', '大客户方案详情'],
         "customerProgrammeAdd": ['大客户专项', '大客户方案添加'],
         "customerProgrammeEdit": ['大客户专项', '大客户方案编辑'],
-
         "customerProgrammeReviewed": ['大客户专项', '大客户方案审核'],
-        "customerProgrammeOrderReviewed": ['大客户专项', '大客户订单审核'],
+        "customerProgrammeReviewedInfo": ['大客户专项', '大客户方案审核列表'],
+        "customerCreateOrder": ['大客户专项', '大客户方案订单生成'],
+        "customerCreateOrderReviewed": ['大客户专项', '大客户方案订单审核']
     }
     render() {
         const { pathname } = this.props.location
         const arr = pathname.split('/')
         return (
-
             <Breadcrumb>
                 <Breadcrumb.Item key='index'>首页</Breadcrumb.Item>
                 {
                     this.crumbJson[arr[1]] ? this.crumbJson[arr[1]].map((e, i) => {
                         return <Breadcrumb.Item key={i}>{e}</Breadcrumb.Item>
-                    }) : null
+                    }) : <Breadcrumb.Item key={-1}>404</Breadcrumb.Item>
                 }
             </Breadcrumb>
 

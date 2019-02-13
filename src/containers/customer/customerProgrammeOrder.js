@@ -74,16 +74,17 @@ export default class CustomerProgrammeOrder extends Component {
     _showSubmitReviewedConfirm = () => {
         Modal.confirm({
             title: '系统提示',
-            content: '您确定要提交所选需求？',
+            content: '您确定要提交所选方案？',
             okType: 'danger',
-            onOk: this._submitReviewedOrder
+            onOk: this._customerProgrammeReviewed
         });
     }
-    _submitReviewedOrder = () => {
+    _customerProgrammeReviewed = () => {
         const formData = {
-            order_num: this.state.selectedRowKeys
+            id: this.state.selectedRowKeys[0],
+            in_flag: 2
         }
-        NetWork_Post('submitReviewedOrder', formData, (response) => {
+        NetWork_Post('programmeReviewed', formData, (response) => {
             const { status, msg } = response
             if (status === '0000') {
                 message.success(msg)
@@ -170,10 +171,12 @@ export default class CustomerProgrammeOrder extends Component {
                 return <span>
                     <Link to={'/customerProgrammeOrderInfo/' + text.id}>查看方案</Link>
                     {
-                        record.in_flag === 1 ?
+                        record.in_flag === 1 || record.in_flag === 4 ?
                             <span>
                                 <Divider type="vertical" />
-                                <Link to={'/ProgrammeOrderEdit/' + text.id}>提交方案</Link>
+                                <span style={{ cursor: 'pointer', color: '#4490ff' }} onClick={() =>
+                                    this.setState({ selectedRowKeys: [text.id] }, this._showSubmitReviewedConfirm)
+                                }>提交方案</span>
                             </span> : null
                     }
                 </span>
