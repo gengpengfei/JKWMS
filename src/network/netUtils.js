@@ -103,6 +103,7 @@ var reqUrl = {
     customerProgrammeMerge: BASEURL + 'api/BigCustomer/programmeMerge',//-- 客户方案合并
     programmeReviewedList: BASEURL + 'api/BigCustomer/programmeReviewedList',//-- 客户方案待审核列表
     programmeReviewed: BASEURL + 'api/BigCustomer/programmeReviewed',//-- 客户方案状态更新（审核）
+    bigCustomerOrderShDetail: BASEURL + 'api/BigCustomer/bigCustomerOrderShDetail',//-- 大客户生成订单详情页
 }
 
 /*** 对请求数据进行加密*/
@@ -215,5 +216,4 @@ export function NetWork_File(net_api, bodyData, callback) {
         .catch(error => {
             callback(post_error);
         });
-
 }

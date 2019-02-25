@@ -2,6 +2,7 @@ import { Breadcrumb } from 'antd';
 import React, { Component } from 'react';
 export default class CrumbLayout extends Component {
     crumbJson = {
+        "home": ["管理中心", ""],
         "goods": ["商品管理", "商品列表"],
         "goodsBindSupplier": ["商品管理", "绑定供应商"],
         "goodsType": ["商品管理", "商品类型管理"],

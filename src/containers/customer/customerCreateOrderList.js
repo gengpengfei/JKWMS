@@ -1,52 +1,24 @@
-// -- 编辑大客户方案
+// -- 大客户方案订单审核
 import React, { Component } from 'react';
 import { Form, Button, Input, message, DatePicker, Radio, Table, Icon, Row, Col } from 'antd'
 import { NetWork_Post } from '../../network/netUtils'
-import moment from 'moment';
+import { dateTransform } from '../../utils/utils_date';
 const { TextArea } = Input;
 const FormItem = Form.Item;
 const RadioGroup = Radio.Group;
-class customerDemandOrderEdit extends Component {
+class customerCreateOrderReviewed extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            select_fa: this.props.match.params.select_fa,
-            orderDetail: [],
             productList: [],
             bindProductList: [],
-            selectedRow: [],
+            selectedRow: []
         }
     }
     componentDidMount() {
-        //--获取订单详情
-        this._getCustomerOrderDetail()
-    }
-    _getCustomerOrderDetail = () => {
-        const formData = {
-            id: this.props.match.params.id,
-            select_fa: this.props.match.params.select_fa
-        }
-        console.log(formData);
-        NetWork_Post('customerProgrammeOrderInfo', formData, (response) => {
-            const { status, data, msg } = response
-            console.log('customerProgrammeOrderInfo', response)
-            if (status === '0000') {
-                this.setState({
-                    order_num: data.order_num,
-                    bindProductList: data.productList[0].product,
-                    order_end_date: data.order_end_date
-                })
-                this.props.form.setFieldsValue({
-                    remark: data.remark,
-                    order_num: data.order_num,
-                    member_name: data.member_name,
-                    order_end_date: moment(data.order_end_date, 'YYYY-MM-DD'),
-                    t_type: data.t_type,
-                })
-            } else {
-                if (status === '1003') return this.props.history.push('/');
-                message.error(msg)
-            }
+        this.props.form.setFieldsValue({
+            order_num: 'Y' + dateTransform(new Date(), 'yyyyMMddhhmmss'),
+            t_type: 1
         })
     }
     //-- 获取商品列表
@@ -73,9 +45,7 @@ class customerDemandOrderEdit extends Component {
             if (err) return;
             values.order_end_date = values.order_end_date.format('YYYY-MM-DD')
             values.product_info = this.state.bindProductList
-            values.id = parseInt(this.props.match.params.id)
-            values.select_fa = this.props.match.params.select_fa
-            NetWork_Post('customerProgrammeEdit', values, (response) => {
+            NetWork_Post('customerDemandOrderAdd', values, (response) => {
                 const { status, msg } = response
                 if (status === '0000') {
                     message.success(msg)
@@ -192,7 +162,7 @@ class customerDemandOrderEdit extends Component {
                             required: true, message: '请输入大客户需求说明！',
                         }],
                     })(
-                        <TextArea style={{ maxWidth: 300 }} rows={5} disabled />
+                        <TextArea style={{ maxWidth: 300 }} rows={5} />
                     )}
                 </FormItem>
                 <FormItem
@@ -201,7 +171,7 @@ class customerDemandOrderEdit extends Component {
                 >
                     {getFieldDecorator('order_num', {
                         rules: [{
-                            required: true, message: '请输入订单号！',
+                            required: true, message: '请输入厂商编号！',
                         }],
                     })(
                         <Input style={{ maxWidth: 300 }} disabled />
@@ -216,7 +186,7 @@ class customerDemandOrderEdit extends Component {
                             required: true, message: '请输入客户名称！',
                         }],
                     })(
-                        <Input style={{ maxWidth: 300 }} disabled />
+                        <Input style={{ maxWidth: 300 }} />
                     )}
                 </FormItem>
                 <FormItem
@@ -228,7 +198,7 @@ class customerDemandOrderEdit extends Component {
                             required: true, message: '请选择过期时间！',
                         }],
                     })(
-                        <DatePicker showToday={false} disabled />
+                        <DatePicker showToday={false} />
                     )}
                 </FormItem>
                 <FormItem
@@ -313,4 +283,4 @@ class customerDemandOrderEdit extends Component {
         )
     }
 }
-export default Form.create()(customerDemandOrderEdit)
+export default Form.create()(customerCreateOrderReviewed)

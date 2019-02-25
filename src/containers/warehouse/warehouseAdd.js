@@ -214,14 +214,14 @@ class warehouseAdd extends Component {
                 </FormItem>
                 <FormItem
                     {...formItemLayout}
-                    label="仓库所在省:"
+                    label="仓库位置:"
                 >
                     {getFieldDecorator('province', {
                         rules: [{
                             required: true, message: '请选择仓库所在省！',
                         }],
                     })(
-                        <Select placeholder='请选择' style={{ maxWidth: 300 }} onChange={this._getCityList} >
+                        <Select placeholder='请选择' style={{ maxWidth: 100 }} onChange={this._getCityList} >
                             {
                                 this.state.provinceList ? this.state.provinceList.map((item, index) => (
                                     <Option key={index} value={item.area_name}>{item.area_name}</Option>
@@ -229,17 +229,12 @@ class warehouseAdd extends Component {
                             }
                         </Select>
                     )}
-                </FormItem>
-                <FormItem
-                    {...formItemLayout}
-                    label="仓库所在市:"
-                >
                     {getFieldDecorator('city', {
                         rules: [{
                             required: true, message: '请选择仓库所在市！',
                         }],
                     })(
-                        <Select placeholder='请选择' style={{ maxWidth: 300 }} onChange={this._getAreaList}>
+                        <Select placeholder='请选择' style={{ maxWidth: 100 }} onChange={this._getAreaList}>
                             {
                                 this.state.cityList ? this.state.cityList.map((item, index) => (
                                     <Option key={index} value={item.area_name} >{item.area_name}</Option>
@@ -247,17 +242,12 @@ class warehouseAdd extends Component {
                             }
                         </Select>
                     )}
-                </FormItem>
-                <FormItem
-                    {...formItemLayout}
-                    label="仓库所在区:"
-                >
                     {getFieldDecorator('area', {
                         rules: [{
                             required: true, message: '请选择仓库所在区！',
                         }],
                     })(
-                        <Select placeholder='请选择' style={{ maxWidth: 300 }}>
+                        <Select placeholder='请选择' style={{ maxWidth: 100 }}>
                             {
                                 this.state.areaList ? this.state.areaList.map((item, index) => (
                                     <Option key={index} value={item.area_name}>{item.area_name}</Option>

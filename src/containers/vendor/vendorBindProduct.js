@@ -239,7 +239,7 @@ export default class vendorBindProduct extends Component {
                         </div>
                         <div style={{ marginTop: 10, height: 40 }}>
                             <Button icon='save' loading={this.state.saveLoading} onClick={this._handleSubmit}>提交</Button>
-                            <Button style={{ marginLeft: 10 }} icon='rollback' onClick={() => { this.props.history.push('/vendor') }}>返回</Button>
+                            <Button style={{ marginLeft: 10 }} icon='rollback' onClick={() => { this.props.history.goBack() }}>返回</Button>
                         </div>
                     </div>
                 </div>

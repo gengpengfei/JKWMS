@@ -1,51 +1,61 @@
-// -- 大客户方案订单审核
+// -- 大客户方案生成订单
 import React, { Component } from 'react';
-import { Form, Button, Input, message, DatePicker, Radio, Table, Icon, Row, Col } from 'antd'
+import { Form, Button, Input, message, DatePicker, Radio, Checkbox, Row, Col } from 'antd'
+import { Link } from 'react-router-dom'
 import { NetWork_Post } from '../../network/netUtils'
-import { dateTransform } from '../../utils/utils_date';
+import moment from 'moment';
 const { TextArea } = Input;
 const FormItem = Form.Item;
 const RadioGroup = Radio.Group;
-class customerCreateOrderReviewed extends Component {
+class customerCreateOrder extends Component {
     constructor(props) {
         super(props)
         this.state = {
+            orderDetail: [],
             productList: [],
-            bindProductList: [],
-            selectedRow: []
+            selectedRow: [],
+            checkbox: [],//--合并方案数组
         }
     }
     componentDidMount() {
-        this.props.form.setFieldsValue({
-            order_num: 'Y' + dateTransform(new Date(), 'yyyyMMddhhmmss'),
-            t_type: 1
-        })
+        //--获取订单详情
+        this._getCustomerProgrammeOrderDetail()
     }
-    //-- 获取商品列表
-    _getProductList = () => {
+    _getCustomerProgrammeOrderDetail = () => {
         const formData = {
-            search_key: this.state.search_key
+            id: this.props.match.params.id
         }
-        NetWork_Post('customerBindProduct', formData, (response) => {
+        NetWork_Post('customerProgrammeOrderInfo', formData, (response) => {
             const { status, data, msg } = response
-            console.log('customerBindProduct', response)
+            console.log('customerProgrammeOrderInfo', response)
             if (status === '0000') {
                 this.setState({
-                    productList: data
+                    order_num: data.order_num,
+                    productList: data.productList,
+                    order_end_date: data.order_end_date,
+                    orderDetail: data
+                })
+                this.props.form.setFieldsValue({
+                    remark: data.remark,
+                    order_num: data.order_num,
+                    member_name: data.member_name,
+                    order_end_date: moment(data.order_end_date, 'YYYY-MM-DD'),
+                    t_type: data.t_type,
                 })
             } else {
                 if (status === '1003') return this.props.history.push('/');
                 message.error(msg)
             }
-        });
+        })
     }
+
     handleSubmit = (e) => {
         e.preventDefault();
         this.props.form.validateFields((err, values) => {
             if (err) return;
             values.order_end_date = values.order_end_date.format('YYYY-MM-DD')
-            values.product_info = this.state.bindProductList
-            NetWork_Post('customerDemandOrderAdd', values, (response) => {
+            values.id = parseInt(this.props.match.params.id)
+            NetWork_Post('customerProgrammeOrderAdd', values, (response) => {
                 const { status, msg } = response
                 if (status === '0000') {
                     message.success(msg)
@@ -57,88 +67,45 @@ class customerCreateOrderReviewed extends Component {
             });
         });
     }
-    //-- 商品check按钮选择
-    rowSelection = {
-        onChange: (index, row) => {
-            this.setState({
-                selectedRow: row
-            })
+    //-- 删除方案
+    _delProgramme = (select_fa) => {
+        const formData = {
+            select_fa: select_fa,
+            order_num: this.state.order_num
         }
-    }
-    //-- 列表选择操作
-    _clickRowSelection = (text) => {
-        const check = this.state.bindProductList.findIndex((value) => {
-            return value.product_num === text.product_num;
-        })
-        if (check !== -1) return;
-        this.setState({ bindProductList: [...this.state.bindProductList, text] })
-    }
-    //-- 多选提交选择
-    _clickRowSelectionAll = () => {
-        const arr = []
-        this.state.selectedRow.forEach(e => {
-            const check = this.state.bindProductList.findIndex((value) => {
-                return value.product_num === e.product_num;
-            })
-            if (check === -1) arr.push(e);
+        NetWork_Post('customerProgrammeDel', formData, (response) => {
+            const { status, msg } = response
+            if (status === '0000') {
+                message.success(msg)
+                this._getCustomerProgrammeOrderDetail()
+            } else {
+                if (status === '1003') return this.props.history.push('/');
+                message.error(msg)
+            }
         });
-        this.setState({ bindProductList: [...this.state.bindProductList, ...arr] })
     }
-    handleChange = (index, value, field) => {
-        const data = this.state.bindProductList;
-        data[index][field] = value
+    _onChangeCheckbox = (data) => {
         this.setState({
-            bindProductList: data
+            checkbox: data
         })
     }
-    //-- 删除已选择的商品
-    _delbindedProductList = (index) => {
-        const { bindProductList } = this.state
-        bindProductList.splice(index, 1);
-        this.setState({ bindProductList: bindProductList })
-    }
-    columns = [
-        {
-            align: 'center',
-            title: '商品编号',
-            dataIndex: 'product_num',
-            key: 'product_num',
-        }, {
-            align: 'center',
-            title: '商品名称',
-            dataIndex: 'product_name',
-            key: 'product_name',
-        }, {
-            align: 'center',
-            title: '规格',
-            dataIndex: 'specifications_num',
-            key: 'specifications_num',
-        }, {
-            align: 'center',
-            title: '计量单位',
-            dataIndex: 'unit',
-            key: 'unit',
-        }, {
-            align: 'center',
-            title: '保质期',
-            dataIndex: 'shelf_month',
-            key: 'shelf_month',
-        }, {
-            align: 'center',
-            title: '箱规',
-            dataIndex: 'carton',
-            key: 'carton',
-        }, {
-            align: 'center',
-            title: '操作',
-            key: 'action',
-            render: (text, record) => (
-                <span style={{ cursor: 'pointer', color: '#4490ff' }} onClick={() => { this._clickRowSelection(text) }}>
-                    选择
-                    </span>
-            ),
+    //-- 合并方案
+    _mergeProgramme = () => {
+        const formData = {
+            select_fa: this.state.checkbox,
+            order_num: this.state.order_num
         }
-    ];
+        NetWork_Post('customerProgrammeMerge', formData, (response) => {
+            const { status, msg } = response
+            if (status === '0000') {
+                message.success(msg)
+                this._getCustomerProgrammeOrderDetail()
+            } else {
+                if (status === '1003') return this.props.history.push('/');
+                message.error(msg)
+            }
+        });
+    }
     render() {
         const { getFieldDecorator } = this.props.form;
         const formItemLayout = {
@@ -162,7 +129,7 @@ class customerCreateOrderReviewed extends Component {
                             required: true, message: '请输入大客户需求说明！',
                         }],
                     })(
-                        <TextArea style={{ maxWidth: 300 }} rows={5} />
+                        <TextArea style={{ maxWidth: 300 }} rows={5} disabled />
                     )}
                 </FormItem>
                 <FormItem
@@ -186,7 +153,7 @@ class customerCreateOrderReviewed extends Component {
                             required: true, message: '请输入客户名称！',
                         }],
                     })(
-                        <Input style={{ maxWidth: 300 }} />
+                        <Input style={{ maxWidth: 300 }} disabled />
                     )}
                 </FormItem>
                 <FormItem
@@ -198,7 +165,7 @@ class customerCreateOrderReviewed extends Component {
                             required: true, message: '请选择过期时间！',
                         }],
                     })(
-                        <DatePicker showToday={false} />
+                        <DatePicker showToday={false} disabled />
                     )}
                 </FormItem>
                 <FormItem
@@ -210,77 +177,86 @@ class customerCreateOrderReviewed extends Component {
                             required: true, message: '请选择订单类型！',
                         }],
                     })(
-                        <RadioGroup>
+                        <RadioGroup disabled>
                             <Radio value={1}>普通订单</Radio>
                             <Radio value={2}>三农订单</Radio>
                         </RadioGroup>
                     )}
                 </FormItem>
                 <Row type='flex' align='center' style={{ width: '100%', marginBottom: 20 }}>
-                    <Col xs={{ span: 12 }} sm={{ span: 3 }} style={{ textAlign: 'right' }}>供应商选择： </Col>
-                    <Col xs={{ span: 12 }} sm={{ span: 21 }}>
-                        <div style={{ display: 'flex', justifyContent: 'flex-start', alignItems: 'center', margin: '10px 0' }}>
-                            <Input prefix={<Icon type="search" style={{ color: '#b2b2b2' }} />} placeholder="搜索" style={{ width: 200 }} onChange={(e) => this.setState({ search_key: e.target.value })} />
-                            <Button style={{ margin: '0 10px' }} size='small' onClick={() => { this._getProductList() }}>搜索</Button>
-                            <Button style={{ marginRight: '10px' }} size='small' onClick={() => { this._clickRowSelectionAll() }}>选择</Button>
-                        </div>
-                        <div style={{ maxHeight: 230, overflow: 'auto' }}>
-                            <Table
-                                bordered
-                                loading={false}
-                                pagination={false} //-- 不使用自带的分页器
-                                rowSelection={this.rowSelection}
-                                dataSource={this.state.productList}
-                                columns={this.columns}
-                                rowKey={(row) => row.product_num}
-                                size='small'
-                            />
-                        </div>
-                        <div style={{ maxHeight: 230, overflow: 'auto', width: '100%', marginTop: 20 }}>
-                            <div style={{ width: '100%', height: 40, display: 'flex', justifyContent: 'space-around', alignItems: 'center', backgroundColor: '#efefef' }}>
-                                <div style={{ flex: 1, textAlign: 'center' }}>商品编号</div>
-                                <div style={{ flex: 2, textAlign: 'center' }}>商品名称</div>
-                                <div style={{ flex: 1, textAlign: 'center' }}>进价</div>
-                                <div style={{ flex: 1, textAlign: 'center' }}>门店价</div>
-                                <div style={{ flex: 1, textAlign: 'center' }}>销售价</div>
-                                <div style={{ flex: 1, textAlign: 'center' }}>数量</div>
-                                <div style={{ flex: 1, textAlign: 'center' }}>操作</div>
-                            </div>
-                            {
-                                this.state.bindProductList.map((e, i) => (
-                                    < div style={{ width: '100%', height: 40, display: 'flex', justifyContent: 'space-around', alignItems: 'center', border: '1px solid #efefef', borderTop: '0px' }} key={e.product_num}>
-                                        <div style={{ flex: 1, textAlign: 'center' }}>{e.product_num}</div>
-                                        <div style={{ flex: 2, textAlign: 'center' }}>{e.product_name}</div>
-                                        <div style={{ flex: 1, textAlign: 'center' }}>
-                                            <Input size="small" value={e.price ? String(e.price) : 0} style={{ width: '90%' }} onChange={({ target }) => this.handleChange(i, target.value, 'price')} />
-                                        </div>
-                                        <div style={{ flex: 1, textAlign: 'center' }}>
-                                            <Input size="small" value={e.md_price ? String(e.md_price) : 0} style={{ width: '90%' }} onChange={({ target }) => this.handleChange(i, target.value, 'md_price')} />
-                                        </div>
-                                        <div style={{ flex: 1, textAlign: 'center' }}>
-                                            <Input size="small" value={e.final_price ? String(e.final_price) : 0} style={{ width: '90%' }} onChange={({ target }) => this.handleChange(i, target.value, 'final_price')} />
-                                        </div>
-                                        <div style={{ flex: 1, textAlign: 'center' }}>
-                                            <Input size="small" value={e.buy_num ? String(e.buy_num) : 1} style={{ width: '90%' }} onChange={({ target }) => this.handleChange(i, target.value, 'buy_num')} />
-                                        </div>
-                                        <span onClick={() => this._delbindedProductList(i)} style={{ flex: 1, textAlign: 'center', cursor: 'pointer', color: '#4490ff' }}>删除</span>
-                                    </div>))
-                            }
-                        </div>
+                    <Col xs={{ span: 12 }} sm={{ span: 3 }} style={{ textAlign: 'right' }}>方案列表： </Col>
+                    <Col xs={{ span: 12 }} sm={{ span: 21 }} style={{ marginTop: -15 }}>
+                        {
+                            this.state.productList.length > 1 && this.state.orderDetail.in_flag === 1 ?
+                                <div>
+                                    <Checkbox.Group onChange={this._onChangeCheckbox}>
+                                        {this.state.productList.map((item, index) => (
+                                            <Checkbox value={item.select_fa} key={index}>方案{index + 1}</Checkbox>
+                                        ))}
+                                    </Checkbox.Group>
+                                    <Button size='small' style={{ marginLeft: 10 }} onClick={this._mergeProgramme}>合并方案</Button>
+                                </div> : null
+                        }
+                        {
+                            this.state.productList.map((item, index) => (
+                                <div style={{ maxHeight: 230, overflow: 'auto', width: '100%', marginTop: 20 }} key={index}>
+                                    <div style={{ width: '100%', height: 40, display: 'flex', justifyContent: 'space-around', alignItems: 'center', border: '1px solid #efefef' }}>
+                                        <span style={{ flex: 4, fontWeight: 500, marginLeft: 20 }}>方案{index + 1}（ 总利润:{item.allProfit},  销售总额:{item.allSale},  总数量:{item.allAmount} ）（单位：元）</span>
+                                        {
+                                            this.state.orderDetail.in_flag === 1 ? <div style={{ flex: 1, display: 'flex', justifyContent: 'space-around' }}>
+                                                <span style={{ cursor: 'pointer', color: '#4490ff' }} onClick={() => this._delProgramme(item.select_fa)}>删除方案</span>
+                                                <Link to={'/customerProgrammeEdit/' + this.props.match.params.id + '/' + item.select_fa}>编辑方案</Link>
+                                            </div> : null
+                                        }
+                                    </div>
+                                    <div style={{ width: '100%', height: 40, display: 'flex', justifyContent: 'space-around', alignItems: 'center', backgroundColor: '#efefef' }}>
+                                        <div style={{ flex: 1, textAlign: 'center' }}>商品编号</div>
+                                        <div style={{ flex: 2, textAlign: 'center' }}>商品名称</div>
+                                        <div style={{ flex: 1, textAlign: 'center' }}>规格</div>
+                                        <div style={{ flex: 1, textAlign: 'center' }}>进价</div>
+                                        <div style={{ flex: 1, textAlign: 'center' }}>门店价</div>
+                                        <div style={{ flex: 1, textAlign: 'center' }}>建议销售价</div>
+                                        <div style={{ flex: 1, textAlign: 'center' }}>数量</div>
+                                    </div>
+                                    {
+                                        item.product.map((e, i) => (
+                                            < div style={{ width: '100%', height: 40, display: 'flex', justifyContent: 'space-around', alignItems: 'center', border: '1px solid #efefef', borderTop: '0px' }} key={i}>
+                                                <div style={{ flex: 1, textAlign: 'center' }}>{e.product_num}</div>
+                                                <div style={{ flex: 2, textAlign: 'center' }}>{e.product_name}</div>
+                                                <div style={{ flex: 1, textAlign: 'center' }}>
+                                                    {e.unit}
+                                                </div>
+                                                <div style={{ flex: 1, textAlign: 'center' }}>
+                                                    {e.price}
+                                                </div>
+                                                <div style={{ flex: 1, textAlign: 'center' }}>
+                                                    {e.md_price}
+                                                </div>
+                                                <div style={{ flex: 1, textAlign: 'center' }}>
+                                                    {e.final_price}
+                                                </div>
+                                                <div style={{ flex: 1, textAlign: 'center' }}>
+                                                    {e.buy_num}
+                                                </div>
+                                            </div>))
+                                    }
+                                </div>
+                            ))
+                        }
                     </Col>
                 </Row>
                 <FormItem wrapperCol={{ span: 8, offset: 3 }}>
                     <div style={{ maxWidth: 300 }}>
-                        <Button icon='save' htmlType="submit" style={{ float: "left" }}>
-                            提交
-                        </Button>
+                        <Link to={'/customerProgrammeAdd/' + this.props.match.params.id}>
+                            <Button icon='save' style={{ float: "left" }}>生成订单</Button>
+                        </Link>
                         <Button onClick={() => { this.props.history.goBack() }} style={{ marginLeft: 10, float: "right" }} icon='rollback'>
-                            返回
+                            返回列表
                         </Button>
                     </div>
                 </FormItem>
-            </Form>
+            </Form >
         )
     }
 }
-export default Form.create()(customerCreateOrderReviewed)
+export default Form.create()(customerCreateOrder)

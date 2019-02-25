@@ -245,14 +245,14 @@ class warehouseEdit extends Component {
                 </FormItem>
                 <FormItem
                     {...formItemLayout}
-                    label="仓库所在省:"
+                    label="仓库位置:"
                 >
                     {getFieldDecorator('province', {
                         rules: [{
                             required: true, message: '请选择仓库所在省！',
                         }],
                     })(
-                        <Select placeholder='请选择' style={{ maxWidth: 300 }} onChange={(value) => this._getCityList(value, true)} >
+                        <Select placeholder='请选择' style={{ maxWidth: 100 }} onChange={(value) => this._getCityList(value, true)} >
                             {
                                 this.state.provinceList ? this.state.provinceList.map((item, index) => (
                                     <Option key={index} value={item.area_name}>{item.area_name}</Option>
@@ -260,17 +260,12 @@ class warehouseEdit extends Component {
                             }
                         </Select>
                     )}
-                </FormItem>
-                <FormItem
-                    {...formItemLayout}
-                    label="仓库所在市:"
-                >
                     {getFieldDecorator('city', {
                         rules: [{
                             required: true, message: '请选择仓库所在市！',
                         }],
                     })(
-                        <Select placeholder='请选择' style={{ maxWidth: 300 }} onChange={(value) => this._getAreaList(value, true)}>
+                        <Select placeholder='请选择' style={{ maxWidth: 100 }} onChange={(value) => this._getAreaList(value, true)}>
                             {
                                 this.state.cityList ? this.state.cityList.map((item, index) => (
                                     <Option key={index} value={item.area_name} >{item.area_name}</Option>
@@ -278,17 +273,12 @@ class warehouseEdit extends Component {
                             }
                         </Select>
                     )}
-                </FormItem>
-                <FormItem
-                    {...formItemLayout}
-                    label="仓库所在区:"
-                >
                     {getFieldDecorator('area', {
                         rules: [{
                             required: true, message: '请选择仓库所在区！',
                         }],
                     })(
-                        <Select placeholder='请选择' style={{ maxWidth: 300 }}>
+                        <Select placeholder='请选择' style={{ maxWidth: 100 }}>
                             {
                                 this.state.areaList ? this.state.areaList.map((item, index) => (
                                     <Option key={index} value={item.area_name}>{item.area_name}</Option>
@@ -297,6 +287,7 @@ class warehouseEdit extends Component {
                         </Select>
                     )}
                 </FormItem>
+
                 <FormItem
                     label="具体地址:"
                     {...formItemLayout}
