@@ -1,0 +1,2459 @@
+---------------------------------------------------------------
+[ 2018-12-29T18:07:24+08:00 ] 127.0.0.1 POST localhost:80/api/WarehouseArea/index
+[运行时间：0.418772s] [吞吐率：2.39req/s] [内存消耗：2,578.03kb] [文件加载：58]
+[ info ] [ LANG ] /Users/jk/Desktop/obj/newWMS/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'WarehouseArea',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'x-forwarded-host' => 'localhost:3000',
+  'x-forwarded-proto' => 'http',
+  'x-forwarded-port' => '3000',
+  'x-forwarded-for' => '127.0.0.1',
+  'cookie' => 'PHPSESSID=fc08a704343ae45c0558bc129d9d947e',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate, br',
+  'referer' => 'http://localhost:3000/warehouseArea',
+  'content-type' => 'application/json',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36',
+  'origin' => 'http://localhost:80/',
+  'accept' => 'application/json',
+  'content-length' => '59',
+  'connection' => 'close',
+  'host' => 'localhost:80',
+)
+[ info ] [ PARAM ] array (
+  '/api/WarehouseArea/index' => '',
+  'search_key' => '',
+  'limit' => 10,
+  'page' => 1,
+  'warehouse_num' => 'SW1',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\Api\controller\WarehouseArea->index[ /Users/jk/Desktop/obj/newWMS/application/api/controller/WarehouseArea.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.009240s ] mysql:host=10.20.10.217;port=3306;dbname=newwms;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_quality_check_wait` [ RunTime:0.042050s ]
+[ sql ] [ SQL ] SELECT * FROM `wms_quality_check_wait` [ RunTime:0.002637s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_quality_check` [ RunTime:0.037096s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181203-0001' LIMIT 1 [ RunTime:0.002348s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181203-0001'  AND `check_status` = 1 LIMIT 1 [ RunTime:0.002465s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_pur_order` [ RunTime:0.040203s ]
+[ sql ] [ SQL ] UPDATE `wms_pur_order`  SET `pur_order_status`=4,`modify_date`='2018-12-29 18:07:24'  WHERE  `pur_order_num` = 'OI-20170704-0001' [ RunTime:0.038165s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_reviewed_log` [ RunTime:0.040721s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('采购单' , 'OI-20170704-0001' , '已质检,待移库' , 'admin' , '2018-12-29 18:07:24' , '2018-12-29 18:07:24') [ RunTime:0.025316s ]
+[ sql ] [ SQL ] UPDATE `wms_quality_check_wait`  SET `check_wait_status`=2,`modify_date`='2018-12-29 18:07:24'  WHERE  `pur_order_num` = 'OI-20170704-0001' [ RunTime:0.024733s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('待质检单' , 'OI-20170704-0001' , '已质检' , 'admin' , '2018-12-29 18:07:24' , '2018-12-29 18:07:24') [ RunTime:0.024599s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181205-0001' LIMIT 1 [ RunTime:0.002275s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181205-0001'  AND `check_status` = 1 LIMIT 1 [ RunTime:0.002360s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('采购单' , 'OI-20170703-0002' , '已质检,待移库' , 'admin' , '2018-12-29 18:07:24' , '2018-12-29 18:07:24') [ RunTime:0.021984s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('待质检单' , 'OI-20170703-0002' , '已质检' , 'admin' , '2018-12-29 18:07:24' , '2018-12-29 18:07:24') [ RunTime:0.022189s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_warehouse_area` [ RunTime:0.038747s ]
+[ sql ] [ SQL ] SELECT `a`.*,`w`.`warehouse_name` FROM `wms_warehouse_area` `a` LEFT JOIN `wms_warehouse` `w` ON `w`.`warehouse_num`=`a`.`warehouse_num` WHERE  (  a.disabled = 1 and a.warehouse_num = 'SW1' ) LIMIT 0,10 [ RunTime:0.002428s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_warehouse_area` `a` LEFT JOIN `wms_warehouse` `w` ON `w`.`warehouse_num`=`a`.`warehouse_num` WHERE  (  a.disabled = 1 and a.warehouse_num = 'SW1' ) LIMIT 1 [ RunTime:0.002358s ]
+---------------------------------------------------------------
+[ 2018-12-29T18:07:28+08:00 ] 127.0.0.1 POST localhost:80/api/WarehouseArea/index
+[运行时间：0.423035s] [吞吐率：2.36req/s] [内存消耗：2,584.37kb] [文件加载：58]
+[ info ] [ LANG ] /Users/jk/Desktop/obj/newWMS/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'WarehouseArea',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'x-forwarded-host' => 'localhost:3000',
+  'x-forwarded-proto' => 'http',
+  'x-forwarded-port' => '3000',
+  'x-forwarded-for' => '127.0.0.1',
+  'cookie' => 'PHPSESSID=fc08a704343ae45c0558bc129d9d947e',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate, br',
+  'referer' => 'http://localhost:3000/warehouseArea',
+  'content-type' => 'application/json',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36',
+  'origin' => 'http://localhost:80/',
+  'accept' => 'application/json',
+  'content-length' => '58',
+  'connection' => 'close',
+  'host' => 'localhost:80',
+)
+[ info ] [ PARAM ] array (
+  '/api/WarehouseArea/index' => '',
+  'search_key' => '',
+  'limit' => 10,
+  'page' => 1,
+  'warehouse_num' => 'NX',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\Api\controller\WarehouseArea->index[ /Users/jk/Desktop/obj/newWMS/application/api/controller/WarehouseArea.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.008247s ] mysql:host=10.20.10.217;port=3306;dbname=newwms;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_quality_check_wait` [ RunTime:0.037874s ]
+[ sql ] [ SQL ] SELECT * FROM `wms_quality_check_wait` [ RunTime:0.002536s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_quality_check` [ RunTime:0.032119s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181203-0001' LIMIT 1 [ RunTime:0.002365s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181203-0001'  AND `check_status` = 1 LIMIT 1 [ RunTime:0.002322s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_pur_order` [ RunTime:0.032364s ]
+[ sql ] [ SQL ] UPDATE `wms_pur_order`  SET `pur_order_status`=4,`modify_date`='2018-12-29 18:07:27'  WHERE  `pur_order_num` = 'OI-20170704-0001' [ RunTime:0.032289s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_reviewed_log` [ RunTime:0.039742s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('采购单' , 'OI-20170704-0001' , '已质检,待移库' , 'admin' , '2018-12-29 18:07:27' , '2018-12-29 18:07:27') [ RunTime:0.017946s ]
+[ sql ] [ SQL ] UPDATE `wms_quality_check_wait`  SET `check_wait_status`=2,`modify_date`='2018-12-29 18:07:28'  WHERE  `pur_order_num` = 'OI-20170704-0001' [ RunTime:0.024361s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('待质检单' , 'OI-20170704-0001' , '已质检' , 'admin' , '2018-12-29 18:07:28' , '2018-12-29 18:07:28') [ RunTime:0.027099s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181205-0001' LIMIT 1 [ RunTime:0.002157s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181205-0001'  AND `check_status` = 1 LIMIT 1 [ RunTime:0.019603s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('采购单' , 'OI-20170703-0002' , '已质检,待移库' , 'admin' , '2018-12-29 18:07:28' , '2018-12-29 18:07:28') [ RunTime:0.033266s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('待质检单' , 'OI-20170703-0002' , '已质检' , 'admin' , '2018-12-29 18:07:28' , '2018-12-29 18:07:28') [ RunTime:0.024548s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_warehouse_area` [ RunTime:0.040225s ]
+[ sql ] [ SQL ] SELECT `a`.*,`w`.`warehouse_name` FROM `wms_warehouse_area` `a` LEFT JOIN `wms_warehouse` `w` ON `w`.`warehouse_num`=`a`.`warehouse_num` WHERE  (  a.disabled = 1 and a.warehouse_num = 'NX' ) LIMIT 0,10 [ RunTime:0.002907s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_warehouse_area` `a` LEFT JOIN `wms_warehouse` `w` ON `w`.`warehouse_num`=`a`.`warehouse_num` WHERE  (  a.disabled = 1 and a.warehouse_num = 'NX' ) LIMIT 1 [ RunTime:0.002643s ]
+---------------------------------------------------------------
+[ 2018-12-29T18:07:55+08:00 ] 127.0.0.1 POST localhost:80/api/Warehouse/index
+[运行时间：0.769426s] [吞吐率：1.30req/s] [内存消耗：2,607.44kb] [文件加载：58]
+[ info ] [ LANG ] /Users/jk/Desktop/obj/newWMS/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'Warehouse',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'x-forwarded-host' => 'localhost:3000',
+  'x-forwarded-proto' => 'http',
+  'x-forwarded-port' => '3000',
+  'x-forwarded-for' => '127.0.0.1',
+  'cookie' => 'PHPSESSID=fc08a704343ae45c0558bc129d9d947e',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate, br',
+  'referer' => 'http://localhost:3000/warehouseArea',
+  'content-type' => 'application/json',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36',
+  'origin' => 'http://localhost:80/',
+  'accept' => 'application/json',
+  'content-length' => '24',
+  'connection' => 'close',
+  'host' => 'localhost:80',
+)
+[ info ] [ PARAM ] array (
+  '/api/Warehouse/index' => '',
+  'limit' => 10000,
+  'page' => 1,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\Api\controller\Warehouse->index[ /Users/jk/Desktop/obj/newWMS/application/api/controller/Warehouse.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.005057s ] mysql:host=10.20.10.217;port=3306;dbname=newwms;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_quality_check_wait` [ RunTime:0.060378s ]
+[ sql ] [ SQL ] SELECT * FROM `wms_quality_check_wait` [ RunTime:0.002345s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_quality_check` [ RunTime:0.061702s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181203-0001' LIMIT 1 [ RunTime:0.002262s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181203-0001'  AND `check_status` = 1 LIMIT 1 [ RunTime:0.002154s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_pur_order` [ RunTime:0.061162s ]
+[ sql ] [ SQL ] UPDATE `wms_pur_order`  SET `pur_order_status`=4,`modify_date`='2018-12-29 18:07:55'  WHERE  `pur_order_num` = 'OI-20170704-0001' [ RunTime:0.034212s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_reviewed_log` [ RunTime:0.052789s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('采购单' , 'OI-20170704-0001' , '已质检,待移库' , 'admin' , '2018-12-29 18:07:55' , '2018-12-29 18:07:55') [ RunTime:0.023802s ]
+[ sql ] [ SQL ] UPDATE `wms_quality_check_wait`  SET `check_wait_status`=2,`modify_date`='2018-12-29 18:07:55'  WHERE  `pur_order_num` = 'OI-20170704-0001' [ RunTime:0.038848s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('待质检单' , 'OI-20170704-0001' , '已质检' , 'admin' , '2018-12-29 18:07:55' , '2018-12-29 18:07:55') [ RunTime:0.032974s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181205-0001' LIMIT 1 [ RunTime:0.002121s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181205-0001'  AND `check_status` = 1 LIMIT 1 [ RunTime:0.002332s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('采购单' , 'OI-20170703-0002' , '已质检,待移库' , 'admin' , '2018-12-29 18:07:55' , '2018-12-29 18:07:55') [ RunTime:0.030760s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('待质检单' , 'OI-20170703-0002' , '已质检' , 'admin' , '2018-12-29 18:07:55' , '2018-12-29 18:07:55') [ RunTime:0.038820s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_warehouse` [ RunTime:0.047861s ]
+[ sql ] [ SQL ] SELECT * FROM `wms_warehouse` WHERE  (  disabled = 1 ) LIMIT 0,10000 [ RunTime:0.002378s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_warehouse` WHERE  (  disabled = 1 ) LIMIT 1 [ RunTime:0.001844s ]
+---------------------------------------------------------------
+[ 2018-12-29T18:07:55+08:00 ] 127.0.0.1 POST localhost:80/api/WarehouseArea/index
+[运行时间：0.788273s] [吞吐率：1.27req/s] [内存消耗：2,585.45kb] [文件加载：58]
+[ info ] [ LANG ] /Users/jk/Desktop/obj/newWMS/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'WarehouseArea',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'x-forwarded-host' => 'localhost:3000',
+  'x-forwarded-proto' => 'http',
+  'x-forwarded-port' => '3000',
+  'x-forwarded-for' => '127.0.0.1',
+  'cookie' => 'PHPSESSID=fc08a704343ae45c0558bc129d9d947e',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate, br',
+  'referer' => 'http://localhost:3000/warehouseArea',
+  'content-type' => 'application/json',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36',
+  'origin' => 'http://localhost:80/',
+  'accept' => 'application/json',
+  'content-length' => '37',
+  'connection' => 'close',
+  'host' => 'localhost:80',
+)
+[ info ] [ PARAM ] array (
+  '/api/WarehouseArea/index' => '',
+  'search_key' => '',
+  'limit' => 10,
+  'page' => 1,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\Api\controller\WarehouseArea->index[ /Users/jk/Desktop/obj/newWMS/application/api/controller/WarehouseArea.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.007721s ] mysql:host=10.20.10.217;port=3306;dbname=newwms;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_quality_check_wait` [ RunTime:0.059668s ]
+[ sql ] [ SQL ] SELECT * FROM `wms_quality_check_wait` [ RunTime:0.002549s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_quality_check` [ RunTime:0.062315s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181203-0001' LIMIT 1 [ RunTime:0.002048s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181203-0001'  AND `check_status` = 1 LIMIT 1 [ RunTime:0.001929s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_pur_order` [ RunTime:0.061673s ]
+[ sql ] [ SQL ] UPDATE `wms_pur_order`  SET `pur_order_status`=4,`modify_date`='2018-12-29 18:07:55'  WHERE  `pur_order_num` = 'OI-20170704-0001' [ RunTime:0.058623s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_reviewed_log` [ RunTime:0.045649s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('采购单' , 'OI-20170704-0001' , '已质检,待移库' , 'admin' , '2018-12-29 18:07:55' , '2018-12-29 18:07:55') [ RunTime:0.027770s ]
+[ sql ] [ SQL ] UPDATE `wms_quality_check_wait`  SET `check_wait_status`=2,`modify_date`='2018-12-29 18:07:55'  WHERE  `pur_order_num` = 'OI-20170704-0001' [ RunTime:0.033213s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('待质检单' , 'OI-20170704-0001' , '已质检' , 'admin' , '2018-12-29 18:07:55' , '2018-12-29 18:07:55') [ RunTime:0.033331s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181205-0001' LIMIT 1 [ RunTime:0.002443s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181205-0001'  AND `check_status` = 1 LIMIT 1 [ RunTime:0.002267s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('采购单' , 'OI-20170703-0002' , '已质检,待移库' , 'admin' , '2018-12-29 18:07:55' , '2018-12-29 18:07:55') [ RunTime:0.035725s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('待质检单' , 'OI-20170703-0002' , '已质检' , 'admin' , '2018-12-29 18:07:55' , '2018-12-29 18:07:55') [ RunTime:0.038534s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_warehouse_area` [ RunTime:0.045109s ]
+[ sql ] [ SQL ] SELECT `a`.*,`w`.`warehouse_name` FROM `wms_warehouse_area` `a` LEFT JOIN `wms_warehouse` `w` ON `w`.`warehouse_num`=`a`.`warehouse_num` WHERE  (  a.disabled = 1 ) LIMIT 0,10 [ RunTime:0.002856s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_warehouse_area` `a` LEFT JOIN `wms_warehouse` `w` ON `w`.`warehouse_num`=`a`.`warehouse_num` WHERE  (  a.disabled = 1 ) LIMIT 1 [ RunTime:0.002682s ]
+---------------------------------------------------------------
+[ 2018-12-29T18:08:22+08:00 ] 127.0.0.1 POST localhost:80/api/WarehouseArea/index
+[运行时间：0.590354s] [吞吐率：1.69req/s] [内存消耗：2,585.79kb] [文件加载：58]
+[ info ] [ LANG ] /Users/jk/Desktop/obj/newWMS/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'WarehouseArea',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'x-forwarded-host' => 'localhost:3000',
+  'x-forwarded-proto' => 'http',
+  'x-forwarded-port' => '3000',
+  'x-forwarded-for' => '127.0.0.1',
+  'cookie' => 'PHPSESSID=fc08a704343ae45c0558bc129d9d947e',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate, br',
+  'referer' => 'http://localhost:3000/warehouseArea',
+  'content-type' => 'application/json',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36',
+  'origin' => 'http://localhost:80/',
+  'accept' => 'application/json',
+  'content-length' => '52',
+  'connection' => 'close',
+  'host' => 'localhost:80',
+)
+[ info ] [ PARAM ] array (
+  '/api/WarehouseArea/index' => '',
+  'search_key' => '',
+  'limit' => 10,
+  'page' => 1,
+  'warea_type' => 1,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\Api\controller\WarehouseArea->index[ /Users/jk/Desktop/obj/newWMS/application/api/controller/WarehouseArea.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.008077s ] mysql:host=10.20.10.217;port=3306;dbname=newwms;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_quality_check_wait` [ RunTime:0.037497s ]
+[ sql ] [ SQL ] SELECT * FROM `wms_quality_check_wait` [ RunTime:0.002782s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_quality_check` [ RunTime:0.037741s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181203-0001' LIMIT 1 [ RunTime:0.002417s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181203-0001'  AND `check_status` = 1 LIMIT 1 [ RunTime:0.002192s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_pur_order` [ RunTime:0.039753s ]
+[ sql ] [ SQL ] UPDATE `wms_pur_order`  SET `pur_order_status`=4,`modify_date`='2018-12-29 18:08:22'  WHERE  `pur_order_num` = 'OI-20170704-0001' [ RunTime:0.040448s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_reviewed_log` [ RunTime:0.039068s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('采购单' , 'OI-20170704-0001' , '已质检,待移库' , 'admin' , '2018-12-29 18:08:22' , '2018-12-29 18:08:22') [ RunTime:0.020937s ]
+[ sql ] [ SQL ] UPDATE `wms_quality_check_wait`  SET `check_wait_status`=2,`modify_date`='2018-12-29 18:08:22'  WHERE  `pur_order_num` = 'OI-20170704-0001' [ RunTime:0.022024s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('待质检单' , 'OI-20170704-0001' , '已质检' , 'admin' , '2018-12-29 18:08:22' , '2018-12-29 18:08:22') [ RunTime:0.024636s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181205-0001' LIMIT 1 [ RunTime:0.002023s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181205-0001'  AND `check_status` = 1 LIMIT 1 [ RunTime:0.002618s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('采购单' , 'OI-20170703-0002' , '已质检,待移库' , 'admin' , '2018-12-29 18:08:22' , '2018-12-29 18:08:22') [ RunTime:0.019557s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('待质检单' , 'OI-20170703-0002' , '已质检' , 'admin' , '2018-12-29 18:08:22' , '2018-12-29 18:08:22') [ RunTime:0.024253s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_warehouse_area` [ RunTime:0.039019s ]
+[ sql ] [ SQL ] SELECT `a`.*,`w`.`warehouse_name` FROM `wms_warehouse_area` `a` LEFT JOIN `wms_warehouse` `w` ON `w`.`warehouse_num`=`a`.`warehouse_num` WHERE  (  a.disabled = 1 ) LIMIT 0,10 [ RunTime:0.002637s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_warehouse_area` `a` LEFT JOIN `wms_warehouse` `w` ON `w`.`warehouse_num`=`a`.`warehouse_num` WHERE  (  a.disabled = 1 ) LIMIT 1 [ RunTime:0.002462s ]
+---------------------------------------------------------------
+[ 2018-12-29T18:09:03+08:00 ] 127.0.0.1 POST localhost:80/api/Warehouse/index
+[运行时间：0.714554s] [吞吐率：1.40req/s] [内存消耗：2,607.44kb] [文件加载：58]
+[ info ] [ LANG ] /Users/jk/Desktop/obj/newWMS/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'Warehouse',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'x-forwarded-host' => 'localhost:3000',
+  'x-forwarded-proto' => 'http',
+  'x-forwarded-port' => '3000',
+  'x-forwarded-for' => '127.0.0.1',
+  'cookie' => 'PHPSESSID=fc08a704343ae45c0558bc129d9d947e',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate, br',
+  'referer' => 'http://localhost:3000/warehouseArea',
+  'content-type' => 'application/json',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36',
+  'origin' => 'http://localhost:80/',
+  'accept' => 'application/json',
+  'content-length' => '24',
+  'connection' => 'close',
+  'host' => 'localhost:80',
+)
+[ info ] [ PARAM ] array (
+  '/api/Warehouse/index' => '',
+  'limit' => 10000,
+  'page' => 1,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\Api\controller\Warehouse->index[ /Users/jk/Desktop/obj/newWMS/application/api/controller/Warehouse.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.014217s ] mysql:host=10.20.10.217;port=3306;dbname=newwms;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_quality_check_wait` [ RunTime:0.051345s ]
+[ sql ] [ SQL ] SELECT * FROM `wms_quality_check_wait` [ RunTime:0.002363s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_quality_check` [ RunTime:0.059834s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181203-0001' LIMIT 1 [ RunTime:0.001924s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181203-0001'  AND `check_status` = 1 LIMIT 1 [ RunTime:0.001992s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_pur_order` [ RunTime:0.060775s ]
+[ sql ] [ SQL ] UPDATE `wms_pur_order`  SET `pur_order_status`=4,`modify_date`='2018-12-29 18:09:03'  WHERE  `pur_order_num` = 'OI-20170704-0001' [ RunTime:0.041180s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_reviewed_log` [ RunTime:0.048373s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('采购单' , 'OI-20170704-0001' , '已质检,待移库' , 'admin' , '2018-12-29 18:09:03' , '2018-12-29 18:09:03') [ RunTime:0.025132s ]
+[ sql ] [ SQL ] UPDATE `wms_quality_check_wait`  SET `check_wait_status`=2,`modify_date`='2018-12-29 18:09:03'  WHERE  `pur_order_num` = 'OI-20170704-0001' [ RunTime:0.024633s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('待质检单' , 'OI-20170704-0001' , '已质检' , 'admin' , '2018-12-29 18:09:03' , '2018-12-29 18:09:03') [ RunTime:0.035675s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181205-0001' LIMIT 1 [ RunTime:0.002378s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181205-0001'  AND `check_status` = 1 LIMIT 1 [ RunTime:0.002353s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('采购单' , 'OI-20170703-0002' , '已质检,待移库' , 'admin' , '2018-12-29 18:09:03' , '2018-12-29 18:09:03') [ RunTime:0.033091s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('待质检单' , 'OI-20170703-0002' , '已质检' , 'admin' , '2018-12-29 18:09:03' , '2018-12-29 18:09:03') [ RunTime:0.033125s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_warehouse` [ RunTime:0.039138s ]
+[ sql ] [ SQL ] SELECT * FROM `wms_warehouse` WHERE  (  disabled = 1 ) LIMIT 0,10000 [ RunTime:0.002378s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_warehouse` WHERE  (  disabled = 1 ) LIMIT 1 [ RunTime:0.001687s ]
+---------------------------------------------------------------
+[ 2018-12-29T18:09:03+08:00 ] 127.0.0.1 POST localhost:80/api/WarehouseArea/index
+[运行时间：0.746330s] [吞吐率：1.34req/s] [内存消耗：2,585.45kb] [文件加载：58]
+[ info ] [ LANG ] /Users/jk/Desktop/obj/newWMS/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'WarehouseArea',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'x-forwarded-host' => 'localhost:3000',
+  'x-forwarded-proto' => 'http',
+  'x-forwarded-port' => '3000',
+  'x-forwarded-for' => '127.0.0.1',
+  'cookie' => 'PHPSESSID=fc08a704343ae45c0558bc129d9d947e',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate, br',
+  'referer' => 'http://localhost:3000/warehouseArea',
+  'content-type' => 'application/json',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36',
+  'origin' => 'http://localhost:80/',
+  'accept' => 'application/json',
+  'content-length' => '37',
+  'connection' => 'close',
+  'host' => 'localhost:80',
+)
+[ info ] [ PARAM ] array (
+  '/api/WarehouseArea/index' => '',
+  'search_key' => '',
+  'limit' => 10,
+  'page' => 1,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\Api\controller\WarehouseArea->index[ /Users/jk/Desktop/obj/newWMS/application/api/controller/WarehouseArea.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.014214s ] mysql:host=10.20.10.217;port=3306;dbname=newwms;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_quality_check_wait` [ RunTime:0.058947s ]
+[ sql ] [ SQL ] SELECT * FROM `wms_quality_check_wait` [ RunTime:0.002358s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_quality_check` [ RunTime:0.054980s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181203-0001' LIMIT 1 [ RunTime:0.001853s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181203-0001'  AND `check_status` = 1 LIMIT 1 [ RunTime:0.001993s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_pur_order` [ RunTime:0.060899s ]
+[ sql ] [ SQL ] UPDATE `wms_pur_order`  SET `pur_order_status`=4,`modify_date`='2018-12-29 18:09:03'  WHERE  `pur_order_num` = 'OI-20170704-0001' [ RunTime:0.055875s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_reviewed_log` [ RunTime:0.050237s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('采购单' , 'OI-20170704-0001' , '已质检,待移库' , 'admin' , '2018-12-29 18:09:03' , '2018-12-29 18:09:03') [ RunTime:0.049246s ]
+[ sql ] [ SQL ] UPDATE `wms_quality_check_wait`  SET `check_wait_status`=2,`modify_date`='2018-12-29 18:09:03'  WHERE  `pur_order_num` = 'OI-20170704-0001' [ RunTime:0.041252s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('待质检单' , 'OI-20170704-0001' , '已质检' , 'admin' , '2018-12-29 18:09:03' , '2018-12-29 18:09:03') [ RunTime:0.033028s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181205-0001' LIMIT 1 [ RunTime:0.002307s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181205-0001'  AND `check_status` = 1 LIMIT 1 [ RunTime:0.002213s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('采购单' , 'OI-20170703-0002' , '已质检,待移库' , 'admin' , '2018-12-29 18:09:03' , '2018-12-29 18:09:03') [ RunTime:0.027738s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('待质检单' , 'OI-20170703-0002' , '已质检' , 'admin' , '2018-12-29 18:09:03' , '2018-12-29 18:09:03') [ RunTime:0.019098s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_warehouse_area` [ RunTime:0.035363s ]
+[ sql ] [ SQL ] SELECT `a`.*,`w`.`warehouse_name` FROM `wms_warehouse_area` `a` LEFT JOIN `wms_warehouse` `w` ON `w`.`warehouse_num`=`a`.`warehouse_num` WHERE  (  a.disabled = 1 ) LIMIT 0,10 [ RunTime:0.002759s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_warehouse_area` `a` LEFT JOIN `wms_warehouse` `w` ON `w`.`warehouse_num`=`a`.`warehouse_num` WHERE  (  a.disabled = 1 ) LIMIT 1 [ RunTime:0.002331s ]
+---------------------------------------------------------------
+[ 2018-12-29T18:09:06+08:00 ] 127.0.0.1 POST localhost:80/api/WarehouseArea/index
+[运行时间：0.405356s] [吞吐率：2.47req/s] [内存消耗：2,585.79kb] [文件加载：58]
+[ info ] [ LANG ] /Users/jk/Desktop/obj/newWMS/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'WarehouseArea',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'x-forwarded-host' => 'localhost:3000',
+  'x-forwarded-proto' => 'http',
+  'x-forwarded-port' => '3000',
+  'x-forwarded-for' => '127.0.0.1',
+  'cookie' => 'PHPSESSID=fc08a704343ae45c0558bc129d9d947e',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate, br',
+  'referer' => 'http://localhost:3000/warehouseArea',
+  'content-type' => 'application/json',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36',
+  'origin' => 'http://localhost:80/',
+  'accept' => 'application/json',
+  'content-length' => '52',
+  'connection' => 'close',
+  'host' => 'localhost:80',
+)
+[ info ] [ PARAM ] array (
+  '/api/WarehouseArea/index' => '',
+  'search_key' => '',
+  'limit' => 10,
+  'page' => 1,
+  'warea_type' => 1,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\Api\controller\WarehouseArea->index[ /Users/jk/Desktop/obj/newWMS/application/api/controller/WarehouseArea.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.007873s ] mysql:host=10.20.10.217;port=3306;dbname=newwms;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_quality_check_wait` [ RunTime:0.037842s ]
+[ sql ] [ SQL ] SELECT * FROM `wms_quality_check_wait` [ RunTime:0.002567s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_quality_check` [ RunTime:0.032075s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181203-0001' LIMIT 1 [ RunTime:0.002355s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181203-0001'  AND `check_status` = 1 LIMIT 1 [ RunTime:0.002340s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_pur_order` [ RunTime:0.032192s ]
+[ sql ] [ SQL ] UPDATE `wms_pur_order`  SET `pur_order_status`=4,`modify_date`='2018-12-29 18:09:06'  WHERE  `pur_order_num` = 'OI-20170704-0001' [ RunTime:0.034929s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_reviewed_log` [ RunTime:0.039585s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('采购单' , 'OI-20170704-0001' , '已质检,待移库' , 'admin' , '2018-12-29 18:09:06' , '2018-12-29 18:09:06') [ RunTime:0.018013s ]
+[ sql ] [ SQL ] UPDATE `wms_quality_check_wait`  SET `check_wait_status`=2,`modify_date`='2018-12-29 18:09:06'  WHERE  `pur_order_num` = 'OI-20170704-0001' [ RunTime:0.024612s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('待质检单' , 'OI-20170704-0001' , '已质检' , 'admin' , '2018-12-29 18:09:06' , '2018-12-29 18:09:06') [ RunTime:0.024557s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181205-0001' LIMIT 1 [ RunTime:0.002222s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181205-0001'  AND `check_status` = 1 LIMIT 1 [ RunTime:0.002234s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('采购单' , 'OI-20170703-0002' , '已质检,待移库' , 'admin' , '2018-12-29 18:09:06' , '2018-12-29 18:09:06') [ RunTime:0.039348s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('待质检单' , 'OI-20170703-0002' , '已质检' , 'admin' , '2018-12-29 18:09:06' , '2018-12-29 18:09:06') [ RunTime:0.021868s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_warehouse_area` [ RunTime:0.039044s ]
+[ sql ] [ SQL ] SELECT `a`.*,`w`.`warehouse_name` FROM `wms_warehouse_area` `a` LEFT JOIN `wms_warehouse` `w` ON `w`.`warehouse_num`=`a`.`warehouse_num` WHERE  (  a.disabled = 1 ) LIMIT 0,10 [ RunTime:0.002855s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_warehouse_area` `a` LEFT JOIN `wms_warehouse` `w` ON `w`.`warehouse_num`=`a`.`warehouse_num` WHERE  (  a.disabled = 1 ) LIMIT 1 [ RunTime:0.002668s ]
+---------------------------------------------------------------
+[ 2018-12-29T18:10:10+08:00 ] 127.0.0.1 POST localhost:80/api/WarehouseArea/index
+[运行时间：0.473827s] [吞吐率：2.11req/s] [内存消耗：2,585.55kb] [文件加载：58]
+[ info ] [ LANG ] /Users/jk/Desktop/obj/newWMS/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'WarehouseArea',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'x-forwarded-host' => 'localhost:3000',
+  'x-forwarded-proto' => 'http',
+  'x-forwarded-port' => '3000',
+  'x-forwarded-for' => '127.0.0.1',
+  'cookie' => 'PHPSESSID=fc08a704343ae45c0558bc129d9d947e',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate, br',
+  'referer' => 'http://localhost:3000/warehouseArea',
+  'content-type' => 'application/json',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36',
+  'origin' => 'http://localhost:80/',
+  'accept' => 'application/json',
+  'content-length' => '37',
+  'connection' => 'close',
+  'host' => 'localhost:80',
+)
+[ info ] [ PARAM ] array (
+  '/api/WarehouseArea/index' => '',
+  'search_key' => '',
+  'limit' => 10,
+  'page' => 1,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\Api\controller\WarehouseArea->index[ /Users/jk/Desktop/obj/newWMS/application/api/controller/WarehouseArea.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.067745s ] mysql:host=10.20.10.217;port=3306;dbname=newwms;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_quality_check_wait` [ RunTime:0.042438s ]
+[ sql ] [ SQL ] SELECT * FROM `wms_quality_check_wait` [ RunTime:0.002166s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_quality_check` [ RunTime:0.035839s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181203-0001' LIMIT 1 [ RunTime:0.002346s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181203-0001'  AND `check_status` = 1 LIMIT 1 [ RunTime:0.002464s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_pur_order` [ RunTime:0.040192s ]
+[ sql ] [ SQL ] UPDATE `wms_pur_order`  SET `pur_order_status`=4,`modify_date`='2018-12-29 18:10:10'  WHERE  `pur_order_num` = 'OI-20170704-0001' [ RunTime:0.026331s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_reviewed_log` [ RunTime:0.038326s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('采购单' , 'OI-20170704-0001' , '已质检,待移库' , 'admin' , '2018-12-29 18:10:10' , '2018-12-29 18:10:10') [ RunTime:0.027729s ]
+[ sql ] [ SQL ] UPDATE `wms_quality_check_wait`  SET `check_wait_status`=2,`modify_date`='2018-12-29 18:10:10'  WHERE  `pur_order_num` = 'OI-20170704-0001' [ RunTime:0.024493s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('待质检单' , 'OI-20170704-0001' , '已质检' , 'admin' , '2018-12-29 18:10:10' , '2018-12-29 18:10:10') [ RunTime:0.024730s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181205-0001' LIMIT 1 [ RunTime:0.002280s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181205-0001'  AND `check_status` = 1 LIMIT 1 [ RunTime:0.002299s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('采购单' , 'OI-20170703-0002' , '已质检,待移库' , 'admin' , '2018-12-29 18:10:10' , '2018-12-29 18:10:10') [ RunTime:0.027790s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('待质检单' , 'OI-20170703-0002' , '已质检' , 'admin' , '2018-12-29 18:10:10' , '2018-12-29 18:10:10') [ RunTime:0.024647s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_warehouse_area` [ RunTime:0.038968s ]
+[ sql ] [ SQL ] SELECT `a`.*,`w`.`warehouse_name` FROM `wms_warehouse_area` `a` LEFT JOIN `wms_warehouse` `w` ON `w`.`warehouse_num`=`a`.`warehouse_num` WHERE  (  a.disabled = 1 ) LIMIT 0,10 [ RunTime:0.002561s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_warehouse_area` `a` LEFT JOIN `wms_warehouse` `w` ON `w`.`warehouse_num`=`a`.`warehouse_num` WHERE  (  a.disabled = 1 ) LIMIT 1 [ RunTime:0.002021s ]
+---------------------------------------------------------------
+[ 2018-12-29T18:10:13+08:00 ] 127.0.0.1 POST localhost:80/api/Warehouse/index
+[运行时间：3.409476s] [吞吐率：0.29req/s] [内存消耗：2,607.44kb] [文件加载：58]
+[ info ] [ LANG ] /Users/jk/Desktop/obj/newWMS/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'Warehouse',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'x-forwarded-host' => 'localhost:3000',
+  'x-forwarded-proto' => 'http',
+  'x-forwarded-port' => '3000',
+  'x-forwarded-for' => '127.0.0.1',
+  'cookie' => 'PHPSESSID=fc08a704343ae45c0558bc129d9d947e',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate, br',
+  'referer' => 'http://localhost:3000/warehouseArea',
+  'content-type' => 'application/json',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36',
+  'origin' => 'http://localhost:80/',
+  'accept' => 'application/json',
+  'content-length' => '24',
+  'connection' => 'close',
+  'host' => 'localhost:80',
+)
+[ info ] [ PARAM ] array (
+  '/api/Warehouse/index' => '',
+  'limit' => 10000,
+  'page' => 1,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\Api\controller\Warehouse->index[ /Users/jk/Desktop/obj/newWMS/application/api/controller/Warehouse.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:3.000387s ] mysql:host=10.20.10.217;port=3306;dbname=newwms;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_quality_check_wait` [ RunTime:0.039598s ]
+[ sql ] [ SQL ] SELECT * FROM `wms_quality_check_wait` [ RunTime:0.002668s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_quality_check` [ RunTime:0.039236s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181203-0001' LIMIT 1 [ RunTime:0.002306s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181203-0001'  AND `check_status` = 1 LIMIT 1 [ RunTime:0.002233s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_pur_order` [ RunTime:0.032156s ]
+[ sql ] [ SQL ] UPDATE `wms_pur_order`  SET `pur_order_status`=4,`modify_date`='2018-12-29 18:10:13'  WHERE  `pur_order_num` = 'OI-20170704-0001' [ RunTime:0.034250s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_reviewed_log` [ RunTime:0.041500s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('采购单' , 'OI-20170704-0001' , '已质检,待移库' , 'admin' , '2018-12-29 18:10:13' , '2018-12-29 18:10:13') [ RunTime:0.024383s ]
+[ sql ] [ SQL ] UPDATE `wms_quality_check_wait`  SET `check_wait_status`=2,`modify_date`='2018-12-29 18:10:13'  WHERE  `pur_order_num` = 'OI-20170704-0001' [ RunTime:0.024611s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('待质检单' , 'OI-20170704-0001' , '已质检' , 'admin' , '2018-12-29 18:10:13' , '2018-12-29 18:10:13') [ RunTime:0.024678s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181205-0001' LIMIT 1 [ RunTime:0.002277s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181205-0001'  AND `check_status` = 1 LIMIT 1 [ RunTime:0.002483s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('采购单' , 'OI-20170703-0002' , '已质检,待移库' , 'admin' , '2018-12-29 18:10:13' , '2018-12-29 18:10:13') [ RunTime:0.032445s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('待质检单' , 'OI-20170703-0002' , '已质检' , 'admin' , '2018-12-29 18:10:13' , '2018-12-29 18:10:13') [ RunTime:0.019845s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_warehouse` [ RunTime:0.038972s ]
+[ sql ] [ SQL ] SELECT * FROM `wms_warehouse` WHERE  (  disabled = 1 ) LIMIT 0,10000 [ RunTime:0.003159s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_warehouse` WHERE  (  disabled = 1 ) LIMIT 1 [ RunTime:0.002356s ]
+---------------------------------------------------------------
+[ 2018-12-29T18:10:15+08:00 ] 127.0.0.1 POST localhost:80/api/WarehouseArea/index
+[运行时间：0.401954s] [吞吐率：2.49req/s] [内存消耗：2,578.00kb] [文件加载：58]
+[ info ] [ LANG ] /Users/jk/Desktop/obj/newWMS/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'WarehouseArea',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'x-forwarded-host' => 'localhost:3000',
+  'x-forwarded-proto' => 'http',
+  'x-forwarded-port' => '3000',
+  'x-forwarded-for' => '127.0.0.1',
+  'cookie' => 'PHPSESSID=fc08a704343ae45c0558bc129d9d947e',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate, br',
+  'referer' => 'http://localhost:3000/warehouseArea',
+  'content-type' => 'application/json',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36',
+  'origin' => 'http://localhost:80/',
+  'accept' => 'application/json',
+  'content-length' => '52',
+  'connection' => 'close',
+  'host' => 'localhost:80',
+)
+[ info ] [ PARAM ] array (
+  '/api/WarehouseArea/index' => '',
+  'search_key' => '',
+  'limit' => 10,
+  'page' => 1,
+  'warea_type' => 1,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\Api\controller\WarehouseArea->index[ /Users/jk/Desktop/obj/newWMS/application/api/controller/WarehouseArea.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.007957s ] mysql:host=10.20.10.217;port=3306;dbname=newwms;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_quality_check_wait` [ RunTime:0.040562s ]
+[ sql ] [ SQL ] SELECT * FROM `wms_quality_check_wait` [ RunTime:0.002770s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_quality_check` [ RunTime:0.040008s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181203-0001' LIMIT 1 [ RunTime:0.002358s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181203-0001'  AND `check_status` = 1 LIMIT 1 [ RunTime:0.002276s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_pur_order` [ RunTime:0.032360s ]
+[ sql ] [ SQL ] UPDATE `wms_pur_order`  SET `pur_order_status`=4,`modify_date`='2018-12-29 18:10:15'  WHERE  `pur_order_num` = 'OI-20170704-0001' [ RunTime:0.028468s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_reviewed_log` [ RunTime:0.039769s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('采购单' , 'OI-20170704-0001' , '已质检,待移库' , 'admin' , '2018-12-29 18:10:15' , '2018-12-29 18:10:15') [ RunTime:0.026212s ]
+[ sql ] [ SQL ] UPDATE `wms_quality_check_wait`  SET `check_wait_status`=2,`modify_date`='2018-12-29 18:10:15'  WHERE  `pur_order_num` = 'OI-20170704-0001' [ RunTime:0.024570s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('待质检单' , 'OI-20170704-0001' , '已质检' , 'admin' , '2018-12-29 18:10:15' , '2018-12-29 18:10:15') [ RunTime:0.024595s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181205-0001' LIMIT 1 [ RunTime:0.002288s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181205-0001'  AND `check_status` = 1 LIMIT 1 [ RunTime:0.002296s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('采购单' , 'OI-20170703-0002' , '已质检,待移库' , 'admin' , '2018-12-29 18:10:15' , '2018-12-29 18:10:15') [ RunTime:0.022774s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('待质检单' , 'OI-20170703-0002' , '已质检' , 'admin' , '2018-12-29 18:10:15' , '2018-12-29 18:10:15') [ RunTime:0.021379s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_warehouse_area` [ RunTime:0.040125s ]
+[ sql ] [ SQL ] SELECT `a`.*,`w`.`warehouse_name` FROM `wms_warehouse_area` `a` LEFT JOIN `wms_warehouse` `w` ON `w`.`warehouse_num`=`a`.`warehouse_num` WHERE  (  a.disabled = 1 and a.warea_type = '1' ) LIMIT 0,10 [ RunTime:0.002575s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_warehouse_area` `a` LEFT JOIN `wms_warehouse` `w` ON `w`.`warehouse_num`=`a`.`warehouse_num` WHERE  (  a.disabled = 1 and a.warea_type = '1' ) LIMIT 1 [ RunTime:0.002377s ]
+---------------------------------------------------------------
+[ 2018-12-29T18:10:18+08:00 ] 127.0.0.1 POST localhost:80/api/WarehouseArea/index
+[运行时间：0.408259s] [吞吐率：2.45req/s] [内存消耗：2,585.55kb] [文件加载：58]
+[ info ] [ LANG ] /Users/jk/Desktop/obj/newWMS/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'WarehouseArea',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'x-forwarded-host' => 'localhost:3000',
+  'x-forwarded-proto' => 'http',
+  'x-forwarded-port' => '3000',
+  'x-forwarded-for' => '127.0.0.1',
+  'cookie' => 'PHPSESSID=fc08a704343ae45c0558bc129d9d947e',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate, br',
+  'referer' => 'http://localhost:3000/warehouseArea',
+  'content-type' => 'application/json',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36',
+  'origin' => 'http://localhost:80/',
+  'accept' => 'application/json',
+  'content-length' => '37',
+  'connection' => 'close',
+  'host' => 'localhost:80',
+)
+[ info ] [ PARAM ] array (
+  '/api/WarehouseArea/index' => '',
+  'search_key' => '',
+  'limit' => 10,
+  'page' => 1,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\Api\controller\WarehouseArea->index[ /Users/jk/Desktop/obj/newWMS/application/api/controller/WarehouseArea.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.008091s ] mysql:host=10.20.10.217;port=3306;dbname=newwms;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_quality_check_wait` [ RunTime:0.039407s ]
+[ sql ] [ SQL ] SELECT * FROM `wms_quality_check_wait` [ RunTime:0.002694s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_quality_check` [ RunTime:0.036569s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181203-0001' LIMIT 1 [ RunTime:0.002331s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181203-0001'  AND `check_status` = 1 LIMIT 1 [ RunTime:0.002444s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_pur_order` [ RunTime:0.039952s ]
+[ sql ] [ SQL ] UPDATE `wms_pur_order`  SET `pur_order_status`=4,`modify_date`='2018-12-29 18:10:18'  WHERE  `pur_order_num` = 'OI-20170704-0001' [ RunTime:0.023971s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_reviewed_log` [ RunTime:0.038549s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('采购单' , 'OI-20170704-0001' , '已质检,待移库' , 'admin' , '2018-12-29 18:10:18' , '2018-12-29 18:10:18') [ RunTime:0.032193s ]
+[ sql ] [ SQL ] UPDATE `wms_quality_check_wait`  SET `check_wait_status`=2,`modify_date`='2018-12-29 18:10:18'  WHERE  `pur_order_num` = 'OI-20170704-0001' [ RunTime:0.019537s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('待质检单' , 'OI-20170704-0001' , '已质检' , 'admin' , '2018-12-29 18:10:18' , '2018-12-29 18:10:18') [ RunTime:0.024643s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181205-0001' LIMIT 1 [ RunTime:0.002127s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181205-0001'  AND `check_status` = 1 LIMIT 1 [ RunTime:0.002281s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('采购单' , 'OI-20170703-0002' , '已质检,待移库' , 'admin' , '2018-12-29 18:10:18' , '2018-12-29 18:10:18') [ RunTime:0.028042s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('待质检单' , 'OI-20170703-0002' , '已质检' , 'admin' , '2018-12-29 18:10:18' , '2018-12-29 18:10:18') [ RunTime:0.024369s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_warehouse_area` [ RunTime:0.038989s ]
+[ sql ] [ SQL ] SELECT `a`.*,`w`.`warehouse_name` FROM `wms_warehouse_area` `a` LEFT JOIN `wms_warehouse` `w` ON `w`.`warehouse_num`=`a`.`warehouse_num` WHERE  (  a.disabled = 1 ) LIMIT 0,10 [ RunTime:0.002602s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_warehouse_area` `a` LEFT JOIN `wms_warehouse` `w` ON `w`.`warehouse_num`=`a`.`warehouse_num` WHERE  (  a.disabled = 1 ) LIMIT 1 [ RunTime:0.002392s ]
+---------------------------------------------------------------
+[ 2018-12-29T18:10:22+08:00 ] 127.0.0.1 POST localhost:80/api/WarehouseArea/index
+[运行时间：0.400475s] [吞吐率：2.50req/s] [内存消耗：2,585.55kb] [文件加载：58]
+[ info ] [ LANG ] /Users/jk/Desktop/obj/newWMS/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'WarehouseArea',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'x-forwarded-host' => 'localhost:3000',
+  'x-forwarded-proto' => 'http',
+  'x-forwarded-port' => '3000',
+  'x-forwarded-for' => '127.0.0.1',
+  'cookie' => 'PHPSESSID=fc08a704343ae45c0558bc129d9d947e',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate, br',
+  'referer' => 'http://localhost:3000/warehouseArea',
+  'content-type' => 'application/json',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36',
+  'origin' => 'http://localhost:80/',
+  'accept' => 'application/json',
+  'content-length' => '37',
+  'connection' => 'close',
+  'host' => 'localhost:80',
+)
+[ info ] [ PARAM ] array (
+  '/api/WarehouseArea/index' => '',
+  'search_key' => '',
+  'limit' => 10,
+  'page' => 1,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\Api\controller\WarehouseArea->index[ /Users/jk/Desktop/obj/newWMS/application/api/controller/WarehouseArea.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.015546s ] mysql:host=10.20.10.217;port=3306;dbname=newwms;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_quality_check_wait` [ RunTime:0.034981s ]
+[ sql ] [ SQL ] SELECT * FROM `wms_quality_check_wait` [ RunTime:0.002648s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_quality_check` [ RunTime:0.032173s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181203-0001' LIMIT 1 [ RunTime:0.002286s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181203-0001'  AND `check_status` = 1 LIMIT 1 [ RunTime:0.002376s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_pur_order` [ RunTime:0.032374s ]
+[ sql ] [ SQL ] UPDATE `wms_pur_order`  SET `pur_order_status`=4,`modify_date`='2018-12-29 18:10:21'  WHERE  `pur_order_num` = 'OI-20170704-0001' [ RunTime:0.035039s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_reviewed_log` [ RunTime:0.040007s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('采购单' , 'OI-20170704-0001' , '已质检,待移库' , 'admin' , '2018-12-29 18:10:21' , '2018-12-29 18:10:21') [ RunTime:0.025929s ]
+[ sql ] [ SQL ] UPDATE `wms_quality_check_wait`  SET `check_wait_status`=2,`modify_date`='2018-12-29 18:10:22'  WHERE  `pur_order_num` = 'OI-20170704-0001' [ RunTime:0.024428s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('待质检单' , 'OI-20170704-0001' , '已质检' , 'admin' , '2018-12-29 18:10:22' , '2018-12-29 18:10:22') [ RunTime:0.024646s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181205-0001' LIMIT 1 [ RunTime:0.002349s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181205-0001'  AND `check_status` = 1 LIMIT 1 [ RunTime:0.002215s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('采购单' , 'OI-20170703-0002' , '已质检,待移库' , 'admin' , '2018-12-29 18:10:22' , '2018-12-29 18:10:22') [ RunTime:0.019634s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('待质检单' , 'OI-20170703-0002' , '已质检' , 'admin' , '2018-12-29 18:10:22' , '2018-12-29 18:10:22') [ RunTime:0.026380s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_warehouse_area` [ RunTime:0.036731s ]
+[ sql ] [ SQL ] SELECT `a`.*,`w`.`warehouse_name` FROM `wms_warehouse_area` `a` LEFT JOIN `wms_warehouse` `w` ON `w`.`warehouse_num`=`a`.`warehouse_num` WHERE  (  a.disabled = 1 ) LIMIT 0,10 [ RunTime:0.002617s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_warehouse_area` `a` LEFT JOIN `wms_warehouse` `w` ON `w`.`warehouse_num`=`a`.`warehouse_num` WHERE  (  a.disabled = 1 ) LIMIT 1 [ RunTime:0.002469s ]
+---------------------------------------------------------------
+[ 2018-12-29T18:10:24+08:00 ] 127.0.0.1 POST localhost:80/api/WarehouseArea/index
+[运行时间：0.405178s] [吞吐率：2.47req/s] [内存消耗：2,585.55kb] [文件加载：58]
+[ info ] [ LANG ] /Users/jk/Desktop/obj/newWMS/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'WarehouseArea',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'x-forwarded-host' => 'localhost:3000',
+  'x-forwarded-proto' => 'http',
+  'x-forwarded-port' => '3000',
+  'x-forwarded-for' => '127.0.0.1',
+  'cookie' => 'PHPSESSID=fc08a704343ae45c0558bc129d9d947e',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate, br',
+  'referer' => 'http://localhost:3000/warehouseArea',
+  'content-type' => 'application/json',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36',
+  'origin' => 'http://localhost:80/',
+  'accept' => 'application/json',
+  'content-length' => '37',
+  'connection' => 'close',
+  'host' => 'localhost:80',
+)
+[ info ] [ PARAM ] array (
+  '/api/WarehouseArea/index' => '',
+  'search_key' => '',
+  'limit' => 10,
+  'page' => 1,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\Api\controller\WarehouseArea->index[ /Users/jk/Desktop/obj/newWMS/application/api/controller/WarehouseArea.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.008483s ] mysql:host=10.20.10.217;port=3306;dbname=newwms;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_quality_check_wait` [ RunTime:0.039422s ]
+[ sql ] [ SQL ] SELECT * FROM `wms_quality_check_wait` [ RunTime:0.002699s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_quality_check` [ RunTime:0.032125s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181203-0001' LIMIT 1 [ RunTime:0.002251s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181203-0001'  AND `check_status` = 1 LIMIT 1 [ RunTime:0.002410s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_pur_order` [ RunTime:0.032325s ]
+[ sql ] [ SQL ] UPDATE `wms_pur_order`  SET `pur_order_status`=4,`modify_date`='2018-12-29 18:10:23'  WHERE  `pur_order_num` = 'OI-20170704-0001' [ RunTime:0.033221s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_reviewed_log` [ RunTime:0.039698s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('采购单' , 'OI-20170704-0001' , '已质检,待移库' , 'admin' , '2018-12-29 18:10:23' , '2018-12-29 18:10:23') [ RunTime:0.025932s ]
+[ sql ] [ SQL ] UPDATE `wms_quality_check_wait`  SET `check_wait_status`=2,`modify_date`='2018-12-29 18:10:23'  WHERE  `pur_order_num` = 'OI-20170704-0001' [ RunTime:0.024491s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('待质检单' , 'OI-20170704-0001' , '已质检' , 'admin' , '2018-12-29 18:10:23' , '2018-12-29 18:10:23') [ RunTime:0.024684s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181205-0001' LIMIT 1 [ RunTime:0.002322s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181205-0001'  AND `check_status` = 1 LIMIT 1 [ RunTime:0.002420s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('采购单' , 'OI-20170703-0002' , '已质检,待移库' , 'admin' , '2018-12-29 18:10:23' , '2018-12-29 18:10:23') [ RunTime:0.027768s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('待质检单' , 'OI-20170703-0002' , '已质检' , 'admin' , '2018-12-29 18:10:23' , '2018-12-29 18:10:23') [ RunTime:0.024617s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_warehouse_area` [ RunTime:0.039301s ]
+[ sql ] [ SQL ] SELECT `a`.*,`w`.`warehouse_name` FROM `wms_warehouse_area` `a` LEFT JOIN `wms_warehouse` `w` ON `w`.`warehouse_num`=`a`.`warehouse_num` WHERE  (  a.disabled = 1 ) LIMIT 0,10 [ RunTime:0.002768s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_warehouse_area` `a` LEFT JOIN `wms_warehouse` `w` ON `w`.`warehouse_num`=`a`.`warehouse_num` WHERE  (  a.disabled = 1 ) LIMIT 1 [ RunTime:0.002475s ]
+---------------------------------------------------------------
+[ 2018-12-29T18:10:25+08:00 ] 127.0.0.1 POST localhost:80/api/WarehouseArea/index
+[运行时间：0.409746s] [吞吐率：2.44req/s] [内存消耗：2,585.55kb] [文件加载：58]
+[ info ] [ LANG ] /Users/jk/Desktop/obj/newWMS/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'WarehouseArea',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'x-forwarded-host' => 'localhost:3000',
+  'x-forwarded-proto' => 'http',
+  'x-forwarded-port' => '3000',
+  'x-forwarded-for' => '127.0.0.1',
+  'cookie' => 'PHPSESSID=fc08a704343ae45c0558bc129d9d947e',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate, br',
+  'referer' => 'http://localhost:3000/warehouseArea',
+  'content-type' => 'application/json',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36',
+  'origin' => 'http://localhost:80/',
+  'accept' => 'application/json',
+  'content-length' => '37',
+  'connection' => 'close',
+  'host' => 'localhost:80',
+)
+[ info ] [ PARAM ] array (
+  '/api/WarehouseArea/index' => '',
+  'search_key' => '',
+  'limit' => 10,
+  'page' => 1,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\Api\controller\WarehouseArea->index[ /Users/jk/Desktop/obj/newWMS/application/api/controller/WarehouseArea.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.008214s ] mysql:host=10.20.10.217;port=3306;dbname=newwms;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_quality_check_wait` [ RunTime:0.035973s ]
+[ sql ] [ SQL ] SELECT * FROM `wms_quality_check_wait` [ RunTime:0.002770s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_quality_check` [ RunTime:0.039997s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181203-0001' LIMIT 1 [ RunTime:0.002416s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181203-0001'  AND `check_status` = 1 LIMIT 1 [ RunTime:0.002345s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_pur_order` [ RunTime:0.040038s ]
+[ sql ] [ SQL ] UPDATE `wms_pur_order`  SET `pur_order_status`=4,`modify_date`='2018-12-29 18:10:25'  WHERE  `pur_order_num` = 'OI-20170704-0001' [ RunTime:0.024500s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_reviewed_log` [ RunTime:0.040105s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('采购单' , 'OI-20170704-0001' , '已质检,待移库' , 'admin' , '2018-12-29 18:10:25' , '2018-12-29 18:10:25') [ RunTime:0.025852s ]
+[ sql ] [ SQL ] UPDATE `wms_quality_check_wait`  SET `check_wait_status`=2,`modify_date`='2018-12-29 18:10:25'  WHERE  `pur_order_num` = 'OI-20170704-0001' [ RunTime:0.025280s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('待质检单' , 'OI-20170704-0001' , '已质检' , 'admin' , '2018-12-29 18:10:25' , '2018-12-29 18:10:25') [ RunTime:0.023920s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181205-0001' LIMIT 1 [ RunTime:0.002321s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181205-0001'  AND `check_status` = 1 LIMIT 1 [ RunTime:0.002276s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('采购单' , 'OI-20170703-0002' , '已质检,待移库' , 'admin' , '2018-12-29 18:10:25' , '2018-12-29 18:10:25') [ RunTime:0.027817s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('待质检单' , 'OI-20170703-0002' , '已质检' , 'admin' , '2018-12-29 18:10:25' , '2018-12-29 18:10:25') [ RunTime:0.024479s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_warehouse_area` [ RunTime:0.040302s ]
+[ sql ] [ SQL ] SELECT `a`.*,`w`.`warehouse_name` FROM `wms_warehouse_area` `a` LEFT JOIN `wms_warehouse` `w` ON `w`.`warehouse_num`=`a`.`warehouse_num` WHERE  (  a.disabled = 1 ) LIMIT 0,10 [ RunTime:0.002906s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_warehouse_area` `a` LEFT JOIN `wms_warehouse` `w` ON `w`.`warehouse_num`=`a`.`warehouse_num` WHERE  (  a.disabled = 1 ) LIMIT 1 [ RunTime:0.002526s ]
+---------------------------------------------------------------
+[ 2018-12-29T18:10:43+08:00 ] 127.0.0.1 POST localhost:80/api/Warehouse/index
+[运行时间：0.644046s] [吞吐率：1.55req/s] [内存消耗：2,607.44kb] [文件加载：58]
+[ info ] [ LANG ] /Users/jk/Desktop/obj/newWMS/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'Warehouse',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'x-forwarded-host' => 'localhost:3000',
+  'x-forwarded-proto' => 'http',
+  'x-forwarded-port' => '3000',
+  'x-forwarded-for' => '127.0.0.1',
+  'cookie' => 'PHPSESSID=fc08a704343ae45c0558bc129d9d947e',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate, br',
+  'referer' => 'http://localhost:3000/warehouseArea',
+  'content-type' => 'application/json',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36',
+  'origin' => 'http://localhost:80/',
+  'accept' => 'application/json',
+  'content-length' => '24',
+  'connection' => 'close',
+  'host' => 'localhost:80',
+)
+[ info ] [ PARAM ] array (
+  '/api/Warehouse/index' => '',
+  'limit' => 10000,
+  'page' => 1,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\Api\controller\Warehouse->index[ /Users/jk/Desktop/obj/newWMS/application/api/controller/Warehouse.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.011038s ] mysql:host=10.20.10.217;port=3306;dbname=newwms;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_quality_check_wait` [ RunTime:0.046428s ]
+[ sql ] [ SQL ] SELECT * FROM `wms_quality_check_wait` [ RunTime:0.002069s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_quality_check` [ RunTime:0.057612s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181203-0001' LIMIT 1 [ RunTime:0.001917s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181203-0001'  AND `check_status` = 1 LIMIT 1 [ RunTime:0.001932s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_pur_order` [ RunTime:0.056792s ]
+[ sql ] [ SQL ] UPDATE `wms_pur_order`  SET `pur_order_status`=4,`modify_date`='2018-12-29 18:10:43'  WHERE  `pur_order_num` = 'OI-20170704-0001' [ RunTime:0.035756s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_reviewed_log` [ RunTime:0.050581s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('采购单' , 'OI-20170704-0001' , '已质检,待移库' , 'admin' , '2018-12-29 18:10:43' , '2018-12-29 18:10:43') [ RunTime:0.023213s ]
+[ sql ] [ SQL ] UPDATE `wms_quality_check_wait`  SET `check_wait_status`=2,`modify_date`='2018-12-29 18:10:43'  WHERE  `pur_order_num` = 'OI-20170704-0001' [ RunTime:0.083094s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('待质检单' , 'OI-20170704-0001' , '已质检' , 'admin' , '2018-12-29 18:10:43' , '2018-12-29 18:10:43') [ RunTime:0.071610s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181205-0001' LIMIT 1 [ RunTime:0.002181s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181205-0001'  AND `check_status` = 1 LIMIT 1 [ RunTime:0.002229s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('采购单' , 'OI-20170703-0002' , '已质检,待移库' , 'admin' , '2018-12-29 18:10:43' , '2018-12-29 18:10:43') [ RunTime:0.039147s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('待质检单' , 'OI-20170703-0002' , '已质检' , 'admin' , '2018-12-29 18:10:43' , '2018-12-29 18:10:43') [ RunTime:0.049483s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_warehouse` [ RunTime:0.050710s ]
+[ sql ] [ SQL ] SELECT * FROM `wms_warehouse` WHERE  (  disabled = 1 ) LIMIT 0,10000 [ RunTime:0.002497s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_warehouse` WHERE  (  disabled = 1 ) LIMIT 1 [ RunTime:0.001976s ]
+---------------------------------------------------------------
+[ 2018-12-29T18:10:43+08:00 ] 127.0.0.1 POST localhost:80/api/WarehouseArea/index
+[运行时间：0.665448s] [吞吐率：1.50req/s] [内存消耗：2,585.89kb] [文件加载：58]
+[ info ] [ LANG ] /Users/jk/Desktop/obj/newWMS/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'WarehouseArea',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'x-forwarded-host' => 'localhost:3000',
+  'x-forwarded-proto' => 'http',
+  'x-forwarded-port' => '3000',
+  'x-forwarded-for' => '127.0.0.1',
+  'cookie' => 'PHPSESSID=fc08a704343ae45c0558bc129d9d947e',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate, br',
+  'referer' => 'http://localhost:3000/warehouseArea',
+  'content-type' => 'application/json',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36',
+  'origin' => 'http://localhost:80/',
+  'accept' => 'application/json',
+  'content-length' => '55',
+  'connection' => 'close',
+  'host' => 'localhost:80',
+)
+[ info ] [ PARAM ] array (
+  '/api/WarehouseArea/index' => '',
+  'search_key' => '',
+  'limit' => 10,
+  'page' => 1,
+  'warea_type' => NULL,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\Api\controller\WarehouseArea->index[ /Users/jk/Desktop/obj/newWMS/application/api/controller/WarehouseArea.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.007784s ] mysql:host=10.20.10.217;port=3306;dbname=newwms;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_quality_check_wait` [ RunTime:0.058449s ]
+[ sql ] [ SQL ] SELECT * FROM `wms_quality_check_wait` [ RunTime:0.002896s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_quality_check` [ RunTime:0.056864s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181203-0001' LIMIT 1 [ RunTime:0.001835s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181203-0001'  AND `check_status` = 1 LIMIT 1 [ RunTime:0.001889s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_pur_order` [ RunTime:0.046519s ]
+[ sql ] [ SQL ] UPDATE `wms_pur_order`  SET `pur_order_status`=4,`modify_date`='2018-12-29 18:10:43'  WHERE  `pur_order_num` = 'OI-20170704-0001' [ RunTime:0.040329s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_reviewed_log` [ RunTime:0.045371s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('采购单' , 'OI-20170704-0001' , '已质检,待移库' , 'admin' , '2018-12-29 18:10:43' , '2018-12-29 18:10:43') [ RunTime:0.028767s ]
+[ sql ] [ SQL ] UPDATE `wms_quality_check_wait`  SET `check_wait_status`=2,`modify_date`='2018-12-29 18:10:43'  WHERE  `pur_order_num` = 'OI-20170704-0001' [ RunTime:0.104669s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('待质检单' , 'OI-20170704-0001' , '已质检' , 'admin' , '2018-12-29 18:10:43' , '2018-12-29 18:10:43') [ RunTime:0.044683s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181205-0001' LIMIT 1 [ RunTime:0.002122s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181205-0001'  AND `check_status` = 1 LIMIT 1 [ RunTime:0.002369s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('采购单' , 'OI-20170703-0002' , '已质检,待移库' , 'admin' , '2018-12-29 18:10:43' , '2018-12-29 18:10:43') [ RunTime:0.044837s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('待质检单' , 'OI-20170703-0002' , '已质检' , 'admin' , '2018-12-29 18:10:43' , '2018-12-29 18:10:43') [ RunTime:0.049314s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_warehouse_area` [ RunTime:0.046527s ]
+[ sql ] [ SQL ] SELECT `a`.*,`w`.`warehouse_name` FROM `wms_warehouse_area` `a` LEFT JOIN `wms_warehouse` `w` ON `w`.`warehouse_num`=`a`.`warehouse_num` WHERE  (  a.disabled = 1 ) LIMIT 0,10 [ RunTime:0.003336s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_warehouse_area` `a` LEFT JOIN `wms_warehouse` `w` ON `w`.`warehouse_num`=`a`.`warehouse_num` WHERE  (  a.disabled = 1 ) LIMIT 1 [ RunTime:0.002492s ]
+---------------------------------------------------------------
+[ 2018-12-29T18:10:49+08:00 ] 127.0.0.1 POST localhost:80/api/WarehouseArea/index
+[运行时间：0.581939s] [吞吐率：1.72req/s] [内存消耗：2,585.89kb] [文件加载：58]
+[ info ] [ LANG ] /Users/jk/Desktop/obj/newWMS/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'WarehouseArea',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'x-forwarded-host' => 'localhost:3000',
+  'x-forwarded-proto' => 'http',
+  'x-forwarded-port' => '3000',
+  'x-forwarded-for' => '127.0.0.1',
+  'cookie' => 'PHPSESSID=fc08a704343ae45c0558bc129d9d947e',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate, br',
+  'referer' => 'http://localhost:3000/warehouseArea',
+  'content-type' => 'application/json',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36',
+  'origin' => 'http://localhost:80/',
+  'accept' => 'application/json',
+  'content-length' => '55',
+  'connection' => 'close',
+  'host' => 'localhost:80',
+)
+[ info ] [ PARAM ] array (
+  '/api/WarehouseArea/index' => '',
+  'search_key' => '',
+  'limit' => 10,
+  'page' => 1,
+  'warea_type' => NULL,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\Api\controller\WarehouseArea->index[ /Users/jk/Desktop/obj/newWMS/application/api/controller/WarehouseArea.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.009010s ] mysql:host=10.20.10.217;port=3306;dbname=newwms;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_quality_check_wait` [ RunTime:0.058992s ]
+[ sql ] [ SQL ] SELECT * FROM `wms_quality_check_wait` [ RunTime:0.002364s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_quality_check` [ RunTime:0.055865s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181203-0001' LIMIT 1 [ RunTime:0.001965s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181203-0001'  AND `check_status` = 1 LIMIT 1 [ RunTime:0.001976s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_pur_order` [ RunTime:0.063644s ]
+[ sql ] [ SQL ] UPDATE `wms_pur_order`  SET `pur_order_status`=4,`modify_date`='2018-12-29 18:10:49'  WHERE  `pur_order_num` = 'OI-20170704-0001' [ RunTime:0.027684s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_reviewed_log` [ RunTime:0.049925s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('采购单' , 'OI-20170704-0001' , '已质检,待移库' , 'admin' , '2018-12-29 18:10:49' , '2018-12-29 18:10:49') [ RunTime:0.024524s ]
+[ sql ] [ SQL ] UPDATE `wms_quality_check_wait`  SET `check_wait_status`=2,`modify_date`='2018-12-29 18:10:49'  WHERE  `pur_order_num` = 'OI-20170704-0001' [ RunTime:0.049923s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('待质检单' , 'OI-20170704-0001' , '已质检' , 'admin' , '2018-12-29 18:10:49' , '2018-12-29 18:10:49') [ RunTime:0.050370s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181205-0001' LIMIT 1 [ RunTime:0.002167s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181205-0001'  AND `check_status` = 1 LIMIT 1 [ RunTime:0.002305s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('采购单' , 'OI-20170703-0002' , '已质检,待移库' , 'admin' , '2018-12-29 18:10:49' , '2018-12-29 18:10:49') [ RunTime:0.044064s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('待质检单' , 'OI-20170703-0002' , '已质检' , 'admin' , '2018-12-29 18:10:49' , '2018-12-29 18:10:49') [ RunTime:0.049647s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_warehouse_area` [ RunTime:0.047807s ]
+[ sql ] [ SQL ] SELECT `a`.*,`w`.`warehouse_name` FROM `wms_warehouse_area` `a` LEFT JOIN `wms_warehouse` `w` ON `w`.`warehouse_num`=`a`.`warehouse_num` WHERE  (  a.disabled = 1 ) LIMIT 0,10 [ RunTime:0.002181s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_warehouse_area` `a` LEFT JOIN `wms_warehouse` `w` ON `w`.`warehouse_num`=`a`.`warehouse_num` WHERE  (  a.disabled = 1 ) LIMIT 1 [ RunTime:0.002042s ]
+---------------------------------------------------------------
+[ 2018-12-29T18:10:49+08:00 ] 127.0.0.1 POST localhost:80/api/Warehouse/index
+[运行时间：0.600100s] [吞吐率：1.67req/s] [内存消耗：2,607.44kb] [文件加载：58]
+[ info ] [ LANG ] /Users/jk/Desktop/obj/newWMS/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'Warehouse',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'x-forwarded-host' => 'localhost:3000',
+  'x-forwarded-proto' => 'http',
+  'x-forwarded-port' => '3000',
+  'x-forwarded-for' => '127.0.0.1',
+  'cookie' => 'PHPSESSID=fc08a704343ae45c0558bc129d9d947e',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate, br',
+  'referer' => 'http://localhost:3000/warehouseArea',
+  'content-type' => 'application/json',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36',
+  'origin' => 'http://localhost:80/',
+  'accept' => 'application/json',
+  'content-length' => '24',
+  'connection' => 'close',
+  'host' => 'localhost:80',
+)
+[ info ] [ PARAM ] array (
+  '/api/Warehouse/index' => '',
+  'limit' => 10000,
+  'page' => 1,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\Api\controller\Warehouse->index[ /Users/jk/Desktop/obj/newWMS/application/api/controller/Warehouse.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.014191s ] mysql:host=10.20.10.217;port=3306;dbname=newwms;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_quality_check_wait` [ RunTime:0.060598s ]
+[ sql ] [ SQL ] SELECT * FROM `wms_quality_check_wait` [ RunTime:0.002333s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_quality_check` [ RunTime:0.054361s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181203-0001' LIMIT 1 [ RunTime:0.001933s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181203-0001'  AND `check_status` = 1 LIMIT 1 [ RunTime:0.002098s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_pur_order` [ RunTime:0.058248s ]
+[ sql ] [ SQL ] UPDATE `wms_pur_order`  SET `pur_order_status`=4,`modify_date`='2018-12-29 18:10:49'  WHERE  `pur_order_num` = 'OI-20170704-0001' [ RunTime:0.050242s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_reviewed_log` [ RunTime:0.044770s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('采购单' , 'OI-20170704-0001' , '已质检,待移库' , 'admin' , '2018-12-29 18:10:49' , '2018-12-29 18:10:49') [ RunTime:0.029890s ]
+[ sql ] [ SQL ] UPDATE `wms_quality_check_wait`  SET `check_wait_status`=2,`modify_date`='2018-12-29 18:10:49'  WHERE  `pur_order_num` = 'OI-20170704-0001' [ RunTime:0.049481s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('待质检单' , 'OI-20170704-0001' , '已质检' , 'admin' , '2018-12-29 18:10:49' , '2018-12-29 18:10:49') [ RunTime:0.049796s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181205-0001' LIMIT 1 [ RunTime:0.002354s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181205-0001'  AND `check_status` = 1 LIMIT 1 [ RunTime:0.002221s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('采购单' , 'OI-20170703-0002' , '已质检,待移库' , 'admin' , '2018-12-29 18:10:49' , '2018-12-29 18:10:49') [ RunTime:0.044465s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('待质检单' , 'OI-20170703-0002' , '已质检' , 'admin' , '2018-12-29 18:10:49' , '2018-12-29 18:10:49') [ RunTime:0.052390s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_warehouse` [ RunTime:0.039371s ]
+[ sql ] [ SQL ] SELECT * FROM `wms_warehouse` WHERE  (  disabled = 1 ) LIMIT 0,10000 [ RunTime:0.002910s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_warehouse` WHERE  (  disabled = 1 ) LIMIT 1 [ RunTime:0.002281s ]
+---------------------------------------------------------------
+[ 2018-12-29T18:10:52+08:00 ] 127.0.0.1 POST localhost:80/api/WarehouseArea/index
+[运行时间：0.403936s] [吞吐率：2.48req/s] [内存消耗：2,585.89kb] [文件加载：58]
+[ info ] [ LANG ] /Users/jk/Desktop/obj/newWMS/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'WarehouseArea',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'x-forwarded-host' => 'localhost:3000',
+  'x-forwarded-proto' => 'http',
+  'x-forwarded-port' => '3000',
+  'x-forwarded-for' => '127.0.0.1',
+  'cookie' => 'PHPSESSID=fc08a704343ae45c0558bc129d9d947e',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate, br',
+  'referer' => 'http://localhost:3000/warehouseArea',
+  'content-type' => 'application/json',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36',
+  'origin' => 'http://localhost:80/',
+  'accept' => 'application/json',
+  'content-length' => '52',
+  'connection' => 'close',
+  'host' => 'localhost:80',
+)
+[ info ] [ PARAM ] array (
+  '/api/WarehouseArea/index' => '',
+  'search_key' => '',
+  'limit' => 10,
+  'page' => 1,
+  'warea_type' => 0,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\Api\controller\WarehouseArea->index[ /Users/jk/Desktop/obj/newWMS/application/api/controller/WarehouseArea.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.008525s ] mysql:host=10.20.10.217;port=3306;dbname=newwms;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_quality_check_wait` [ RunTime:0.039005s ]
+[ sql ] [ SQL ] SELECT * FROM `wms_quality_check_wait` [ RunTime:0.002565s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_quality_check` [ RunTime:0.036224s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181203-0001' LIMIT 1 [ RunTime:0.002367s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181203-0001'  AND `check_status` = 1 LIMIT 1 [ RunTime:0.002389s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_pur_order` [ RunTime:0.040205s ]
+[ sql ] [ SQL ] UPDATE `wms_pur_order`  SET `pur_order_status`=4,`modify_date`='2018-12-29 18:10:51'  WHERE  `pur_order_num` = 'OI-20170704-0001' [ RunTime:0.022451s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_reviewed_log` [ RunTime:0.038906s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('采购单' , 'OI-20170704-0001' , '已质检,待移库' , 'admin' , '2018-12-29 18:10:51' , '2018-12-29 18:10:51') [ RunTime:0.027094s ]
+[ sql ] [ SQL ] UPDATE `wms_quality_check_wait`  SET `check_wait_status`=2,`modify_date`='2018-12-29 18:10:51'  WHERE  `pur_order_num` = 'OI-20170704-0001' [ RunTime:0.024589s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('待质检单' , 'OI-20170704-0001' , '已质检' , 'admin' , '2018-12-29 18:10:51' , '2018-12-29 18:10:51') [ RunTime:0.032556s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181205-0001' LIMIT 1 [ RunTime:0.002146s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181205-0001'  AND `check_status` = 1 LIMIT 1 [ RunTime:0.002339s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('采购单' , 'OI-20170703-0002' , '已质检,待移库' , 'admin' , '2018-12-29 18:10:52' , '2018-12-29 18:10:52') [ RunTime:0.019922s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('待质检单' , 'OI-20170703-0002' , '已质检' , 'admin' , '2018-12-29 18:10:52' , '2018-12-29 18:10:52') [ RunTime:0.019907s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_warehouse_area` [ RunTime:0.040444s ]
+[ sql ] [ SQL ] SELECT `a`.*,`w`.`warehouse_name` FROM `wms_warehouse_area` `a` LEFT JOIN `wms_warehouse` `w` ON `w`.`warehouse_num`=`a`.`warehouse_num` WHERE  (  a.disabled = 1 ) LIMIT 0,10 [ RunTime:0.002987s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_warehouse_area` `a` LEFT JOIN `wms_warehouse` `w` ON `w`.`warehouse_num`=`a`.`warehouse_num` WHERE  (  a.disabled = 1 ) LIMIT 1 [ RunTime:0.002589s ]
+---------------------------------------------------------------
+[ 2018-12-29T18:10:54+08:00 ] 127.0.0.1 POST localhost:80/api/WarehouseArea/index
+[运行时间：0.427131s] [吞吐率：2.34req/s] [内存消耗：2,585.89kb] [文件加载：58]
+[ info ] [ LANG ] /Users/jk/Desktop/obj/newWMS/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'WarehouseArea',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'x-forwarded-host' => 'localhost:3000',
+  'x-forwarded-proto' => 'http',
+  'x-forwarded-port' => '3000',
+  'x-forwarded-for' => '127.0.0.1',
+  'cookie' => 'PHPSESSID=fc08a704343ae45c0558bc129d9d947e',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate, br',
+  'referer' => 'http://localhost:3000/warehouseArea',
+  'content-type' => 'application/json',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36',
+  'origin' => 'http://localhost:80/',
+  'accept' => 'application/json',
+  'content-length' => '52',
+  'connection' => 'close',
+  'host' => 'localhost:80',
+)
+[ info ] [ PARAM ] array (
+  '/api/WarehouseArea/index' => '',
+  'search_key' => '',
+  'limit' => 10,
+  'page' => 1,
+  'warea_type' => 0,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\Api\controller\WarehouseArea->index[ /Users/jk/Desktop/obj/newWMS/application/api/controller/WarehouseArea.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.008681s ] mysql:host=10.20.10.217;port=3306;dbname=newwms;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_quality_check_wait` [ RunTime:0.038292s ]
+[ sql ] [ SQL ] SELECT * FROM `wms_quality_check_wait` [ RunTime:0.002645s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_quality_check` [ RunTime:0.037488s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181203-0001' LIMIT 1 [ RunTime:0.002392s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181203-0001'  AND `check_status` = 1 LIMIT 1 [ RunTime:0.002459s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_pur_order` [ RunTime:0.040578s ]
+[ sql ] [ SQL ] UPDATE `wms_pur_order`  SET `pur_order_status`=4,`modify_date`='2018-12-29 18:10:54'  WHERE  `pur_order_num` = 'OI-20170704-0001' [ RunTime:0.039887s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_reviewed_log` [ RunTime:0.039578s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('采购单' , 'OI-20170704-0001' , '已质检,待移库' , 'admin' , '2018-12-29 18:10:54' , '2018-12-29 18:10:54') [ RunTime:0.029088s ]
+[ sql ] [ SQL ] UPDATE `wms_quality_check_wait`  SET `check_wait_status`=2,`modify_date`='2018-12-29 18:10:54'  WHERE  `pur_order_num` = 'OI-20170704-0001' [ RunTime:0.021999s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('待质检单' , 'OI-20170704-0001' , '已质检' , 'admin' , '2018-12-29 18:10:54' , '2018-12-29 18:10:54') [ RunTime:0.024752s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181205-0001' LIMIT 1 [ RunTime:0.002176s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181205-0001'  AND `check_status` = 1 LIMIT 1 [ RunTime:0.002154s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('采购单' , 'OI-20170703-0002' , '已质检,待移库' , 'admin' , '2018-12-29 18:10:54' , '2018-12-29 18:10:54') [ RunTime:0.027811s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('待质检单' , 'OI-20170703-0002' , '已质检' , 'admin' , '2018-12-29 18:10:54' , '2018-12-29 18:10:54') [ RunTime:0.024564s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_warehouse_area` [ RunTime:0.040357s ]
+[ sql ] [ SQL ] SELECT `a`.*,`w`.`warehouse_name` FROM `wms_warehouse_area` `a` LEFT JOIN `wms_warehouse` `w` ON `w`.`warehouse_num`=`a`.`warehouse_num` WHERE  (  a.disabled = 1 ) LIMIT 0,10 [ RunTime:0.002974s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_warehouse_area` `a` LEFT JOIN `wms_warehouse` `w` ON `w`.`warehouse_num`=`a`.`warehouse_num` WHERE  (  a.disabled = 1 ) LIMIT 1 [ RunTime:0.002676s ]
+---------------------------------------------------------------
+[ 2018-12-29T18:11:01+08:00 ] 127.0.0.1 POST localhost:80/api/WarehouseArea/index
+[运行时间：0.384711s] [吞吐率：2.60req/s] [内存消耗：2,578.00kb] [文件加载：58]
+[ info ] [ LANG ] /Users/jk/Desktop/obj/newWMS/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'WarehouseArea',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'x-forwarded-host' => 'localhost:3000',
+  'x-forwarded-proto' => 'http',
+  'x-forwarded-port' => '3000',
+  'x-forwarded-for' => '127.0.0.1',
+  'cookie' => 'PHPSESSID=fc08a704343ae45c0558bc129d9d947e',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate, br',
+  'referer' => 'http://localhost:3000/warehouseArea',
+  'content-type' => 'application/json',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36',
+  'origin' => 'http://localhost:80/',
+  'accept' => 'application/json',
+  'content-length' => '52',
+  'connection' => 'close',
+  'host' => 'localhost:80',
+)
+[ info ] [ PARAM ] array (
+  '/api/WarehouseArea/index' => '',
+  'search_key' => '',
+  'limit' => 10,
+  'page' => 1,
+  'warea_type' => 1,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\Api\controller\WarehouseArea->index[ /Users/jk/Desktop/obj/newWMS/application/api/controller/WarehouseArea.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.008169s ] mysql:host=10.20.10.217;port=3306;dbname=newwms;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_quality_check_wait` [ RunTime:0.038592s ]
+[ sql ] [ SQL ] SELECT * FROM `wms_quality_check_wait` [ RunTime:0.002635s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_quality_check` [ RunTime:0.031967s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181203-0001' LIMIT 1 [ RunTime:0.002339s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181203-0001'  AND `check_status` = 1 LIMIT 1 [ RunTime:0.002330s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_pur_order` [ RunTime:0.032173s ]
+[ sql ] [ SQL ] UPDATE `wms_pur_order`  SET `pur_order_status`=4,`modify_date`='2018-12-29 18:11:01'  WHERE  `pur_order_num` = 'OI-20170704-0001' [ RunTime:0.023293s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_reviewed_log` [ RunTime:0.039987s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('采购单' , 'OI-20170704-0001' , '已质检,待移库' , 'admin' , '2018-12-29 18:11:01' , '2018-12-29 18:11:01') [ RunTime:0.025948s ]
+[ sql ] [ SQL ] UPDATE `wms_quality_check_wait`  SET `check_wait_status`=2,`modify_date`='2018-12-29 18:11:01'  WHERE  `pur_order_num` = 'OI-20170704-0001' [ RunTime:0.024674s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('待质检单' , 'OI-20170704-0001' , '已质检' , 'admin' , '2018-12-29 18:11:01' , '2018-12-29 18:11:01') [ RunTime:0.024526s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181205-0001' LIMIT 1 [ RunTime:0.002277s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181205-0001'  AND `check_status` = 1 LIMIT 1 [ RunTime:0.002286s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('采购单' , 'OI-20170703-0002' , '已质检,待移库' , 'admin' , '2018-12-29 18:11:01' , '2018-12-29 18:11:01') [ RunTime:0.022783s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('待质检单' , 'OI-20170703-0002' , '已质检' , 'admin' , '2018-12-29 18:11:01' , '2018-12-29 18:11:01') [ RunTime:0.021395s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_warehouse_area` [ RunTime:0.037694s ]
+[ sql ] [ SQL ] SELECT `a`.*,`w`.`warehouse_name` FROM `wms_warehouse_area` `a` LEFT JOIN `wms_warehouse` `w` ON `w`.`warehouse_num`=`a`.`warehouse_num` WHERE  (  a.disabled = 1 and a.warea_type = '1' ) LIMIT 0,10 [ RunTime:0.002584s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_warehouse_area` `a` LEFT JOIN `wms_warehouse` `w` ON `w`.`warehouse_num`=`a`.`warehouse_num` WHERE  (  a.disabled = 1 and a.warea_type = '1' ) LIMIT 1 [ RunTime:0.002376s ]
+---------------------------------------------------------------
+[ 2018-12-29T18:11:04+08:00 ] 127.0.0.1 POST localhost:80/api/WarehouseArea/index
+[运行时间：0.315499s] [吞吐率：3.17req/s] [内存消耗：2,578.00kb] [文件加载：58]
+[ info ] [ LANG ] /Users/jk/Desktop/obj/newWMS/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'WarehouseArea',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'x-forwarded-host' => 'localhost:3000',
+  'x-forwarded-proto' => 'http',
+  'x-forwarded-port' => '3000',
+  'x-forwarded-for' => '127.0.0.1',
+  'cookie' => 'PHPSESSID=fc08a704343ae45c0558bc129d9d947e',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate, br',
+  'referer' => 'http://localhost:3000/warehouseArea',
+  'content-type' => 'application/json',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36',
+  'origin' => 'http://localhost:80/',
+  'accept' => 'application/json',
+  'content-length' => '52',
+  'connection' => 'close',
+  'host' => 'localhost:80',
+)
+[ info ] [ PARAM ] array (
+  '/api/WarehouseArea/index' => '',
+  'search_key' => '',
+  'limit' => 10,
+  'page' => 1,
+  'warea_type' => 2,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\Api\controller\WarehouseArea->index[ /Users/jk/Desktop/obj/newWMS/application/api/controller/WarehouseArea.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.007232s ] mysql:host=10.20.10.217;port=3306;dbname=newwms;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_quality_check_wait` [ RunTime:0.019662s ]
+[ sql ] [ SQL ] SELECT * FROM `wms_quality_check_wait` [ RunTime:0.001700s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_quality_check` [ RunTime:0.019283s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181203-0001' LIMIT 1 [ RunTime:0.001470s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181203-0001'  AND `check_status` = 1 LIMIT 1 [ RunTime:0.001368s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_pur_order` [ RunTime:0.019390s ]
+[ sql ] [ SQL ] UPDATE `wms_pur_order`  SET `pur_order_status`=4,`modify_date`='2018-12-29 18:11:03'  WHERE  `pur_order_num` = 'OI-20170704-0001' [ RunTime:0.021501s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_reviewed_log` [ RunTime:0.035538s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('采购单' , 'OI-20170704-0001' , '已质检,待移库' , 'admin' , '2018-12-29 18:11:03' , '2018-12-29 18:11:03') [ RunTime:0.013004s ]
+[ sql ] [ SQL ] UPDATE `wms_quality_check_wait`  SET `check_wait_status`=2,`modify_date`='2018-12-29 18:11:03'  WHERE  `pur_order_num` = 'OI-20170704-0001' [ RunTime:0.020922s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('待质检单' , 'OI-20170704-0001' , '已质检' , 'admin' , '2018-12-29 18:11:03' , '2018-12-29 18:11:03') [ RunTime:0.024472s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181205-0001' LIMIT 1 [ RunTime:0.002160s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181205-0001'  AND `check_status` = 1 LIMIT 1 [ RunTime:0.002267s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('采购单' , 'OI-20170703-0002' , '已质检,待移库' , 'admin' , '2018-12-29 18:11:03' , '2018-12-29 18:11:03') [ RunTime:0.019790s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('待质检单' , 'OI-20170703-0002' , '已质检' , 'admin' , '2018-12-29 18:11:03' , '2018-12-29 18:11:03') [ RunTime:0.024611s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_warehouse_area` [ RunTime:0.040621s ]
+[ sql ] [ SQL ] SELECT `a`.*,`w`.`warehouse_name` FROM `wms_warehouse_area` `a` LEFT JOIN `wms_warehouse` `w` ON `w`.`warehouse_num`=`a`.`warehouse_num` WHERE  (  a.disabled = 1 and a.warea_type = '2' ) LIMIT 0,10 [ RunTime:0.002599s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_warehouse_area` `a` LEFT JOIN `wms_warehouse` `w` ON `w`.`warehouse_num`=`a`.`warehouse_num` WHERE  (  a.disabled = 1 and a.warea_type = '2' ) LIMIT 1 [ RunTime:0.002563s ]
+---------------------------------------------------------------
+[ 2018-12-29T18:11:07+08:00 ] 127.0.0.1 POST localhost:80/api/WarehouseArea/index
+[运行时间：0.401146s] [吞吐率：2.49req/s] [内存消耗：2,584.34kb] [文件加载：58]
+[ info ] [ LANG ] /Users/jk/Desktop/obj/newWMS/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'WarehouseArea',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'x-forwarded-host' => 'localhost:3000',
+  'x-forwarded-proto' => 'http',
+  'x-forwarded-port' => '3000',
+  'x-forwarded-for' => '127.0.0.1',
+  'cookie' => 'PHPSESSID=fc08a704343ae45c0558bc129d9d947e',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate, br',
+  'referer' => 'http://localhost:3000/warehouseArea',
+  'content-type' => 'application/json',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36',
+  'origin' => 'http://localhost:80/',
+  'accept' => 'application/json',
+  'content-length' => '52',
+  'connection' => 'close',
+  'host' => 'localhost:80',
+)
+[ info ] [ PARAM ] array (
+  '/api/WarehouseArea/index' => '',
+  'search_key' => '',
+  'limit' => 10,
+  'page' => 1,
+  'warea_type' => 3,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\Api\controller\WarehouseArea->index[ /Users/jk/Desktop/obj/newWMS/application/api/controller/WarehouseArea.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.008394s ] mysql:host=10.20.10.217;port=3306;dbname=newwms;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_quality_check_wait` [ RunTime:0.040562s ]
+[ sql ] [ SQL ] SELECT * FROM `wms_quality_check_wait` [ RunTime:0.002735s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_quality_check` [ RunTime:0.039687s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181203-0001' LIMIT 1 [ RunTime:0.002485s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181203-0001'  AND `check_status` = 1 LIMIT 1 [ RunTime:0.002310s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_pur_order` [ RunTime:0.036688s ]
+[ sql ] [ SQL ] UPDATE `wms_pur_order`  SET `pur_order_status`=4,`modify_date`='2018-12-29 18:11:06'  WHERE  `pur_order_num` = 'OI-20170704-0001' [ RunTime:0.024019s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_reviewed_log` [ RunTime:0.039780s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('采购单' , 'OI-20170704-0001' , '已质检,待移库' , 'admin' , '2018-12-29 18:11:06' , '2018-12-29 18:11:06') [ RunTime:0.026163s ]
+[ sql ] [ SQL ] UPDATE `wms_quality_check_wait`  SET `check_wait_status`=2,`modify_date`='2018-12-29 18:11:07'  WHERE  `pur_order_num` = 'OI-20170704-0001' [ RunTime:0.024666s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('待质检单' , 'OI-20170704-0001' , '已质检' , 'admin' , '2018-12-29 18:11:07' , '2018-12-29 18:11:07') [ RunTime:0.024595s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181205-0001' LIMIT 1 [ RunTime:0.002287s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181205-0001'  AND `check_status` = 1 LIMIT 1 [ RunTime:0.002340s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('采购单' , 'OI-20170703-0002' , '已质检,待移库' , 'admin' , '2018-12-29 18:11:07' , '2018-12-29 18:11:07') [ RunTime:0.019609s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('待质检单' , 'OI-20170703-0002' , '已质检' , 'admin' , '2018-12-29 18:11:07' , '2018-12-29 18:11:07') [ RunTime:0.028986s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_warehouse_area` [ RunTime:0.035141s ]
+[ sql ] [ SQL ] SELECT `a`.*,`w`.`warehouse_name` FROM `wms_warehouse_area` `a` LEFT JOIN `wms_warehouse` `w` ON `w`.`warehouse_num`=`a`.`warehouse_num` WHERE  (  a.disabled = 1 and a.warea_type = '3' ) LIMIT 0,10 [ RunTime:0.002764s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_warehouse_area` `a` LEFT JOIN `wms_warehouse` `w` ON `w`.`warehouse_num`=`a`.`warehouse_num` WHERE  (  a.disabled = 1 and a.warea_type = '3' ) LIMIT 1 [ RunTime:0.002507s ]
+---------------------------------------------------------------
+[ 2018-12-29T18:12:03+08:00 ] 127.0.0.1 POST localhost:80/api/WarehouseArea/index
+[运行时间：0.597690s] [吞吐率：1.67req/s] [内存消耗：2,581.85kb] [文件加载：58]
+[ info ] [ LANG ] /Users/jk/Desktop/obj/newWMS/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'WarehouseArea',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'x-forwarded-host' => 'localhost:3000',
+  'x-forwarded-proto' => 'http',
+  'x-forwarded-port' => '3000',
+  'x-forwarded-for' => '127.0.0.1',
+  'cookie' => 'PHPSESSID=fc08a704343ae45c0558bc129d9d947e',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate, br',
+  'referer' => 'http://localhost:3000/warehouseArea',
+  'content-type' => 'application/json',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36',
+  'origin' => 'http://localhost:80/',
+  'accept' => 'application/json',
+  'content-length' => '52',
+  'connection' => 'close',
+  'host' => 'localhost:80',
+)
+[ info ] [ PARAM ] array (
+  '/api/WarehouseArea/index' => '',
+  'search_key' => '',
+  'limit' => 10,
+  'page' => 1,
+  'warea_type' => 0,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\Api\controller\WarehouseArea->index[ /Users/jk/Desktop/obj/newWMS/application/api/controller/WarehouseArea.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.008234s ] mysql:host=10.20.10.217;port=3306;dbname=newwms;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_quality_check_wait` [ RunTime:0.040592s ]
+[ sql ] [ SQL ] SELECT * FROM `wms_quality_check_wait` [ RunTime:0.002702s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_quality_check` [ RunTime:0.040089s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181203-0001' LIMIT 1 [ RunTime:0.002375s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181203-0001'  AND `check_status` = 1 LIMIT 1 [ RunTime:0.002146s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_pur_order` [ RunTime:0.040244s ]
+[ sql ] [ SQL ] UPDATE `wms_pur_order`  SET `pur_order_status`=4,`modify_date`='2018-12-29 18:12:02'  WHERE  `pur_order_num` = 'OI-20170704-0001' [ RunTime:0.043387s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_reviewed_log` [ RunTime:0.039949s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('采购单' , 'OI-20170704-0001' , '已质检,待移库' , 'admin' , '2018-12-29 18:12:03' , '2018-12-29 18:12:03') [ RunTime:0.025658s ]
+[ sql ] [ SQL ] UPDATE `wms_quality_check_wait`  SET `check_wait_status`=2,`modify_date`='2018-12-29 18:12:03'  WHERE  `pur_order_num` = 'OI-20170704-0001' [ RunTime:0.024684s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('待质检单' , 'OI-20170704-0001' , '已质检' , 'admin' , '2018-12-29 18:12:03' , '2018-12-29 18:12:03') [ RunTime:0.032285s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181205-0001' LIMIT 1 [ RunTime:0.008356s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181205-0001'  AND `check_status` = 1 LIMIT 1 [ RunTime:0.001852s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('采购单' , 'OI-20170703-0002' , '已质检,待移库' , 'admin' , '2018-12-29 18:12:03' , '2018-12-29 18:12:03') [ RunTime:0.023047s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('待质检单' , 'OI-20170703-0002' , '已质检' , 'admin' , '2018-12-29 18:12:03' , '2018-12-29 18:12:03') [ RunTime:0.024679s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_warehouse_area` [ RunTime:0.036510s ]
+[ sql ] [ SQL ] SELECT `a`.*,`w`.`warehouse_name` FROM `wms_warehouse_area` `a` LEFT JOIN `wms_warehouse` `w` ON `w`.`warehouse_num`=`a`.`warehouse_num` WHERE  (  a.disabled = 1 and a.warea_type = '0' ) LIMIT 0,10 [ RunTime:0.002045s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_warehouse_area` `a` LEFT JOIN `wms_warehouse` `w` ON `w`.`warehouse_num`=`a`.`warehouse_num` WHERE  (  a.disabled = 1 and a.warea_type = '0' ) LIMIT 1 [ RunTime:0.001574s ]
+---------------------------------------------------------------
+[ 2018-12-29T18:12:15+08:00 ] 127.0.0.1 POST localhost:80/api/WarehouseArea/index
+[运行时间：0.432699s] [吞吐率：2.31req/s] [内存消耗：2,579.25kb] [文件加载：58]
+[ info ] [ LANG ] /Users/jk/Desktop/obj/newWMS/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'WarehouseArea',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'x-forwarded-host' => 'localhost:3000',
+  'x-forwarded-proto' => 'http',
+  'x-forwarded-port' => '3000',
+  'x-forwarded-for' => '127.0.0.1',
+  'cookie' => 'PHPSESSID=fc08a704343ae45c0558bc129d9d947e',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate, br',
+  'referer' => 'http://localhost:3000/warehouseArea',
+  'content-type' => 'application/json',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36',
+  'origin' => 'http://localhost:80/',
+  'accept' => 'application/json',
+  'content-length' => '52',
+  'connection' => 'close',
+  'host' => 'localhost:80',
+)
+[ info ] [ PARAM ] array (
+  '/api/WarehouseArea/index' => '',
+  'search_key' => '',
+  'limit' => 10,
+  'page' => 1,
+  'warea_type' => 1,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\Api\controller\WarehouseArea->index[ /Users/jk/Desktop/obj/newWMS/application/api/controller/WarehouseArea.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.008274s ] mysql:host=10.20.10.217;port=3306;dbname=newwms;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_quality_check_wait` [ RunTime:0.039738s ]
+[ sql ] [ SQL ] SELECT * FROM `wms_quality_check_wait` [ RunTime:0.002624s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_quality_check` [ RunTime:0.035458s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181203-0001' LIMIT 1 [ RunTime:0.002390s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181203-0001'  AND `check_status` = 1 LIMIT 1 [ RunTime:0.002438s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_pur_order` [ RunTime:0.040846s ]
+[ sql ] [ SQL ] UPDATE `wms_pur_order`  SET `pur_order_status`=4,`modify_date`='2018-12-29 18:12:15'  WHERE  `pur_order_num` = 'OI-20170704-0001' [ RunTime:0.045417s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_reviewed_log` [ RunTime:0.040386s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('采购单' , 'OI-20170704-0001' , '已质检,待移库' , 'admin' , '2018-12-29 18:12:15' , '2018-12-29 18:12:15') [ RunTime:0.025457s ]
+[ sql ] [ SQL ] UPDATE `wms_quality_check_wait`  SET `check_wait_status`=2,`modify_date`='2018-12-29 18:12:15'  WHERE  `pur_order_num` = 'OI-20170704-0001' [ RunTime:0.024668s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('待质检单' , 'OI-20170704-0001' , '已质检' , 'admin' , '2018-12-29 18:12:15' , '2018-12-29 18:12:15') [ RunTime:0.024685s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181205-0001' LIMIT 1 [ RunTime:0.002368s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181205-0001'  AND `check_status` = 1 LIMIT 1 [ RunTime:0.002352s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('采购单' , 'OI-20170703-0002' , '已质检,待移库' , 'admin' , '2018-12-29 18:12:15' , '2018-12-29 18:12:15') [ RunTime:0.027584s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('待质检单' , 'OI-20170703-0002' , '已质检' , 'admin' , '2018-12-29 18:12:15' , '2018-12-29 18:12:15') [ RunTime:0.024538s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_warehouse_area` [ RunTime:0.040544s ]
+[ sql ] [ SQL ] SELECT `a`.*,`w`.`warehouse_name` FROM `wms_warehouse_area` `a` LEFT JOIN `wms_warehouse` `w` ON `w`.`warehouse_num`=`a`.`warehouse_num` WHERE  (  a.disabled = 1 and a.warea_type = '1' ) LIMIT 0,10 [ RunTime:0.002640s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_warehouse_area` `a` LEFT JOIN `wms_warehouse` `w` ON `w`.`warehouse_num`=`a`.`warehouse_num` WHERE  (  a.disabled = 1 and a.warea_type = '1' ) LIMIT 1 [ RunTime:0.002477s ]
+---------------------------------------------------------------
+[ 2018-12-29T18:12:17+08:00 ] 127.0.0.1 POST localhost:80/api/WarehouseArea/index
+[运行时间：0.415491s] [吞吐率：2.41req/s] [内存消耗：2,581.85kb] [文件加载：58]
+[ info ] [ LANG ] /Users/jk/Desktop/obj/newWMS/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'WarehouseArea',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'x-forwarded-host' => 'localhost:3000',
+  'x-forwarded-proto' => 'http',
+  'x-forwarded-port' => '3000',
+  'x-forwarded-for' => '127.0.0.1',
+  'cookie' => 'PHPSESSID=fc08a704343ae45c0558bc129d9d947e',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate, br',
+  'referer' => 'http://localhost:3000/warehouseArea',
+  'content-type' => 'application/json',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36',
+  'origin' => 'http://localhost:80/',
+  'accept' => 'application/json',
+  'content-length' => '52',
+  'connection' => 'close',
+  'host' => 'localhost:80',
+)
+[ info ] [ PARAM ] array (
+  '/api/WarehouseArea/index' => '',
+  'search_key' => '',
+  'limit' => 10,
+  'page' => 1,
+  'warea_type' => 0,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\Api\controller\WarehouseArea->index[ /Users/jk/Desktop/obj/newWMS/application/api/controller/WarehouseArea.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.008403s ] mysql:host=10.20.10.217;port=3306;dbname=newwms;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_quality_check_wait` [ RunTime:0.036494s ]
+[ sql ] [ SQL ] SELECT * FROM `wms_quality_check_wait` [ RunTime:0.002625s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_quality_check` [ RunTime:0.039021s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181203-0001' LIMIT 1 [ RunTime:0.002462s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181203-0001'  AND `check_status` = 1 LIMIT 1 [ RunTime:0.002400s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_pur_order` [ RunTime:0.040113s ]
+[ sql ] [ SQL ] UPDATE `wms_pur_order`  SET `pur_order_status`=4,`modify_date`='2018-12-29 18:12:17'  WHERE  `pur_order_num` = 'OI-20170704-0001' [ RunTime:0.035831s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_reviewed_log` [ RunTime:0.038188s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('采购单' , 'OI-20170704-0001' , '已质检,待移库' , 'admin' , '2018-12-29 18:12:17' , '2018-12-29 18:12:17') [ RunTime:0.027675s ]
+[ sql ] [ SQL ] UPDATE `wms_quality_check_wait`  SET `check_wait_status`=2,`modify_date`='2018-12-29 18:12:17'  WHERE  `pur_order_num` = 'OI-20170704-0001' [ RunTime:0.024402s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('待质检单' , 'OI-20170704-0001' , '已质检' , 'admin' , '2018-12-29 18:12:17' , '2018-12-29 18:12:17') [ RunTime:0.024635s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181205-0001' LIMIT 1 [ RunTime:0.002211s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181205-0001'  AND `check_status` = 1 LIMIT 1 [ RunTime:0.002325s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('采购单' , 'OI-20170703-0002' , '已质检,待移库' , 'admin' , '2018-12-29 18:12:17' , '2018-12-29 18:12:17') [ RunTime:0.019595s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('待质检单' , 'OI-20170703-0002' , '已质检' , 'admin' , '2018-12-29 18:12:17' , '2018-12-29 18:12:17') [ RunTime:0.024521s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_warehouse_area` [ RunTime:0.043804s ]
+[ sql ] [ SQL ] SELECT `a`.*,`w`.`warehouse_name` FROM `wms_warehouse_area` `a` LEFT JOIN `wms_warehouse` `w` ON `w`.`warehouse_num`=`a`.`warehouse_num` WHERE  (  a.disabled = 1 and a.warea_type = '0' ) LIMIT 0,10 [ RunTime:0.002408s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_warehouse_area` `a` LEFT JOIN `wms_warehouse` `w` ON `w`.`warehouse_num`=`a`.`warehouse_num` WHERE  (  a.disabled = 1 and a.warea_type = '0' ) LIMIT 1 [ RunTime:0.002320s ]
+---------------------------------------------------------------
+[ 2018-12-29T18:13:06+08:00 ] 127.0.0.1 POST localhost:80/api/WarehouseArea/index
+[运行时间：0.413430s] [吞吐率：2.42req/s] [内存消耗：2,581.85kb] [文件加载：58]
+[ info ] [ LANG ] /Users/jk/Desktop/obj/newWMS/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'WarehouseArea',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'x-forwarded-host' => 'localhost:3000',
+  'x-forwarded-proto' => 'http',
+  'x-forwarded-port' => '3000',
+  'x-forwarded-for' => '127.0.0.1',
+  'cookie' => 'PHPSESSID=fc08a704343ae45c0558bc129d9d947e',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate, br',
+  'referer' => 'http://localhost:3000/warehouseArea',
+  'content-type' => 'application/json',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36',
+  'origin' => 'http://localhost:80/',
+  'accept' => 'application/json',
+  'content-length' => '52',
+  'connection' => 'close',
+  'host' => 'localhost:80',
+)
+[ info ] [ PARAM ] array (
+  '/api/WarehouseArea/index' => '',
+  'search_key' => '',
+  'limit' => 10,
+  'page' => 1,
+  'warea_type' => 0,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\Api\controller\WarehouseArea->index[ /Users/jk/Desktop/obj/newWMS/application/api/controller/WarehouseArea.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.008195s ] mysql:host=10.20.10.217;port=3306;dbname=newwms;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_quality_check_wait` [ RunTime:0.040638s ]
+[ sql ] [ SQL ] SELECT * FROM `wms_quality_check_wait` [ RunTime:0.002615s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_quality_check` [ RunTime:0.038727s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181203-0001' LIMIT 1 [ RunTime:0.002175s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181203-0001'  AND `check_status` = 1 LIMIT 1 [ RunTime:0.002193s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_pur_order` [ RunTime:0.032287s ]
+[ sql ] [ SQL ] UPDATE `wms_pur_order`  SET `pur_order_status`=4,`modify_date`='2018-12-29 18:13:06'  WHERE  `pur_order_num` = 'OI-20170704-0001' [ RunTime:0.038615s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_reviewed_log` [ RunTime:0.039758s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('采购单' , 'OI-20170704-0001' , '已质检,待移库' , 'admin' , '2018-12-29 18:13:06' , '2018-12-29 18:13:06') [ RunTime:0.026269s ]
+[ sql ] [ SQL ] UPDATE `wms_quality_check_wait`  SET `check_wait_status`=2,`modify_date`='2018-12-29 18:13:06'  WHERE  `pur_order_num` = 'OI-20170704-0001' [ RunTime:0.024595s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('待质检单' , 'OI-20170704-0001' , '已质检' , 'admin' , '2018-12-29 18:13:06' , '2018-12-29 18:13:06') [ RunTime:0.024603s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181205-0001' LIMIT 1 [ RunTime:0.002165s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181205-0001'  AND `check_status` = 1 LIMIT 1 [ RunTime:0.002141s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('采购单' , 'OI-20170703-0002' , '已质检,待移库' , 'admin' , '2018-12-29 18:13:06' , '2018-12-29 18:13:06') [ RunTime:0.020161s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('待质检单' , 'OI-20170703-0002' , '已质检' , 'admin' , '2018-12-29 18:13:06' , '2018-12-29 18:13:06') [ RunTime:0.024302s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_warehouse_area` [ RunTime:0.038606s ]
+[ sql ] [ SQL ] SELECT `a`.*,`w`.`warehouse_name` FROM `wms_warehouse_area` `a` LEFT JOIN `wms_warehouse` `w` ON `w`.`warehouse_num`=`a`.`warehouse_num` WHERE  (  a.disabled = 1 and a.warea_type = '0' ) LIMIT 0,10 [ RunTime:0.002191s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_warehouse_area` `a` LEFT JOIN `wms_warehouse` `w` ON `w`.`warehouse_num`=`a`.`warehouse_num` WHERE  (  a.disabled = 1 and a.warea_type = '0' ) LIMIT 1 [ RunTime:0.002139s ]
+---------------------------------------------------------------
+[ 2018-12-29T18:13:09+08:00 ] 127.0.0.1 POST localhost:80/api/WarehouseArea/index
+[运行时间：0.424775s] [吞吐率：2.35req/s] [内存消耗：2,581.85kb] [文件加载：58]
+[ info ] [ LANG ] /Users/jk/Desktop/obj/newWMS/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'WarehouseArea',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'x-forwarded-host' => 'localhost:3000',
+  'x-forwarded-proto' => 'http',
+  'x-forwarded-port' => '3000',
+  'x-forwarded-for' => '127.0.0.1',
+  'cookie' => 'PHPSESSID=fc08a704343ae45c0558bc129d9d947e',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate, br',
+  'referer' => 'http://localhost:3000/warehouseArea',
+  'content-type' => 'application/json',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36',
+  'origin' => 'http://localhost:80/',
+  'accept' => 'application/json',
+  'content-length' => '52',
+  'connection' => 'close',
+  'host' => 'localhost:80',
+)
+[ info ] [ PARAM ] array (
+  '/api/WarehouseArea/index' => '',
+  'search_key' => '',
+  'limit' => 10,
+  'page' => 1,
+  'warea_type' => 0,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\Api\controller\WarehouseArea->index[ /Users/jk/Desktop/obj/newWMS/application/api/controller/WarehouseArea.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.008090s ] mysql:host=10.20.10.217;port=3306;dbname=newwms;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_quality_check_wait` [ RunTime:0.038123s ]
+[ sql ] [ SQL ] SELECT * FROM `wms_quality_check_wait` [ RunTime:0.003237s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_quality_check` [ RunTime:0.037234s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181203-0001' LIMIT 1 [ RunTime:0.002669s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181203-0001'  AND `check_status` = 1 LIMIT 1 [ RunTime:0.002984s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_pur_order` [ RunTime:0.039925s ]
+[ sql ] [ SQL ] UPDATE `wms_pur_order`  SET `pur_order_status`=4,`modify_date`='2018-12-29 18:13:08'  WHERE  `pur_order_num` = 'OI-20170704-0001' [ RunTime:0.032554s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_reviewed_log` [ RunTime:0.040037s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('采购单' , 'OI-20170704-0001' , '已质检,待移库' , 'admin' , '2018-12-29 18:13:09' , '2018-12-29 18:13:09') [ RunTime:0.026134s ]
+[ sql ] [ SQL ] UPDATE `wms_quality_check_wait`  SET `check_wait_status`=2,`modify_date`='2018-12-29 18:13:09'  WHERE  `pur_order_num` = 'OI-20170704-0001' [ RunTime:0.024338s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('待质检单' , 'OI-20170704-0001' , '已质检' , 'admin' , '2018-12-29 18:13:09' , '2018-12-29 18:13:09') [ RunTime:0.024450s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181205-0001' LIMIT 1 [ RunTime:0.002382s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181205-0001'  AND `check_status` = 1 LIMIT 1 [ RunTime:0.002174s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('采购单' , 'OI-20170703-0002' , '已质检,待移库' , 'admin' , '2018-12-29 18:13:09' , '2018-12-29 18:13:09') [ RunTime:0.027629s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('待质检单' , 'OI-20170703-0002' , '已质检' , 'admin' , '2018-12-29 18:13:09' , '2018-12-29 18:13:09') [ RunTime:0.024726s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_warehouse_area` [ RunTime:0.040009s ]
+[ sql ] [ SQL ] SELECT `a`.*,`w`.`warehouse_name` FROM `wms_warehouse_area` `a` LEFT JOIN `wms_warehouse` `w` ON `w`.`warehouse_num`=`a`.`warehouse_num` WHERE  (  a.disabled = 1 and a.warea_type = '0' ) LIMIT 0,10 [ RunTime:0.003816s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_warehouse_area` `a` LEFT JOIN `wms_warehouse` `w` ON `w`.`warehouse_num`=`a`.`warehouse_num` WHERE  (  a.disabled = 1 and a.warea_type = '0' ) LIMIT 1 [ RunTime:0.002289s ]
+---------------------------------------------------------------
+[ 2018-12-29T18:13:11+08:00 ] 127.0.0.1 POST localhost:80/api/WarehouseArea/index
+[运行时间：0.407850s] [吞吐率：2.45req/s] [内存消耗：2,579.25kb] [文件加载：58]
+[ info ] [ LANG ] /Users/jk/Desktop/obj/newWMS/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'WarehouseArea',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'x-forwarded-host' => 'localhost:3000',
+  'x-forwarded-proto' => 'http',
+  'x-forwarded-port' => '3000',
+  'x-forwarded-for' => '127.0.0.1',
+  'cookie' => 'PHPSESSID=fc08a704343ae45c0558bc129d9d947e',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate, br',
+  'referer' => 'http://localhost:3000/warehouseArea',
+  'content-type' => 'application/json',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36',
+  'origin' => 'http://localhost:80/',
+  'accept' => 'application/json',
+  'content-length' => '52',
+  'connection' => 'close',
+  'host' => 'localhost:80',
+)
+[ info ] [ PARAM ] array (
+  '/api/WarehouseArea/index' => '',
+  'search_key' => '',
+  'limit' => 10,
+  'page' => 1,
+  'warea_type' => 1,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\Api\controller\WarehouseArea->index[ /Users/jk/Desktop/obj/newWMS/application/api/controller/WarehouseArea.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.012039s ] mysql:host=10.20.10.217;port=3306;dbname=newwms;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_quality_check_wait` [ RunTime:0.037938s ]
+[ sql ] [ SQL ] SELECT * FROM `wms_quality_check_wait` [ RunTime:0.002929s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_quality_check` [ RunTime:0.037170s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181203-0001' LIMIT 1 [ RunTime:0.002800s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181203-0001'  AND `check_status` = 1 LIMIT 1 [ RunTime:0.002327s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_pur_order` [ RunTime:0.039958s ]
+[ sql ] [ SQL ] UPDATE `wms_pur_order`  SET `pur_order_status`=4,`modify_date`='2018-12-29 18:13:11'  WHERE  `pur_order_num` = 'OI-20170704-0001' [ RunTime:0.024456s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_reviewed_log` [ RunTime:0.037475s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('采购单' , 'OI-20170704-0001' , '已质检,待移库' , 'admin' , '2018-12-29 18:13:11' , '2018-12-29 18:13:11') [ RunTime:0.020020s ]
+[ sql ] [ SQL ] UPDATE `wms_quality_check_wait`  SET `check_wait_status`=2,`modify_date`='2018-12-29 18:13:11'  WHERE  `pur_order_num` = 'OI-20170704-0001' [ RunTime:0.024462s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('待质检单' , 'OI-20170704-0001' , '已质检' , 'admin' , '2018-12-29 18:13:11' , '2018-12-29 18:13:11') [ RunTime:0.024775s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181205-0001' LIMIT 1 [ RunTime:0.002763s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181205-0001'  AND `check_status` = 1 LIMIT 1 [ RunTime:0.002314s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('采购单' , 'OI-20170703-0002' , '已质检,待移库' , 'admin' , '2018-12-29 18:13:11' , '2018-12-29 18:13:11') [ RunTime:0.027381s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('待质检单' , 'OI-20170703-0002' , '已质检' , 'admin' , '2018-12-29 18:13:11' , '2018-12-29 18:13:11') [ RunTime:0.024783s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_warehouse_area` [ RunTime:0.039294s ]
+[ sql ] [ SQL ] SELECT `a`.*,`w`.`warehouse_name` FROM `wms_warehouse_area` `a` LEFT JOIN `wms_warehouse` `w` ON `w`.`warehouse_num`=`a`.`warehouse_num` WHERE  (  a.disabled = 1 and a.warea_type = '1' ) LIMIT 0,10 [ RunTime:0.002957s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_warehouse_area` `a` LEFT JOIN `wms_warehouse` `w` ON `w`.`warehouse_num`=`a`.`warehouse_num` WHERE  (  a.disabled = 1 and a.warea_type = '1' ) LIMIT 1 [ RunTime:0.002183s ]
+---------------------------------------------------------------
+[ 2018-12-29T18:13:14+08:00 ] 127.0.0.1 POST localhost:80/api/WarehouseArea/index
+[运行时间：0.421339s] [吞吐率：2.37req/s] [内存消耗：2,579.25kb] [文件加载：58]
+[ info ] [ LANG ] /Users/jk/Desktop/obj/newWMS/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'WarehouseArea',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'x-forwarded-host' => 'localhost:3000',
+  'x-forwarded-proto' => 'http',
+  'x-forwarded-port' => '3000',
+  'x-forwarded-for' => '127.0.0.1',
+  'cookie' => 'PHPSESSID=fc08a704343ae45c0558bc129d9d947e',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate, br',
+  'referer' => 'http://localhost:3000/warehouseArea',
+  'content-type' => 'application/json',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36',
+  'origin' => 'http://localhost:80/',
+  'accept' => 'application/json',
+  'content-length' => '52',
+  'connection' => 'close',
+  'host' => 'localhost:80',
+)
+[ info ] [ PARAM ] array (
+  '/api/WarehouseArea/index' => '',
+  'search_key' => '',
+  'limit' => 10,
+  'page' => 1,
+  'warea_type' => 2,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\Api\controller\WarehouseArea->index[ /Users/jk/Desktop/obj/newWMS/application/api/controller/WarehouseArea.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.007833s ] mysql:host=10.20.10.217;port=3306;dbname=newwms;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_quality_check_wait` [ RunTime:0.038137s ]
+[ sql ] [ SQL ] SELECT * FROM `wms_quality_check_wait` [ RunTime:0.002969s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_quality_check` [ RunTime:0.037331s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181203-0001' LIMIT 1 [ RunTime:0.002335s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181203-0001'  AND `check_status` = 1 LIMIT 1 [ RunTime:0.002862s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_pur_order` [ RunTime:0.040074s ]
+[ sql ] [ SQL ] UPDATE `wms_pur_order`  SET `pur_order_status`=4,`modify_date`='2018-12-29 18:13:13'  WHERE  `pur_order_num` = 'OI-20170704-0001' [ RunTime:0.040235s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_reviewed_log` [ RunTime:0.039295s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('采购单' , 'OI-20170704-0001' , '已质检,待移库' , 'admin' , '2018-12-29 18:13:14' , '2018-12-29 18:13:14') [ RunTime:0.026857s ]
+[ sql ] [ SQL ] UPDATE `wms_quality_check_wait`  SET `check_wait_status`=2,`modify_date`='2018-12-29 18:13:14'  WHERE  `pur_order_num` = 'OI-20170704-0001' [ RunTime:0.024688s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('待质检单' , 'OI-20170704-0001' , '已质检' , 'admin' , '2018-12-29 18:13:14' , '2018-12-29 18:13:14') [ RunTime:0.024784s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181205-0001' LIMIT 1 [ RunTime:0.002232s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181205-0001'  AND `check_status` = 1 LIMIT 1 [ RunTime:0.002307s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('采购单' , 'OI-20170703-0002' , '已质检,待移库' , 'admin' , '2018-12-29 18:13:14' , '2018-12-29 18:13:14') [ RunTime:0.019372s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('待质检单' , 'OI-20170703-0002' , '已质检' , 'admin' , '2018-12-29 18:13:14' , '2018-12-29 18:13:14') [ RunTime:0.024694s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_warehouse_area` [ RunTime:0.040699s ]
+[ sql ] [ SQL ] SELECT `a`.*,`w`.`warehouse_name` FROM `wms_warehouse_area` `a` LEFT JOIN `wms_warehouse` `w` ON `w`.`warehouse_num`=`a`.`warehouse_num` WHERE  (  a.disabled = 1 and a.warea_type = '2' ) LIMIT 0,10 [ RunTime:0.002578s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_warehouse_area` `a` LEFT JOIN `wms_warehouse` `w` ON `w`.`warehouse_num`=`a`.`warehouse_num` WHERE  (  a.disabled = 1 and a.warea_type = '2' ) LIMIT 1 [ RunTime:0.001908s ]
+---------------------------------------------------------------
+[ 2018-12-29T18:13:14+08:00 ] 127.0.0.1 POST localhost:80/api/WarehouseArea/index
+[运行时间：0.432374s] [吞吐率：2.31req/s] [内存消耗：2,579.25kb] [文件加载：58]
+[ info ] [ LANG ] /Users/jk/Desktop/obj/newWMS/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'WarehouseArea',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'x-forwarded-host' => 'localhost:3000',
+  'x-forwarded-proto' => 'http',
+  'x-forwarded-port' => '3000',
+  'x-forwarded-for' => '127.0.0.1',
+  'cookie' => 'PHPSESSID=fc08a704343ae45c0558bc129d9d947e',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate, br',
+  'referer' => 'http://localhost:3000/warehouseArea',
+  'content-type' => 'application/json',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36',
+  'origin' => 'http://localhost:80/',
+  'accept' => 'application/json',
+  'content-length' => '52',
+  'connection' => 'close',
+  'host' => 'localhost:80',
+)
+[ info ] [ PARAM ] array (
+  '/api/WarehouseArea/index' => '',
+  'search_key' => '',
+  'limit' => 10,
+  'page' => 1,
+  'warea_type' => 2,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\Api\controller\WarehouseArea->index[ /Users/jk/Desktop/obj/newWMS/application/api/controller/WarehouseArea.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.008169s ] mysql:host=10.20.10.217;port=3306;dbname=newwms;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_quality_check_wait` [ RunTime:0.036749s ]
+[ sql ] [ SQL ] SELECT * FROM `wms_quality_check_wait` [ RunTime:0.003116s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_quality_check` [ RunTime:0.039591s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181203-0001' LIMIT 1 [ RunTime:0.002021s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181203-0001'  AND `check_status` = 1 LIMIT 1 [ RunTime:0.002885s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_pur_order` [ RunTime:0.039778s ]
+[ sql ] [ SQL ] UPDATE `wms_pur_order`  SET `pur_order_status`=4,`modify_date`='2018-12-29 18:13:14'  WHERE  `pur_order_num` = 'OI-20170704-0001' [ RunTime:0.031777s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_reviewed_log` [ RunTime:0.052701s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('采购单' , 'OI-20170704-0001' , '已质检,待移库' , 'admin' , '2018-12-29 18:13:14' , '2018-12-29 18:13:14') [ RunTime:0.021640s ]
+[ sql ] [ SQL ] UPDATE `wms_quality_check_wait`  SET `check_wait_status`=2,`modify_date`='2018-12-29 18:13:14'  WHERE  `pur_order_num` = 'OI-20170704-0001' [ RunTime:0.024573s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('待质检单' , 'OI-20170704-0001' , '已质检' , 'admin' , '2018-12-29 18:13:14' , '2018-12-29 18:13:14') [ RunTime:0.024590s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181205-0001' LIMIT 1 [ RunTime:0.001615s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181205-0001'  AND `check_status` = 1 LIMIT 1 [ RunTime:0.001586s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('采购单' , 'OI-20170703-0002' , '已质检,待移库' , 'admin' , '2018-12-29 18:13:14' , '2018-12-29 18:13:14') [ RunTime:0.021278s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('待质检单' , 'OI-20170703-0002' , '已质检' , 'admin' , '2018-12-29 18:13:14' , '2018-12-29 18:13:14') [ RunTime:0.024623s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_warehouse_area` [ RunTime:0.050075s ]
+[ sql ] [ SQL ] SELECT `a`.*,`w`.`warehouse_name` FROM `wms_warehouse_area` `a` LEFT JOIN `wms_warehouse` `w` ON `w`.`warehouse_num`=`a`.`warehouse_num` WHERE  (  a.disabled = 1 and a.warea_type = '2' ) LIMIT 0,10 [ RunTime:0.002046s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_warehouse_area` `a` LEFT JOIN `wms_warehouse` `w` ON `w`.`warehouse_num`=`a`.`warehouse_num` WHERE  (  a.disabled = 1 and a.warea_type = '2' ) LIMIT 1 [ RunTime:0.002594s ]
+---------------------------------------------------------------
+[ 2018-12-29T18:13:14+08:00 ] 127.0.0.1 POST localhost:80/api/WarehouseArea/index
+[运行时间：0.465869s] [吞吐率：2.15req/s] [内存消耗：2,579.25kb] [文件加载：58]
+[ info ] [ LANG ] /Users/jk/Desktop/obj/newWMS/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'WarehouseArea',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'x-forwarded-host' => 'localhost:3000',
+  'x-forwarded-proto' => 'http',
+  'x-forwarded-port' => '3000',
+  'x-forwarded-for' => '127.0.0.1',
+  'cookie' => 'PHPSESSID=fc08a704343ae45c0558bc129d9d947e',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate, br',
+  'referer' => 'http://localhost:3000/warehouseArea',
+  'content-type' => 'application/json',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36',
+  'origin' => 'http://localhost:80/',
+  'accept' => 'application/json',
+  'content-length' => '52',
+  'connection' => 'close',
+  'host' => 'localhost:80',
+)
+[ info ] [ PARAM ] array (
+  '/api/WarehouseArea/index' => '',
+  'search_key' => '',
+  'limit' => 10,
+  'page' => 1,
+  'warea_type' => 2,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\Api\controller\WarehouseArea->index[ /Users/jk/Desktop/obj/newWMS/application/api/controller/WarehouseArea.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.005181s ] mysql:host=10.20.10.217;port=3306;dbname=newwms;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_quality_check_wait` [ RunTime:0.051945s ]
+[ sql ] [ SQL ] SELECT * FROM `wms_quality_check_wait` [ RunTime:0.002551s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_quality_check` [ RunTime:0.039389s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181203-0001' LIMIT 1 [ RunTime:0.001975s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181203-0001'  AND `check_status` = 1 LIMIT 1 [ RunTime:0.002936s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_pur_order` [ RunTime:0.036473s ]
+[ sql ] [ SQL ] UPDATE `wms_pur_order`  SET `pur_order_status`=4,`modify_date`='2018-12-29 18:13:14'  WHERE  `pur_order_num` = 'OI-20170704-0001' [ RunTime:0.042667s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_reviewed_log` [ RunTime:0.043575s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('采购单' , 'OI-20170704-0001' , '已质检,待移库' , 'admin' , '2018-12-29 18:13:14' , '2018-12-29 18:13:14') [ RunTime:0.047463s ]
+[ sql ] [ SQL ] UPDATE `wms_quality_check_wait`  SET `check_wait_status`=2,`modify_date`='2018-12-29 18:13:14'  WHERE  `pur_order_num` = 'OI-20170704-0001' [ RunTime:0.024765s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('待质检单' , 'OI-20170704-0001' , '已质检' , 'admin' , '2018-12-29 18:13:14' , '2018-12-29 18:13:14') [ RunTime:0.024638s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181205-0001' LIMIT 1 [ RunTime:0.002735s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181205-0001'  AND `check_status` = 1 LIMIT 1 [ RunTime:0.002887s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('采购单' , 'OI-20170703-0002' , '已质检,待移库' , 'admin' , '2018-12-29 18:13:14' , '2018-12-29 18:13:14') [ RunTime:0.026752s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('待质检单' , 'OI-20170703-0002' , '已质检' , 'admin' , '2018-12-29 18:13:14' , '2018-12-29 18:13:14') [ RunTime:0.024691s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_warehouse_area` [ RunTime:0.039498s ]
+[ sql ] [ SQL ] SELECT `a`.*,`w`.`warehouse_name` FROM `wms_warehouse_area` `a` LEFT JOIN `wms_warehouse` `w` ON `w`.`warehouse_num`=`a`.`warehouse_num` WHERE  (  a.disabled = 1 and a.warea_type = '2' ) LIMIT 0,10 [ RunTime:0.002132s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_warehouse_area` `a` LEFT JOIN `wms_warehouse` `w` ON `w`.`warehouse_num`=`a`.`warehouse_num` WHERE  (  a.disabled = 1 and a.warea_type = '2' ) LIMIT 1 [ RunTime:0.002203s ]
+---------------------------------------------------------------
+[ 2018-12-29T18:13:25+08:00 ] 127.0.0.1 POST localhost:80/api/WarehouseArea/index
+[运行时间：0.406900s] [吞吐率：2.46req/s] [内存消耗：2,579.73kb] [文件加载：58]
+[ info ] [ LANG ] /Users/jk/Desktop/obj/newWMS/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'WarehouseArea',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'x-forwarded-host' => 'localhost:3000',
+  'x-forwarded-proto' => 'http',
+  'x-forwarded-port' => '3000',
+  'x-forwarded-for' => '127.0.0.1',
+  'cookie' => 'PHPSESSID=fc08a704343ae45c0558bc129d9d947e',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate, br',
+  'referer' => 'http://localhost:3000/warehouseArea',
+  'content-type' => 'application/json',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36',
+  'origin' => 'http://localhost:80/',
+  'accept' => 'application/json',
+  'content-length' => '75',
+  'connection' => 'close',
+  'host' => 'localhost:80',
+)
+[ info ] [ PARAM ] array (
+  '/api/WarehouseArea/index' => '',
+  'search_key' => '',
+  'limit' => 10,
+  'page' => 1,
+  'warehouse_num' => 'ZYLD',
+  'warea_type' => 2,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\Api\controller\WarehouseArea->index[ /Users/jk/Desktop/obj/newWMS/application/api/controller/WarehouseArea.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.008021s ] mysql:host=10.20.10.217;port=3306;dbname=newwms;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_quality_check_wait` [ RunTime:0.037777s ]
+[ sql ] [ SQL ] SELECT * FROM `wms_quality_check_wait` [ RunTime:0.002589s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_quality_check` [ RunTime:0.038180s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181203-0001' LIMIT 1 [ RunTime:0.002448s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181203-0001'  AND `check_status` = 1 LIMIT 1 [ RunTime:0.002401s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_pur_order` [ RunTime:0.040039s ]
+[ sql ] [ SQL ] UPDATE `wms_pur_order`  SET `pur_order_status`=4,`modify_date`='2018-12-29 18:13:25'  WHERE  `pur_order_num` = 'OI-20170704-0001' [ RunTime:0.028572s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_reviewed_log` [ RunTime:0.041202s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('采购单' , 'OI-20170704-0001' , '已质检,待移库' , 'admin' , '2018-12-29 18:13:25' , '2018-12-29 18:13:25') [ RunTime:0.024626s ]
+[ sql ] [ SQL ] UPDATE `wms_quality_check_wait`  SET `check_wait_status`=2,`modify_date`='2018-12-29 18:13:25'  WHERE  `pur_order_num` = 'OI-20170704-0001' [ RunTime:0.024612s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('待质检单' , 'OI-20170704-0001' , '已质检' , 'admin' , '2018-12-29 18:13:25' , '2018-12-29 18:13:25') [ RunTime:0.024777s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181205-0001' LIMIT 1 [ RunTime:0.002152s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181205-0001'  AND `check_status` = 1 LIMIT 1 [ RunTime:0.002397s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('采购单' , 'OI-20170703-0002' , '已质检,待移库' , 'admin' , '2018-12-29 18:13:25' , '2018-12-29 18:13:25') [ RunTime:0.019547s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('待质检单' , 'OI-20170703-0002' , '已质检' , 'admin' , '2018-12-29 18:13:25' , '2018-12-29 18:13:25') [ RunTime:0.024609s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_warehouse_area` [ RunTime:0.041833s ]
+[ sql ] [ SQL ] SELECT `a`.*,`w`.`warehouse_name` FROM `wms_warehouse_area` `a` LEFT JOIN `wms_warehouse` `w` ON `w`.`warehouse_num`=`a`.`warehouse_num` WHERE  (  a.disabled = 1 and a.warehouse_num = 'ZYLD' and a.warea_type = '2' ) LIMIT 0,10 [ RunTime:0.002545s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_warehouse_area` `a` LEFT JOIN `wms_warehouse` `w` ON `w`.`warehouse_num`=`a`.`warehouse_num` WHERE  (  a.disabled = 1 and a.warehouse_num = 'ZYLD' and a.warea_type = '2' ) LIMIT 1 [ RunTime:0.002465s ]
+---------------------------------------------------------------
+[ 2018-12-29T18:13:44+08:00 ] 127.0.0.1 POST localhost:80/api/WarehouseArea/index
+[运行时间：0.726409s] [吞吐率：1.38req/s] [内存消耗：2,587.14kb] [文件加载：58]
+[ info ] [ LANG ] /Users/jk/Desktop/obj/newWMS/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'WarehouseArea',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'x-forwarded-host' => 'localhost:3000',
+  'x-forwarded-proto' => 'http',
+  'x-forwarded-port' => '3000',
+  'x-forwarded-for' => '127.0.0.1',
+  'cookie' => 'PHPSESSID=fc08a704343ae45c0558bc129d9d947e',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate, br',
+  'referer' => 'http://localhost:3000/warehouseArea',
+  'content-type' => 'application/json',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36',
+  'origin' => 'http://localhost:80/',
+  'accept' => 'application/json',
+  'content-length' => '55',
+  'connection' => 'close',
+  'host' => 'localhost:80',
+)
+[ info ] [ PARAM ] array (
+  '/api/WarehouseArea/index' => '',
+  'search_key' => '',
+  'limit' => 10,
+  'page' => 1,
+  'warea_type' => NULL,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\Api\controller\WarehouseArea->index[ /Users/jk/Desktop/obj/newWMS/application/api/controller/WarehouseArea.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.011190s ] mysql:host=10.20.10.217;port=3306;dbname=newwms;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_quality_check_wait` [ RunTime:0.047140s ]
+[ sql ] [ SQL ] SELECT * FROM `wms_quality_check_wait` [ RunTime:0.002332s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_quality_check` [ RunTime:0.055605s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181203-0001' LIMIT 1 [ RunTime:0.001902s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181203-0001'  AND `check_status` = 1 LIMIT 1 [ RunTime:0.001944s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_pur_order` [ RunTime:0.057761s ]
+[ sql ] [ SQL ] UPDATE `wms_pur_order`  SET `pur_order_status`=4,`modify_date`='2018-12-29 18:13:44'  WHERE  `pur_order_num` = 'OI-20170704-0001' [ RunTime:0.041661s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_reviewed_log` [ RunTime:0.050809s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('采购单' , 'OI-20170704-0001' , '已质检,待移库' , 'admin' , '2018-12-29 18:13:44' , '2018-12-29 18:13:44') [ RunTime:0.017717s ]
+[ sql ] [ SQL ] UPDATE `wms_quality_check_wait`  SET `check_wait_status`=2,`modify_date`='2018-12-29 18:13:44'  WHERE  `pur_order_num` = 'OI-20170704-0001' [ RunTime:0.033105s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('待质检单' , 'OI-20170704-0001' , '已质检' , 'admin' , '2018-12-29 18:13:44' , '2018-12-29 18:13:44') [ RunTime:0.038228s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181205-0001' LIMIT 1 [ RunTime:0.002412s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181205-0001'  AND `check_status` = 1 LIMIT 1 [ RunTime:0.002152s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('采购单' , 'OI-20170703-0002' , '已质检,待移库' , 'admin' , '2018-12-29 18:13:44' , '2018-12-29 18:13:44') [ RunTime:0.031116s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('待质检单' , 'OI-20170703-0002' , '已质检' , 'admin' , '2018-12-29 18:13:44' , '2018-12-29 18:13:44') [ RunTime:0.033048s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_warehouse_area` [ RunTime:0.051400s ]
+[ sql ] [ SQL ] SELECT `a`.*,`w`.`warehouse_name` FROM `wms_warehouse_area` `a` LEFT JOIN `wms_warehouse` `w` ON `w`.`warehouse_num`=`a`.`warehouse_num` WHERE  (  a.disabled = 1 ) LIMIT 0,10 [ RunTime:0.002458s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_warehouse_area` `a` LEFT JOIN `wms_warehouse` `w` ON `w`.`warehouse_num`=`a`.`warehouse_num` WHERE  (  a.disabled = 1 ) LIMIT 1 [ RunTime:0.002092s ]
+---------------------------------------------------------------
+[ 2018-12-29T18:13:44+08:00 ] 127.0.0.1 POST localhost:80/api/Warehouse/index
+[运行时间：0.749169s] [吞吐率：1.33req/s] [内存消耗：2,607.44kb] [文件加载：58]
+[ info ] [ LANG ] /Users/jk/Desktop/obj/newWMS/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'Warehouse',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'x-forwarded-host' => 'localhost:3000',
+  'x-forwarded-proto' => 'http',
+  'x-forwarded-port' => '3000',
+  'x-forwarded-for' => '127.0.0.1',
+  'cookie' => 'PHPSESSID=fc08a704343ae45c0558bc129d9d947e',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate, br',
+  'referer' => 'http://localhost:3000/warehouseArea',
+  'content-type' => 'application/json',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36',
+  'origin' => 'http://localhost:80/',
+  'accept' => 'application/json',
+  'content-length' => '24',
+  'connection' => 'close',
+  'host' => 'localhost:80',
+)
+[ info ] [ PARAM ] array (
+  '/api/Warehouse/index' => '',
+  'limit' => 10000,
+  'page' => 1,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\Api\controller\Warehouse->index[ /Users/jk/Desktop/obj/newWMS/application/api/controller/Warehouse.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.011183s ] mysql:host=10.20.10.217;port=3306;dbname=newwms;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_quality_check_wait` [ RunTime:0.069995s ]
+[ sql ] [ SQL ] SELECT * FROM `wms_quality_check_wait` [ RunTime:0.002302s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_quality_check` [ RunTime:0.057478s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181203-0001' LIMIT 1 [ RunTime:0.001742s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181203-0001'  AND `check_status` = 1 LIMIT 1 [ RunTime:0.001866s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_pur_order` [ RunTime:0.051673s ]
+[ sql ] [ SQL ] UPDATE `wms_pur_order`  SET `pur_order_status`=4,`modify_date`='2018-12-29 18:13:44'  WHERE  `pur_order_num` = 'OI-20170704-0001' [ RunTime:0.043686s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_reviewed_log` [ RunTime:0.049526s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('采购单' , 'OI-20170704-0001' , '已质检,待移库' , 'admin' , '2018-12-29 18:13:44' , '2018-12-29 18:13:44') [ RunTime:0.016635s ]
+[ sql ] [ SQL ] UPDATE `wms_quality_check_wait`  SET `check_wait_status`=2,`modify_date`='2018-12-29 18:13:44'  WHERE  `pur_order_num` = 'OI-20170704-0001' [ RunTime:0.032977s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('待质检单' , 'OI-20170704-0001' , '已质检' , 'admin' , '2018-12-29 18:13:44' , '2018-12-29 18:13:44') [ RunTime:0.041367s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181205-0001' LIMIT 1 [ RunTime:0.002078s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181205-0001'  AND `check_status` = 1 LIMIT 1 [ RunTime:0.002297s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('采购单' , 'OI-20170703-0002' , '已质检,待移库' , 'admin' , '2018-12-29 18:13:44' , '2018-12-29 18:13:44') [ RunTime:0.028200s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('待质检单' , 'OI-20170703-0002' , '已质检' , 'admin' , '2018-12-29 18:13:44' , '2018-12-29 18:13:44') [ RunTime:0.037970s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_warehouse` [ RunTime:0.050916s ]
+[ sql ] [ SQL ] SELECT * FROM `wms_warehouse` WHERE  (  disabled = 1 ) LIMIT 0,10000 [ RunTime:0.003279s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_warehouse` WHERE  (  disabled = 1 ) LIMIT 1 [ RunTime:0.001634s ]
+---------------------------------------------------------------
+[ 2018-12-29T18:14:22+08:00 ] 127.0.0.1 POST localhost:80/api/WarehouseArea/index
+[运行时间：0.540400s] [吞吐率：1.85req/s] [内存消耗：2,587.14kb] [文件加载：58]
+[ info ] [ LANG ] /Users/jk/Desktop/obj/newWMS/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'WarehouseArea',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'x-forwarded-host' => 'localhost:3000',
+  'x-forwarded-proto' => 'http',
+  'x-forwarded-port' => '3000',
+  'x-forwarded-for' => '127.0.0.1',
+  'cookie' => 'PHPSESSID=fc08a704343ae45c0558bc129d9d947e',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate, br',
+  'referer' => 'http://localhost:3000/warehouseArea',
+  'content-type' => 'application/json',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36',
+  'origin' => 'http://localhost:80/',
+  'accept' => 'application/json',
+  'content-length' => '55',
+  'connection' => 'close',
+  'host' => 'localhost:80',
+)
+[ info ] [ PARAM ] array (
+  '/api/WarehouseArea/index' => '',
+  'search_key' => '',
+  'limit' => 10,
+  'page' => 1,
+  'warea_type' => NULL,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\Api\controller\WarehouseArea->index[ /Users/jk/Desktop/obj/newWMS/application/api/controller/WarehouseArea.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.010607s ] mysql:host=10.20.10.217;port=3306;dbname=newwms;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_quality_check_wait` [ RunTime:0.061743s ]
+[ sql ] [ SQL ] SELECT * FROM `wms_quality_check_wait` [ RunTime:0.002453s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_quality_check` [ RunTime:0.059946s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181203-0001' LIMIT 1 [ RunTime:0.002157s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181203-0001'  AND `check_status` = 1 LIMIT 1 [ RunTime:0.002339s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_pur_order` [ RunTime:0.060985s ]
+[ sql ] [ SQL ] UPDATE `wms_pur_order`  SET `pur_order_status`=4,`modify_date`='2018-12-29 18:14:22'  WHERE  `pur_order_num` = 'OI-20170704-0001' [ RunTime:0.040213s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_reviewed_log` [ RunTime:0.047514s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('采购单' , 'OI-20170704-0001' , '已质检,待移库' , 'admin' , '2018-12-29 18:14:22' , '2018-12-29 18:14:22') [ RunTime:0.023613s ]
+[ sql ] [ SQL ] UPDATE `wms_quality_check_wait`  SET `check_wait_status`=2,`modify_date`='2018-12-29 18:14:22'  WHERE  `pur_order_num` = 'OI-20170704-0001' [ RunTime:0.036087s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('待质检单' , 'OI-20170704-0001' , '已质检' , 'admin' , '2018-12-29 18:14:22' , '2018-12-29 18:14:22') [ RunTime:0.033030s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181205-0001' LIMIT 1 [ RunTime:0.002362s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181205-0001'  AND `check_status` = 1 LIMIT 1 [ RunTime:0.002143s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('采购单' , 'OI-20170703-0002' , '已质检,待移库' , 'admin' , '2018-12-29 18:14:22' , '2018-12-29 18:14:22') [ RunTime:0.033500s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('待质检单' , 'OI-20170703-0002' , '已质检' , 'admin' , '2018-12-29 18:14:22' , '2018-12-29 18:14:22') [ RunTime:0.035987s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_warehouse_area` [ RunTime:0.046135s ]
+[ sql ] [ SQL ] SELECT `a`.*,`w`.`warehouse_name` FROM `wms_warehouse_area` `a` LEFT JOIN `wms_warehouse` `w` ON `w`.`warehouse_num`=`a`.`warehouse_num` WHERE  (  a.disabled = 1 ) LIMIT 0,10 [ RunTime:0.002161s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_warehouse_area` `a` LEFT JOIN `wms_warehouse` `w` ON `w`.`warehouse_num`=`a`.`warehouse_num` WHERE  (  a.disabled = 1 ) LIMIT 1 [ RunTime:0.001840s ]
+---------------------------------------------------------------
+[ 2018-12-29T18:14:22+08:00 ] 127.0.0.1 POST localhost:80/api/Warehouse/index
+[运行时间：0.558728s] [吞吐率：1.79req/s] [内存消耗：2,607.44kb] [文件加载：58]
+[ info ] [ LANG ] /Users/jk/Desktop/obj/newWMS/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'Warehouse',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'x-forwarded-host' => 'localhost:3000',
+  'x-forwarded-proto' => 'http',
+  'x-forwarded-port' => '3000',
+  'x-forwarded-for' => '127.0.0.1',
+  'cookie' => 'PHPSESSID=fc08a704343ae45c0558bc129d9d947e',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate, br',
+  'referer' => 'http://localhost:3000/warehouseArea',
+  'content-type' => 'application/json',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36',
+  'origin' => 'http://localhost:80/',
+  'accept' => 'application/json',
+  'content-length' => '24',
+  'connection' => 'close',
+  'host' => 'localhost:80',
+)
+[ info ] [ PARAM ] array (
+  '/api/Warehouse/index' => '',
+  'limit' => 10000,
+  'page' => 1,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\Api\controller\Warehouse->index[ /Users/jk/Desktop/obj/newWMS/application/api/controller/Warehouse.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.010462s ] mysql:host=10.20.10.217;port=3306;dbname=newwms;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_quality_check_wait` [ RunTime:0.063420s ]
+[ sql ] [ SQL ] SELECT * FROM `wms_quality_check_wait` [ RunTime:0.002154s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_quality_check` [ RunTime:0.060421s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181203-0001' LIMIT 1 [ RunTime:0.002279s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181203-0001'  AND `check_status` = 1 LIMIT 1 [ RunTime:0.002108s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_pur_order` [ RunTime:0.061322s ]
+[ sql ] [ SQL ] UPDATE `wms_pur_order`  SET `pur_order_status`=4,`modify_date`='2018-12-29 18:14:22'  WHERE  `pur_order_num` = 'OI-20170704-0001' [ RunTime:0.060547s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_reviewed_log` [ RunTime:0.046511s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('采购单' , 'OI-20170704-0001' , '已质检,待移库' , 'admin' , '2018-12-29 18:14:22' , '2018-12-29 18:14:22') [ RunTime:0.022381s ]
+[ sql ] [ SQL ] UPDATE `wms_quality_check_wait`  SET `check_wait_status`=2,`modify_date`='2018-12-29 18:14:22'  WHERE  `pur_order_num` = 'OI-20170704-0001' [ RunTime:0.033020s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('待质检单' , 'OI-20170704-0001' , '已质检' , 'admin' , '2018-12-29 18:14:22' , '2018-12-29 18:14:22') [ RunTime:0.033087s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181205-0001' LIMIT 1 [ RunTime:0.002451s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181205-0001'  AND `check_status` = 1 LIMIT 1 [ RunTime:0.002275s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('采购单' , 'OI-20170703-0002' , '已质检,待移库' , 'admin' , '2018-12-29 18:14:22' , '2018-12-29 18:14:22') [ RunTime:0.036217s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('待质检单' , 'OI-20170703-0002' , '已质检' , 'admin' , '2018-12-29 18:14:22' , '2018-12-29 18:14:22') [ RunTime:0.032605s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_warehouse` [ RunTime:0.046447s ]
+[ sql ] [ SQL ] SELECT * FROM `wms_warehouse` WHERE  (  disabled = 1 ) LIMIT 0,10000 [ RunTime:0.002792s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_warehouse` WHERE  (  disabled = 1 ) LIMIT 1 [ RunTime:0.002393s ]
+---------------------------------------------------------------
+[ 2018-12-29T18:14:27+08:00 ] 127.0.0.1 POST localhost:80/api/WarehouseArea/index
+[运行时间：0.362847s] [吞吐率：2.76req/s] [内存消耗：2,579.70kb] [文件加载：58]
+[ info ] [ LANG ] /Users/jk/Desktop/obj/newWMS/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'WarehouseArea',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'x-forwarded-host' => 'localhost:3000',
+  'x-forwarded-proto' => 'http',
+  'x-forwarded-port' => '3000',
+  'x-forwarded-for' => '127.0.0.1',
+  'cookie' => 'PHPSESSID=fc08a704343ae45c0558bc129d9d947e',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate, br',
+  'referer' => 'http://localhost:3000/warehouseArea',
+  'content-type' => 'application/json',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36',
+  'origin' => 'http://localhost:80/',
+  'accept' => 'application/json',
+  'content-length' => '73',
+  'connection' => 'close',
+  'host' => 'localhost:80',
+)
+[ info ] [ PARAM ] array (
+  '/api/WarehouseArea/index' => '',
+  'search_key' => '',
+  'limit' => 10,
+  'page' => 1,
+  'warehouse_num' => 'NX',
+  'warea_type' => 0,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\Api\controller\WarehouseArea->index[ /Users/jk/Desktop/obj/newWMS/application/api/controller/WarehouseArea.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.008182s ] mysql:host=10.20.10.217;port=3306;dbname=newwms;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_quality_check_wait` [ RunTime:0.037293s ]
+[ sql ] [ SQL ] SELECT * FROM `wms_quality_check_wait` [ RunTime:0.002234s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_quality_check` [ RunTime:0.039260s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181203-0001' LIMIT 1 [ RunTime:0.002426s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181203-0001'  AND `check_status` = 1 LIMIT 1 [ RunTime:0.002455s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_pur_order` [ RunTime:0.040091s ]
+[ sql ] [ SQL ] UPDATE `wms_pur_order`  SET `pur_order_status`=4,`modify_date`='2018-12-29 18:14:27'  WHERE  `pur_order_num` = 'OI-20170704-0001' [ RunTime:0.019707s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_reviewed_log` [ RunTime:0.036493s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('采购单' , 'OI-20170704-0001' , '已质检,待移库' , 'admin' , '2018-12-29 18:14:27' , '2018-12-29 18:14:27') [ RunTime:0.021121s ]
+[ sql ] [ SQL ] UPDATE `wms_quality_check_wait`  SET `check_wait_status`=2,`modify_date`='2018-12-29 18:14:27'  WHERE  `pur_order_num` = 'OI-20170704-0001' [ RunTime:0.016089s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('待质检单' , 'OI-20170704-0001' , '已质检' , 'admin' , '2018-12-29 18:14:27' , '2018-12-29 18:14:27') [ RunTime:0.021754s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181205-0001' LIMIT 1 [ RunTime:0.002442s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181205-0001'  AND `check_status` = 1 LIMIT 1 [ RunTime:0.002257s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('采购单' , 'OI-20170703-0002' , '已质检,待移库' , 'admin' , '2018-12-29 18:14:27' , '2018-12-29 18:14:27') [ RunTime:0.013987s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('待质检单' , 'OI-20170703-0002' , '已质检' , 'admin' , '2018-12-29 18:14:27' , '2018-12-29 18:14:27') [ RunTime:0.016453s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_warehouse_area` [ RunTime:0.040116s ]
+[ sql ] [ SQL ] SELECT `a`.*,`w`.`warehouse_name` FROM `wms_warehouse_area` `a` LEFT JOIN `wms_warehouse` `w` ON `w`.`warehouse_num`=`a`.`warehouse_num` WHERE  (  a.disabled = 1 and a.warehouse_num = 'NX' and a.warea_type = '0' ) LIMIT 0,10 [ RunTime:0.002276s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_warehouse_area` `a` LEFT JOIN `wms_warehouse` `w` ON `w`.`warehouse_num`=`a`.`warehouse_num` WHERE  (  a.disabled = 1 and a.warehouse_num = 'NX' and a.warea_type = '0' ) LIMIT 1 [ RunTime:0.002011s ]
+---------------------------------------------------------------
+[ 2018-12-29T18:14:30+08:00 ] 127.0.0.1 POST localhost:80/api/WarehouseArea/index
+[运行时间：0.363711s] [吞吐率：2.75req/s] [内存消耗：2,586.04kb] [文件加载：58]
+[ info ] [ LANG ] /Users/jk/Desktop/obj/newWMS/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'WarehouseArea',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'x-forwarded-host' => 'localhost:3000',
+  'x-forwarded-proto' => 'http',
+  'x-forwarded-port' => '3000',
+  'x-forwarded-for' => '127.0.0.1',
+  'cookie' => 'PHPSESSID=fc08a704343ae45c0558bc129d9d947e',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate, br',
+  'referer' => 'http://localhost:3000/warehouseArea',
+  'content-type' => 'application/json',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36',
+  'origin' => 'http://localhost:80/',
+  'accept' => 'application/json',
+  'content-length' => '73',
+  'connection' => 'close',
+  'host' => 'localhost:80',
+)
+[ info ] [ PARAM ] array (
+  '/api/WarehouseArea/index' => '',
+  'search_key' => '',
+  'limit' => 10,
+  'page' => 1,
+  'warehouse_num' => 'NX',
+  'warea_type' => 3,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\Api\controller\WarehouseArea->index[ /Users/jk/Desktop/obj/newWMS/application/api/controller/WarehouseArea.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.008011s ] mysql:host=10.20.10.217;port=3306;dbname=newwms;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_quality_check_wait` [ RunTime:0.038407s ]
+[ sql ] [ SQL ] SELECT * FROM `wms_quality_check_wait` [ RunTime:0.002554s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_quality_check` [ RunTime:0.036709s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181203-0001' LIMIT 1 [ RunTime:0.002391s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181203-0001'  AND `check_status` = 1 LIMIT 1 [ RunTime:0.002431s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_pur_order` [ RunTime:0.039950s ]
+[ sql ] [ SQL ] UPDATE `wms_pur_order`  SET `pur_order_status`=4,`modify_date`='2018-12-29 18:14:30'  WHERE  `pur_order_num` = 'OI-20170704-0001' [ RunTime:0.023236s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_reviewed_log` [ RunTime:0.038539s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('采购单' , 'OI-20170704-0001' , '已质检,待移库' , 'admin' , '2018-12-29 18:14:30' , '2018-12-29 18:14:30') [ RunTime:0.019313s ]
+[ sql ] [ SQL ] UPDATE `wms_quality_check_wait`  SET `check_wait_status`=2,`modify_date`='2018-12-29 18:14:30'  WHERE  `pur_order_num` = 'OI-20170704-0001' [ RunTime:0.016193s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('待质检单' , 'OI-20170704-0001' , '已质检' , 'admin' , '2018-12-29 18:14:30' , '2018-12-29 18:14:30') [ RunTime:0.021744s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181205-0001' LIMIT 1 [ RunTime:0.002377s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181205-0001'  AND `check_status` = 1 LIMIT 1 [ RunTime:0.002266s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('采购单' , 'OI-20170703-0002' , '已质检,待移库' , 'admin' , '2018-12-29 18:14:30' , '2018-12-29 18:14:30') [ RunTime:0.014202s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('待质检单' , 'OI-20170703-0002' , '已质检' , 'admin' , '2018-12-29 18:14:30' , '2018-12-29 18:14:30') [ RunTime:0.016299s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_warehouse_area` [ RunTime:0.038099s ]
+[ sql ] [ SQL ] SELECT `a`.*,`w`.`warehouse_name` FROM `wms_warehouse_area` `a` LEFT JOIN `wms_warehouse` `w` ON `w`.`warehouse_num`=`a`.`warehouse_num` WHERE  (  a.disabled = 1 and a.warehouse_num = 'NX' and a.warea_type = '3' ) LIMIT 0,10 [ RunTime:0.002642s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_warehouse_area` `a` LEFT JOIN `wms_warehouse` `w` ON `w`.`warehouse_num`=`a`.`warehouse_num` WHERE  (  a.disabled = 1 and a.warehouse_num = 'NX' and a.warea_type = '3' ) LIMIT 1 [ RunTime:0.002429s ]
+---------------------------------------------------------------
+[ 2018-12-29T18:14:34+08:00 ] 127.0.0.1 POST localhost:80/api/WarehouseArea/index
+[运行时间：0.327916s] [吞吐率：3.05req/s] [内存消耗：2,585.59kb] [文件加载：58]
+[ info ] [ LANG ] /Users/jk/Desktop/obj/newWMS/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'WarehouseArea',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'x-forwarded-host' => 'localhost:3000',
+  'x-forwarded-proto' => 'http',
+  'x-forwarded-port' => '3000',
+  'x-forwarded-for' => '127.0.0.1',
+  'cookie' => 'PHPSESSID=fc08a704343ae45c0558bc129d9d947e',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate, br',
+  'referer' => 'http://localhost:3000/warehouseArea',
+  'content-type' => 'application/json',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36',
+  'origin' => 'http://localhost:80/',
+  'accept' => 'application/json',
+  'content-length' => '52',
+  'connection' => 'close',
+  'host' => 'localhost:80',
+)
+[ info ] [ PARAM ] array (
+  '/api/WarehouseArea/index' => '',
+  'search_key' => '',
+  'limit' => 10,
+  'page' => 1,
+  'warea_type' => 3,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\Api\controller\WarehouseArea->index[ /Users/jk/Desktop/obj/newWMS/application/api/controller/WarehouseArea.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.003204s ] mysql:host=10.20.10.217;port=3306;dbname=newwms;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_quality_check_wait` [ RunTime:0.019312s ]
+[ sql ] [ SQL ] SELECT * FROM `wms_quality_check_wait` [ RunTime:0.001707s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_quality_check` [ RunTime:0.018738s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181203-0001' LIMIT 1 [ RunTime:0.001324s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181203-0001'  AND `check_status` = 1 LIMIT 1 [ RunTime:0.001215s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_pur_order` [ RunTime:0.019011s ]
+[ sql ] [ SQL ] UPDATE `wms_pur_order`  SET `pur_order_status`=4,`modify_date`='2018-12-29 18:14:33'  WHERE  `pur_order_num` = 'OI-20170704-0001' [ RunTime:0.073394s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_reviewed_log` [ RunTime:0.028665s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('采购单' , 'OI-20170704-0001' , '已质检,待移库' , 'admin' , '2018-12-29 18:14:34' , '2018-12-29 18:14:34') [ RunTime:0.015077s ]
+[ sql ] [ SQL ] UPDATE `wms_quality_check_wait`  SET `check_wait_status`=2,`modify_date`='2018-12-29 18:14:34'  WHERE  `pur_order_num` = 'OI-20170704-0001' [ RunTime:0.016393s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('待质检单' , 'OI-20170704-0001' , '已质检' , 'admin' , '2018-12-29 18:14:34' , '2018-12-29 18:14:34') [ RunTime:0.021824s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181205-0001' LIMIT 1 [ RunTime:0.001694s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181205-0001'  AND `check_status` = 1 LIMIT 1 [ RunTime:0.001753s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('采购单' , 'OI-20170703-0002' , '已质检,待移库' , 'admin' , '2018-12-29 18:14:34' , '2018-12-29 18:14:34') [ RunTime:0.015066s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('待质检单' , 'OI-20170703-0002' , '已质检' , 'admin' , '2018-12-29 18:14:34' , '2018-12-29 18:14:34') [ RunTime:0.015944s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_warehouse_area` [ RunTime:0.031915s ]
+[ sql ] [ SQL ] SELECT `a`.*,`w`.`warehouse_name` FROM `wms_warehouse_area` `a` LEFT JOIN `wms_warehouse` `w` ON `w`.`warehouse_num`=`a`.`warehouse_num` WHERE  (  a.disabled = 1 and a.warea_type = '3' ) LIMIT 0,10 [ RunTime:0.002337s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_warehouse_area` `a` LEFT JOIN `wms_warehouse` `w` ON `w`.`warehouse_num`=`a`.`warehouse_num` WHERE  (  a.disabled = 1 and a.warea_type = '3' ) LIMIT 1 [ RunTime:0.001915s ]
+---------------------------------------------------------------
+[ 2018-12-29T18:14:37+08:00 ] 127.0.0.1 POST localhost:80/api/WarehouseArea/index
+[运行时间：0.214575s] [吞吐率：4.66req/s] [内存消耗：2,586.80kb] [文件加载：58]
+[ info ] [ LANG ] /Users/jk/Desktop/obj/newWMS/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'WarehouseArea',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'x-forwarded-host' => 'localhost:3000',
+  'x-forwarded-proto' => 'http',
+  'x-forwarded-port' => '3000',
+  'x-forwarded-for' => '127.0.0.1',
+  'cookie' => 'PHPSESSID=fc08a704343ae45c0558bc129d9d947e',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate, br',
+  'referer' => 'http://localhost:3000/warehouseArea',
+  'content-type' => 'application/json',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36',
+  'origin' => 'http://localhost:80/',
+  'accept' => 'application/json',
+  'content-length' => '37',
+  'connection' => 'close',
+  'host' => 'localhost:80',
+)
+[ info ] [ PARAM ] array (
+  '/api/WarehouseArea/index' => '',
+  'search_key' => '',
+  'limit' => 10,
+  'page' => 1,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\Api\controller\WarehouseArea->index[ /Users/jk/Desktop/obj/newWMS/application/api/controller/WarehouseArea.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.002263s ] mysql:host=10.20.10.217;port=3306;dbname=newwms;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_quality_check_wait` [ RunTime:0.010988s ]
+[ sql ] [ SQL ] SELECT * FROM `wms_quality_check_wait` [ RunTime:0.001470s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_quality_check` [ RunTime:0.010548s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181203-0001' LIMIT 1 [ RunTime:0.000941s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181203-0001'  AND `check_status` = 1 LIMIT 1 [ RunTime:0.000989s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_pur_order` [ RunTime:0.013086s ]
+[ sql ] [ SQL ] UPDATE `wms_pur_order`  SET `pur_order_status`=4,`modify_date`='2018-12-29 18:14:37'  WHERE  `pur_order_num` = 'OI-20170704-0001' [ RunTime:0.018214s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_reviewed_log` [ RunTime:0.017130s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('采购单' , 'OI-20170704-0001' , '已质检,待移库' , 'admin' , '2018-12-29 18:14:37' , '2018-12-29 18:14:37') [ RunTime:0.015328s ]
+[ sql ] [ SQL ] UPDATE `wms_quality_check_wait`  SET `check_wait_status`=2,`modify_date`='2018-12-29 18:14:37'  WHERE  `pur_order_num` = 'OI-20170704-0001' [ RunTime:0.016206s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('待质检单' , 'OI-20170704-0001' , '已质检' , 'admin' , '2018-12-29 18:14:37' , '2018-12-29 18:14:37') [ RunTime:0.016214s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181205-0001' LIMIT 1 [ RunTime:0.001339s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181205-0001'  AND `check_status` = 1 LIMIT 1 [ RunTime:0.001287s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('采购单' , 'OI-20170703-0002' , '已质检,待移库' , 'admin' , '2018-12-29 18:14:37' , '2018-12-29 18:14:37') [ RunTime:0.013153s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('待质检单' , 'OI-20170703-0002' , '已质检' , 'admin' , '2018-12-29 18:14:37' , '2018-12-29 18:14:37') [ RunTime:0.021876s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_warehouse_area` [ RunTime:0.014817s ]
+[ sql ] [ SQL ] SELECT `a`.*,`w`.`warehouse_name` FROM `wms_warehouse_area` `a` LEFT JOIN `wms_warehouse` `w` ON `w`.`warehouse_num`=`a`.`warehouse_num` WHERE  (  a.disabled = 1 ) LIMIT 0,10 [ RunTime:0.001363s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_warehouse_area` `a` LEFT JOIN `wms_warehouse` `w` ON `w`.`warehouse_num`=`a`.`warehouse_num` WHERE  (  a.disabled = 1 ) LIMIT 1 [ RunTime:0.001105s ]

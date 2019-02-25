@@ -1,0 +1,567 @@
+---------------------------------------------------------------
+[ 2019-02-21T10:14:19+08:00 ] 127.0.0.1 POST localhost:8877/api/AdminUser/adminLogin
+[运行时间：0.586144s] [吞吐率：1.71req/s] [内存消耗：2,606.44kb] [文件加载：60]
+[ info ] [ LANG ] /Users/jk/Desktop/obj/newWMS/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'AdminUser',
+    2 => 'adminLogin',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'x-forwarded-host' => 'localhost:3000',
+  'x-forwarded-proto' => 'http',
+  'x-forwarded-port' => '3000',
+  'x-forwarded-for' => '127.0.0.1',
+  'accept-language' => 'zh-cn',
+  'content-length' => '52',
+  'referer' => 'http://localhost:3000/',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/12.0.1 Safari/605.1.15',
+  'accept' => 'application/json',
+  'connection' => 'close',
+  'cookie' => 'Hm_lvt_080836300300be57b7f34f4b3e97d911=1535594170',
+  'accept-encoding' => 'gzip, deflate',
+  'origin' => 'http://localhost:8877/',
+  'content-type' => 'application/json',
+  'host' => 'localhost:8877',
+)
+[ info ] [ PARAM ] array (
+  '/api/AdminUser/adminLogin' => '',
+  'user_name' => 'gpf',
+  'password' => '123',
+  'remember' => true,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\Api\controller\AdminUser->adminLogin[ /Users/jk/Desktop/obj/newWMS/application/api/controller/AdminUser.php ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.005959s ] mysql:host=10.20.10.217;port=3306;dbname=newwms;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_quality_check_wait` [ RunTime:0.040760s ]
+[ sql ] [ SQL ] SELECT * FROM `wms_quality_check_wait` [ RunTime:0.002227s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_quality_check` [ RunTime:0.036268s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181203-0001' LIMIT 1 [ RunTime:0.001844s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181203-0001'  AND `check_status` = 1 LIMIT 1 [ RunTime:0.001961s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_pur_order` [ RunTime:0.041005s ]
+[ sql ] [ SQL ] UPDATE `wms_pur_order`  SET `pur_order_status`=4,`modify_date`='2019-02-21 10:14:19'  WHERE  `pur_order_num` = 'OI-20170704-0001' [ RunTime:0.037840s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_reviewed_log` [ RunTime:0.041119s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('采购单' , 'OI-20170704-0001' , '已质检,待移库' , 'admin' , '2019-02-21 10:14:19' , '2019-02-21 10:14:19') [ RunTime:0.016176s ]
+[ sql ] [ SQL ] UPDATE `wms_quality_check_wait`  SET `check_wait_status`=2,`modify_date`='2019-02-21 10:14:19'  WHERE  `pur_order_num` = 'OI-20170704-0001' [ RunTime:0.016235s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('待质检单' , 'OI-20170704-0001' , '已质检' , 'admin' , '2019-02-21 10:14:19' , '2019-02-21 10:14:19') [ RunTime:0.025432s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181205-0001' LIMIT 1 [ RunTime:0.001964s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181205-0001'  AND `check_status` = 1 LIMIT 1 [ RunTime:0.001998s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('采购单' , 'OI-20170703-0002' , '已质检,待移库' , 'admin' , '2019-02-21 10:14:19' , '2019-02-21 10:14:19') [ RunTime:0.019325s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('待质检单' , 'OI-20170703-0002' , '已质检' , 'admin' , '2019-02-21 10:14:19' , '2019-02-21 10:14:19') [ RunTime:0.016436s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `admin_user` [ RunTime:0.038806s ]
+[ sql ] [ SQL ] SELECT * FROM `admin_user` WHERE  (   disabled=1  and (user_name = 'gpf' or mobile = 'gpf') ) LIMIT 1 [ RunTime:0.002084s ]
+[ sql ] [ SQL ] UPDATE `admin_user`  SET `login_count`=86,`last_login_time`='2019-02-21 10:14:19',`user_token`='0e35eca223d394bc3ec1a58c9841f4cb'  WHERE  `admin_id` = 18 [ RunTime:0.018283s ]
+---------------------------------------------------------------
+[ 2019-02-21T10:14:20+08:00 ] 127.0.0.1 POST localhost:8877/api/AdminUser/getUserActionList/
+[运行时间：0.398266s] [吞吐率：2.51req/s] [内存消耗：2,588.59kb] [文件加载：57]
+[ info ] [ LANG ] /Users/jk/Desktop/obj/newWMS/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'AdminUser',
+    2 => 'getUserActionList',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'x-forwarded-host' => 'localhost:3000',
+  'x-forwarded-proto' => 'http',
+  'x-forwarded-port' => '3000',
+  'x-forwarded-for' => '127.0.0.1',
+  'accept-language' => 'zh-cn',
+  'content-length' => '15',
+  'referer' => 'http://localhost:3000/',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/12.0.1 Safari/605.1.15',
+  'accept' => 'application/json',
+  'connection' => 'close',
+  'cookie' => 'Hm_lvt_080836300300be57b7f34f4b3e97d911=1535594170',
+  'accept-encoding' => 'gzip, deflate',
+  'origin' => 'http://localhost:8877/',
+  'content-type' => 'application/json',
+  'host' => 'localhost:8877',
+)
+[ info ] [ PARAM ] array (
+  '/api/AdminUser/getUserActionList/' => '',
+  'admin_id' => 18,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\Api\controller\AdminUser->getUserActionList[ /Users/jk/Desktop/obj/newWMS/application/api/controller/AdminUser.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.003046s ] mysql:host=10.20.10.217;port=3306;dbname=newwms;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_quality_check_wait` [ RunTime:0.040174s ]
+[ sql ] [ SQL ] SELECT * FROM `wms_quality_check_wait` [ RunTime:0.002301s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_quality_check` [ RunTime:0.032218s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181203-0001' LIMIT 1 [ RunTime:0.001635s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181203-0001'  AND `check_status` = 1 LIMIT 1 [ RunTime:0.001941s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_pur_order` [ RunTime:0.032556s ]
+[ sql ] [ SQL ] UPDATE `wms_pur_order`  SET `pur_order_status`=4,`modify_date`='2019-02-21 10:14:19'  WHERE  `pur_order_num` = 'OI-20170704-0001' [ RunTime:0.022436s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_reviewed_log` [ RunTime:0.039146s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('采购单' , 'OI-20170704-0001' , '已质检,待移库' , 'admin' , '2019-02-21 10:14:20' , '2019-02-21 10:14:20') [ RunTime:0.018588s ]
+[ sql ] [ SQL ] UPDATE `wms_quality_check_wait`  SET `check_wait_status`=2,`modify_date`='2019-02-21 10:14:20'  WHERE  `pur_order_num` = 'OI-20170704-0001' [ RunTime:0.025528s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('待质检单' , 'OI-20170704-0001' , '已质检' , 'admin' , '2019-02-21 10:14:20' , '2019-02-21 10:14:20') [ RunTime:0.015477s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181205-0001' LIMIT 1 [ RunTime:0.001847s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181205-0001'  AND `check_status` = 1 LIMIT 1 [ RunTime:0.001888s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('采购单' , 'OI-20170703-0002' , '已质检,待移库' , 'admin' , '2019-02-21 10:14:20' , '2019-02-21 10:14:20') [ RunTime:0.020489s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('待质检单' , 'OI-20170703-0002' , '已质检' , 'admin' , '2019-02-21 10:14:20' , '2019-02-21 10:14:20') [ RunTime:0.016385s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `admin_user` [ RunTime:0.040652s ]
+[ sql ] [ SQL ] SELECT * FROM `admin_user` WHERE  (   disabled=1  and admin_id= '18' ) LIMIT 1 [ RunTime:0.002577s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `admin_action` [ RunTime:0.040341s ]
+[ sql ] [ SQL ] SELECT * FROM `admin_action` WHERE  (   disabled=1  ) ORDER BY `sort` ASC [ RunTime:0.002391s ]
+---------------------------------------------------------------
+[ 2019-02-21T10:14:26+08:00 ] 127.0.0.1 POST localhost:8877/api/Product/venProDownload
+[运行时间：0.636484s] [吞吐率：1.57req/s] [内存消耗：2,633.05kb] [文件加载：58]
+[ info ] [ LANG ] /Users/jk/Desktop/obj/newWMS/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'Product',
+    2 => 'venProDownload',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'x-forwarded-host' => 'localhost:3000',
+  'x-forwarded-proto' => 'http',
+  'x-forwarded-port' => '3000',
+  'x-forwarded-for' => '127.0.0.1',
+  'accept-language' => 'zh-cn',
+  'content-length' => '2',
+  'referer' => 'http://localhost:3000/vendor',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/12.0.1 Safari/605.1.15',
+  'accept' => 'application/json',
+  'connection' => 'close',
+  'cookie' => 'Hm_lvt_080836300300be57b7f34f4b3e97d911=1535594170',
+  'accept-encoding' => 'gzip, deflate',
+  'origin' => 'http://localhost:8877/',
+  'content-type' => 'application/json',
+  'host' => 'localhost:8877',
+)
+[ info ] [ PARAM ] array (
+  '/api/Product/venProDownload' => '',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\Api\controller\Product->venProDownload[ /Users/jk/Desktop/obj/newWMS/application/api/controller/Product.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.004037s ] mysql:host=10.20.10.217;port=3306;dbname=newwms;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_quality_check_wait` [ RunTime:0.094033s ]
+[ sql ] [ SQL ] SELECT * FROM `wms_quality_check_wait` [ RunTime:0.002959s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_quality_check` [ RunTime:0.087564s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181203-0001' LIMIT 1 [ RunTime:0.002352s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181203-0001'  AND `check_status` = 1 LIMIT 1 [ RunTime:0.002596s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_pur_order` [ RunTime:0.088568s ]
+[ sql ] [ SQL ] UPDATE `wms_pur_order`  SET `pur_order_status`=4,`modify_date`='2019-02-21 10:14:25'  WHERE  `pur_order_num` = 'OI-20170704-0001' [ RunTime:0.021879s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_reviewed_log` [ RunTime:0.064275s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('采购单' , 'OI-20170704-0001' , '已质检,待移库' , 'admin' , '2019-02-21 10:14:25' , '2019-02-21 10:14:25') [ RunTime:0.018267s ]
+[ sql ] [ SQL ] UPDATE `wms_quality_check_wait`  SET `check_wait_status`=2,`modify_date`='2019-02-21 10:14:25'  WHERE  `pur_order_num` = 'OI-20170704-0001' [ RunTime:0.025613s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('待质检单' , 'OI-20170704-0001' , '已质检' , 'admin' , '2019-02-21 10:14:25' , '2019-02-21 10:14:25') [ RunTime:0.032426s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181205-0001' LIMIT 1 [ RunTime:0.001930s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181205-0001'  AND `check_status` = 1 LIMIT 1 [ RunTime:0.002001s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('采购单' , 'OI-20170703-0002' , '已质检,待移库' , 'admin' , '2019-02-21 10:14:25' , '2019-02-21 10:14:25') [ RunTime:0.028435s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('待质检单' , 'OI-20170703-0002' , '已质检' , 'admin' , '2019-02-21 10:14:25' , '2019-02-21 10:14:25') [ RunTime:0.042802s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_system_config` [ RunTime:0.048823s ]
+[ sql ] [ SQL ] SELECT * FROM `wms_system_config` WHERE  `code` = 'base_url' LIMIT 1 [ RunTime:0.001510s ]
+---------------------------------------------------------------
+[ 2019-02-21T10:14:26+08:00 ] 127.0.0.1 POST localhost:8877/api/Vendor/index
+[运行时间：0.670847s] [吞吐率：1.49req/s] [内存消耗：2,649.30kb] [文件加载：58]
+[ info ] [ LANG ] /Users/jk/Desktop/obj/newWMS/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'Vendor',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'x-forwarded-host' => 'localhost:3000',
+  'x-forwarded-proto' => 'http',
+  'x-forwarded-port' => '3000',
+  'x-forwarded-for' => '127.0.0.1',
+  'accept-language' => 'zh-cn',
+  'content-length' => '37',
+  'referer' => 'http://localhost:3000/vendor',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/12.0.1 Safari/605.1.15',
+  'accept' => 'application/json',
+  'connection' => 'close',
+  'cookie' => 'Hm_lvt_080836300300be57b7f34f4b3e97d911=1535594170',
+  'accept-encoding' => 'gzip, deflate',
+  'origin' => 'http://localhost:8877/',
+  'content-type' => 'application/json',
+  'host' => 'localhost:8877',
+)
+[ info ] [ PARAM ] array (
+  '/api/Vendor/index' => '',
+  'search_key' => '',
+  'limit' => 10,
+  'page' => 1,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\Api\controller\Vendor->index[ /Users/jk/Desktop/obj/newWMS/application/api/controller/Vendor.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.004428s ] mysql:host=10.20.10.217;port=3306;dbname=newwms;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_quality_check_wait` [ RunTime:0.092676s ]
+[ sql ] [ SQL ] SELECT * FROM `wms_quality_check_wait` [ RunTime:0.002189s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_quality_check` [ RunTime:0.089755s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181203-0001' LIMIT 1 [ RunTime:0.001545s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181203-0001'  AND `check_status` = 1 LIMIT 1 [ RunTime:0.001914s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_pur_order` [ RunTime:0.088869s ]
+[ sql ] [ SQL ] UPDATE `wms_pur_order`  SET `pur_order_status`=4,`modify_date`='2019-02-21 10:14:25'  WHERE  `pur_order_num` = 'OI-20170704-0001' [ RunTime:0.038990s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_reviewed_log` [ RunTime:0.076964s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('采购单' , 'OI-20170704-0001' , '已质检,待移库' , 'admin' , '2019-02-21 10:14:25' , '2019-02-21 10:14:25') [ RunTime:0.030817s ]
+[ sql ] [ SQL ] UPDATE `wms_quality_check_wait`  SET `check_wait_status`=2,`modify_date`='2019-02-21 10:14:25'  WHERE  `pur_order_num` = 'OI-20170704-0001' [ RunTime:0.033075s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('待质检单' , 'OI-20170704-0001' , '已质检' , 'admin' , '2019-02-21 10:14:25' , '2019-02-21 10:14:25') [ RunTime:0.032921s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181205-0001' LIMIT 1 [ RunTime:0.001776s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181205-0001'  AND `check_status` = 1 LIMIT 1 [ RunTime:0.002189s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('采购单' , 'OI-20170703-0002' , '已质检,待移库' , 'admin' , '2019-02-21 10:14:25' , '2019-02-21 10:14:25') [ RunTime:0.036790s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('待质检单' , 'OI-20170703-0002' , '已质检' , 'admin' , '2019-02-21 10:14:26' , '2019-02-21 10:14:26') [ RunTime:0.016213s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_vendor` [ RunTime:0.056971s ]
+[ sql ] [ SQL ] SELECT * FROM `wms_vendor` WHERE  (  disabled = 1 ) LIMIT 0,10 [ RunTime:0.002292s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_vendor` WHERE  (  disabled = 1 ) LIMIT 1 [ RunTime:0.002083s ]
+---------------------------------------------------------------
+[ 2019-02-21T10:14:26+08:00 ] 127.0.0.1 POST localhost:8877/api/Vendor/vendorDownload
+[运行时间：0.686235s] [吞吐率：1.46req/s] [内存消耗：2,623.98kb] [文件加载：58]
+[ info ] [ LANG ] /Users/jk/Desktop/obj/newWMS/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'Vendor',
+    2 => 'vendorDownload',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'x-forwarded-host' => 'localhost:3000',
+  'x-forwarded-proto' => 'http',
+  'x-forwarded-port' => '3000',
+  'x-forwarded-for' => '127.0.0.1',
+  'accept-language' => 'zh-cn',
+  'content-length' => '2',
+  'referer' => 'http://localhost:3000/vendor',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/12.0.1 Safari/605.1.15',
+  'accept' => 'application/json',
+  'connection' => 'close',
+  'cookie' => 'Hm_lvt_080836300300be57b7f34f4b3e97d911=1535594170',
+  'accept-encoding' => 'gzip, deflate',
+  'origin' => 'http://localhost:8877/',
+  'content-type' => 'application/json',
+  'host' => 'localhost:8877',
+)
+[ info ] [ PARAM ] array (
+  '/api/Vendor/vendorDownload' => '',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\Api\controller\Vendor->vendorDownload[ /Users/jk/Desktop/obj/newWMS/application/api/controller/Vendor.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.004981s ] mysql:host=10.20.10.217;port=3306;dbname=newwms;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_quality_check_wait` [ RunTime:0.093694s ]
+[ sql ] [ SQL ] SELECT * FROM `wms_quality_check_wait` [ RunTime:0.002405s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_quality_check` [ RunTime:0.090084s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181203-0001' LIMIT 1 [ RunTime:0.001806s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181203-0001'  AND `check_status` = 1 LIMIT 1 [ RunTime:0.001635s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_pur_order` [ RunTime:0.090290s ]
+[ sql ] [ SQL ] UPDATE `wms_pur_order`  SET `pur_order_status`=4,`modify_date`='2019-02-21 10:14:25'  WHERE  `pur_order_num` = 'OI-20170704-0001' [ RunTime:0.035643s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_reviewed_log` [ RunTime:0.077548s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('采购单' , 'OI-20170704-0001' , '已质检,待移库' , 'admin' , '2019-02-21 10:14:25' , '2019-02-21 10:14:25') [ RunTime:0.030255s ]
+[ sql ] [ SQL ] UPDATE `wms_quality_check_wait`  SET `check_wait_status`=2,`modify_date`='2019-02-21 10:14:25'  WHERE  `pur_order_num` = 'OI-20170704-0001' [ RunTime:0.033070s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('待质检单' , 'OI-20170704-0001' , '已质检' , 'admin' , '2019-02-21 10:14:25' , '2019-02-21 10:14:25') [ RunTime:0.033079s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181205-0001' LIMIT 1 [ RunTime:0.001978s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181205-0001'  AND `check_status` = 1 LIMIT 1 [ RunTime:0.002080s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('采购单' , 'OI-20170703-0002' , '已质检,待移库' , 'admin' , '2019-02-21 10:14:25' , '2019-02-21 10:14:25') [ RunTime:0.058835s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('待质检单' , 'OI-20170703-0002' , '已质检' , 'admin' , '2019-02-21 10:14:26' , '2019-02-21 10:14:26') [ RunTime:0.019075s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_system_config` [ RunTime:0.049305s ]
+[ sql ] [ SQL ] SELECT * FROM `wms_system_config` WHERE  `code` = 'base_url' LIMIT 1 [ RunTime:0.002146s ]
+---------------------------------------------------------------
+[ 2019-02-21T10:15:00+08:00 ] 127.0.0.1 POST localhost:8877/api/BigCustomer/demandOrderList
+[运行时间：0.414742s] [吞吐率：2.41req/s] [内存消耗：2,692.13kb] [文件加载：58]
+[ info ] [ LANG ] /Users/jk/Desktop/obj/newWMS/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'BigCustomer',
+    2 => 'demandOrderList',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'x-forwarded-host' => 'localhost:3000',
+  'x-forwarded-proto' => 'http',
+  'x-forwarded-port' => '3000',
+  'x-forwarded-for' => '127.0.0.1',
+  'accept-language' => 'zh-cn',
+  'content-length' => '37',
+  'referer' => 'http://localhost:3000/customerDemandOrder',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/12.0.1 Safari/605.1.15',
+  'accept' => 'application/json',
+  'connection' => 'close',
+  'cookie' => 'Hm_lvt_080836300300be57b7f34f4b3e97d911=1535594170',
+  'accept-encoding' => 'gzip, deflate',
+  'origin' => 'http://localhost:8877/',
+  'content-type' => 'application/json',
+  'host' => 'localhost:8877',
+)
+[ info ] [ PARAM ] array (
+  '/api/BigCustomer/demandOrderList' => '',
+  'search_key' => '',
+  'limit' => 10,
+  'page' => 1,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\Api\controller\BigCustomer->demandOrderList[ /Users/jk/Desktop/obj/newWMS/application/api/controller/BigCustomer.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.003040s ] mysql:host=10.20.10.217;port=3306;dbname=newwms;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_quality_check_wait` [ RunTime:0.041365s ]
+[ sql ] [ SQL ] SELECT * FROM `wms_quality_check_wait` [ RunTime:0.002544s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_quality_check` [ RunTime:0.039739s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181203-0001' LIMIT 1 [ RunTime:0.001858s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181203-0001'  AND `check_status` = 1 LIMIT 1 [ RunTime:0.001957s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_pur_order` [ RunTime:0.036926s ]
+[ sql ] [ SQL ] UPDATE `wms_pur_order`  SET `pur_order_status`=4,`modify_date`='2019-02-21 10:15:00'  WHERE  `pur_order_num` = 'OI-20170704-0001' [ RunTime:0.038675s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_reviewed_log` [ RunTime:0.040137s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('采购单' , 'OI-20170704-0001' , '已质检,待移库' , 'admin' , '2019-02-21 10:15:00' , '2019-02-21 10:15:00') [ RunTime:0.026776s ]
+[ sql ] [ SQL ] UPDATE `wms_quality_check_wait`  SET `check_wait_status`=2,`modify_date`='2019-02-21 10:15:00'  WHERE  `pur_order_num` = 'OI-20170704-0001' [ RunTime:0.015357s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('待质检单' , 'OI-20170704-0001' , '已质检' , 'admin' , '2019-02-21 10:15:00' , '2019-02-21 10:15:00') [ RunTime:0.016325s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181205-0001' LIMIT 1 [ RunTime:0.001911s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181205-0001'  AND `check_status` = 1 LIMIT 1 [ RunTime:0.002212s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('采购单' , 'OI-20170703-0002' , '已质检,待移库' , 'admin' , '2019-02-21 10:15:00' , '2019-02-21 10:15:00') [ RunTime:0.020153s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('待质检单' , 'OI-20170703-0002' , '已质检' , 'admin' , '2019-02-21 10:15:00' , '2019-02-21 10:15:00') [ RunTime:0.016349s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_big_cust_order` [ RunTime:0.039192s ]
+[ sql ] [ SQL ] SELECT `id`,`order_num`,`in_flag`,`member_name`,`receive_name`,`receive_tel`,`receive_city`,`create_by`,`order_end_date`,`t_type`,`sheng_yu` FROM `wms_big_cust_order` WHERE  (  1 = 1 ) ORDER BY `order_num` DESC LIMIT 0,10 [ RunTime:0.002358s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_big_cust_order` WHERE  (  1 = 1 ) LIMIT 1 [ RunTime:0.001709s ]
+---------------------------------------------------------------
+[ 2019-02-21T10:15:44+08:00 ] 127.0.0.1 POST localhost:8877/api/WmsArea/areaList
+[运行时间：0.531511s] [吞吐率：1.88req/s] [内存消耗：2,604.10kb] [文件加载：58]
+[ info ] [ LANG ] /Users/jk/Desktop/obj/newWMS/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'WmsArea',
+    2 => 'areaList',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'x-forwarded-host' => 'localhost:3000',
+  'x-forwarded-proto' => 'http',
+  'x-forwarded-port' => '3000',
+  'x-forwarded-for' => '127.0.0.1',
+  'accept-language' => 'zh-cn',
+  'content-length' => '2',
+  'referer' => 'http://localhost:3000/customerCreateOrder/5',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/12.0.1 Safari/605.1.15',
+  'accept' => 'application/json',
+  'connection' => 'close',
+  'cookie' => 'Hm_lvt_080836300300be57b7f34f4b3e97d911=1535594170',
+  'accept-encoding' => 'gzip, deflate',
+  'origin' => 'http://localhost:8877/',
+  'content-type' => 'application/json',
+  'host' => 'localhost:8877',
+)
+[ info ] [ PARAM ] array (
+  '/api/WmsArea/areaList' => '',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\Api\controller\WmsArea->areaList[ /Users/jk/Desktop/obj/newWMS/application/api/controller/WmsArea.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.003256s ] mysql:host=10.20.10.217;port=3306;dbname=newwms;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_quality_check_wait` [ RunTime:0.052716s ]
+[ sql ] [ SQL ] SELECT * FROM `wms_quality_check_wait` [ RunTime:0.002088s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_quality_check` [ RunTime:0.056222s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181203-0001' LIMIT 1 [ RunTime:0.001579s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181203-0001'  AND `check_status` = 1 LIMIT 1 [ RunTime:0.001601s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_pur_order` [ RunTime:0.058361s ]
+[ sql ] [ SQL ] UPDATE `wms_pur_order`  SET `pur_order_status`=4,`modify_date`='2019-02-21 10:15:44'  WHERE  `pur_order_num` = 'OI-20170704-0001' [ RunTime:0.030911s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_reviewed_log` [ RunTime:0.047183s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('采购单' , 'OI-20170704-0001' , '已质检,待移库' , 'admin' , '2019-02-21 10:15:44' , '2019-02-21 10:15:44') [ RunTime:0.018703s ]
+[ sql ] [ SQL ] UPDATE `wms_quality_check_wait`  SET `check_wait_status`=2,`modify_date`='2019-02-21 10:15:44'  WHERE  `pur_order_num` = 'OI-20170704-0001' [ RunTime:0.032859s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('待质检单' , 'OI-20170704-0001' , '已质检' , 'admin' , '2019-02-21 10:15:44' , '2019-02-21 10:15:44') [ RunTime:0.033135s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181205-0001' LIMIT 1 [ RunTime:0.002133s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181205-0001'  AND `check_status` = 1 LIMIT 1 [ RunTime:0.001965s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('采购单' , 'OI-20170703-0002' , '已质检,待移库' , 'admin' , '2019-02-21 10:15:44' , '2019-02-21 10:15:44') [ RunTime:0.036660s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('待质检单' , 'OI-20170703-0002' , '已质检' , 'admin' , '2019-02-21 10:15:44' , '2019-02-21 10:15:44') [ RunTime:0.033055s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_area` [ RunTime:0.046535s ]
+[ sql ] [ SQL ] SELECT * FROM `wms_area` WHERE  (  area_level=1 ) [ RunTime:0.008387s ]
+---------------------------------------------------------------
+[ 2019-02-21T10:15:44+08:00 ] 127.0.0.1 POST localhost:8877/api/BigCustomer/bigCustomerOrderShDetail
+[运行时间：0.630989s] [吞吐率：1.58req/s] [内存消耗：2,770.61kb] [文件加载：60]
+[ info ] [ LANG ] /Users/jk/Desktop/obj/newWMS/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'BigCustomer',
+    2 => 'bigCustomerOrderShDetail',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'x-forwarded-host' => 'localhost:3000',
+  'x-forwarded-proto' => 'http',
+  'x-forwarded-port' => '3000',
+  'x-forwarded-for' => '127.0.0.1',
+  'accept-language' => 'zh-cn',
+  'content-length' => '10',
+  'referer' => 'http://localhost:3000/customerCreateOrder/5',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/12.0.1 Safari/605.1.15',
+  'accept' => 'application/json',
+  'connection' => 'close',
+  'cookie' => 'Hm_lvt_080836300300be57b7f34f4b3e97d911=1535594170',
+  'accept-encoding' => 'gzip, deflate',
+  'origin' => 'http://localhost:8877/',
+  'content-type' => 'application/json',
+  'host' => 'localhost:8877',
+)
+[ info ] [ PARAM ] array (
+  '/api/BigCustomer/bigCustomerOrderShDetail' => '',
+  'id' => '5',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\Api\controller\BigCustomer->bigCustomerOrderShDetail[ /Users/jk/Desktop/obj/newWMS/application/api/controller/BigCustomer.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.014046s ] mysql:host=10.20.10.217;port=3306;dbname=newwms;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_quality_check_wait` [ RunTime:0.064785s ]
+[ sql ] [ SQL ] SELECT * FROM `wms_quality_check_wait` [ RunTime:0.002068s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_quality_check` [ RunTime:0.057875s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181203-0001' LIMIT 1 [ RunTime:0.001479s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181203-0001'  AND `check_status` = 1 LIMIT 1 [ RunTime:0.001569s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_pur_order` [ RunTime:0.048131s ]
+[ sql ] [ SQL ] UPDATE `wms_pur_order`  SET `pur_order_status`=4,`modify_date`='2019-02-21 10:15:44'  WHERE  `pur_order_num` = 'OI-20170704-0001' [ RunTime:0.036071s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_reviewed_log` [ RunTime:0.039393s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('采购单' , 'OI-20170704-0001' , '已质检,待移库' , 'admin' , '2019-02-21 10:15:44' , '2019-02-21 10:15:44') [ RunTime:0.017427s ]
+[ sql ] [ SQL ] UPDATE `wms_quality_check_wait`  SET `check_wait_status`=2,`modify_date`='2019-02-21 10:15:44'  WHERE  `pur_order_num` = 'OI-20170704-0001' [ RunTime:0.032936s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('待质检单' , 'OI-20170704-0001' , '已质检' , 'admin' , '2019-02-21 10:15:44' , '2019-02-21 10:15:44') [ RunTime:0.042486s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181205-0001' LIMIT 1 [ RunTime:0.002001s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181205-0001'  AND `check_status` = 1 LIMIT 1 [ RunTime:0.001941s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('采购单' , 'OI-20170703-0002' , '已质检,待移库' , 'admin' , '2019-02-21 10:15:44' , '2019-02-21 10:15:44') [ RunTime:0.027530s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('待质检单' , 'OI-20170703-0002' , '已质检' , 'admin' , '2019-02-21 10:15:44' , '2019-02-21 10:15:44') [ RunTime:0.033082s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_big_cust_order` [ RunTime:0.057404s ]
+[ sql ] [ SQL ] SELECT * FROM `wms_big_cust_order` WHERE  `id` = 5 LIMIT 1 [ RunTime:0.002722s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_big_cust_order_detail` [ RunTime:0.040366s ]
+[ sql ] [ SQL ] SELECT * FROM `wms_big_cust_order_detail` WHERE  (  order_num="Y20190211135826" and select_fa=4 ) ORDER BY `select_fa` ASC [ RunTime:0.002496s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_big_cust_order_sh` [ RunTime:0.039830s ]
+[ sql ] [ SQL ] SELECT * FROM `wms_big_cust_order_sh` WHERE  `y_order_num` = 'Y20190211135826' [ RunTime:0.002681s ]
+---------------------------------------------------------------
+[ 2019-02-21T10:15:51+08:00 ] 127.0.0.1 POST localhost:8877/api/WmsArea/areaList
+[运行时间：0.365426s] [吞吐率：2.74req/s] [内存消耗：2,560.82kb] [文件加载：58]
+[ info ] [ LANG ] /Users/jk/Desktop/obj/newWMS/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'WmsArea',
+    2 => 'areaList',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'x-forwarded-host' => 'localhost:3000',
+  'x-forwarded-proto' => 'http',
+  'x-forwarded-port' => '3000',
+  'x-forwarded-for' => '127.0.0.1',
+  'accept-language' => 'zh-cn',
+  'content-length' => '40',
+  'referer' => 'http://localhost:3000/customerCreateOrder/5',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/12.0.1 Safari/605.1.15',
+  'accept' => 'application/json',
+  'connection' => 'close',
+  'cookie' => 'Hm_lvt_080836300300be57b7f34f4b3e97d911=1535594170',
+  'accept-encoding' => 'gzip, deflate',
+  'origin' => 'http://localhost:8877/',
+  'content-type' => 'application/json',
+  'host' => 'localhost:8877',
+)
+[ info ] [ PARAM ] array (
+  '/api/WmsArea/areaList' => '',
+  'area_name' => '天津市',
+  'area_level' => 1,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\Api\controller\WmsArea->areaList[ /Users/jk/Desktop/obj/newWMS/application/api/controller/WmsArea.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.003121s ] mysql:host=10.20.10.217;port=3306;dbname=newwms;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_quality_check_wait` [ RunTime:0.038751s ]
+[ sql ] [ SQL ] SELECT * FROM `wms_quality_check_wait` [ RunTime:0.002320s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_quality_check` [ RunTime:0.036531s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181203-0001' LIMIT 1 [ RunTime:0.001915s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181203-0001'  AND `check_status` = 1 LIMIT 1 [ RunTime:0.001883s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_pur_order` [ RunTime:0.040122s ]
+[ sql ] [ SQL ] UPDATE `wms_pur_order`  SET `pur_order_status`=4,`modify_date`='2019-02-21 10:15:51'  WHERE  `pur_order_num` = 'OI-20170704-0001' [ RunTime:0.023950s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_reviewed_log` [ RunTime:0.038691s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('采购单' , 'OI-20170704-0001' , '已质检,待移库' , 'admin' , '2019-02-21 10:15:51' , '2019-02-21 10:15:51') [ RunTime:0.018997s ]
+[ sql ] [ SQL ] UPDATE `wms_quality_check_wait`  SET `check_wait_status`=2,`modify_date`='2019-02-21 10:15:51'  WHERE  `pur_order_num` = 'OI-20170704-0001' [ RunTime:0.016404s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('待质检单' , 'OI-20170704-0001' , '已质检' , 'admin' , '2019-02-21 10:15:51' , '2019-02-21 10:15:51') [ RunTime:0.017406s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181205-0001' LIMIT 1 [ RunTime:0.001894s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181205-0001'  AND `check_status` = 1 LIMIT 1 [ RunTime:0.002131s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('采购单' , 'OI-20170703-0002' , '已质检,待移库' , 'admin' , '2019-02-21 10:15:51' , '2019-02-21 10:15:51') [ RunTime:0.019064s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('待质检单' , 'OI-20170703-0002' , '已质检' , 'admin' , '2019-02-21 10:15:51' , '2019-02-21 10:15:51') [ RunTime:0.016039s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_area` [ RunTime:0.037622s ]
+[ sql ] [ SQL ] SELECT * FROM `wms_area` WHERE  (  area_name='天津市' and area_level=1 ) LIMIT 1 [ RunTime:0.001897s ]
+[ sql ] [ SQL ] SELECT * FROM `wms_area` WHERE  (  parent_id=102 ) [ RunTime:0.007111s ]
+---------------------------------------------------------------
+[ 2019-02-21T10:15:52+08:00 ] 127.0.0.1 POST localhost:8877/api/WmsArea/areaList
+[运行时间：0.360698s] [吞吐率：2.77req/s] [内存消耗：2,584.44kb] [文件加载：58]
+[ info ] [ LANG ] /Users/jk/Desktop/obj/newWMS/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'WmsArea',
+    2 => 'areaList',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'x-forwarded-host' => 'localhost:3000',
+  'x-forwarded-proto' => 'http',
+  'x-forwarded-port' => '3000',
+  'x-forwarded-for' => '127.0.0.1',
+  'accept-language' => 'zh-cn',
+  'content-length' => '40',
+  'referer' => 'http://localhost:3000/customerCreateOrder/5',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/12.0.1 Safari/605.1.15',
+  'accept' => 'application/json',
+  'connection' => 'close',
+  'cookie' => 'Hm_lvt_080836300300be57b7f34f4b3e97d911=1535594170',
+  'accept-encoding' => 'gzip, deflate',
+  'origin' => 'http://localhost:8877/',
+  'content-type' => 'application/json',
+  'host' => 'localhost:8877',
+)
+[ info ] [ PARAM ] array (
+  '/api/WmsArea/areaList' => '',
+  'area_name' => '天津市',
+  'area_level' => 2,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\Api\controller\WmsArea->areaList[ /Users/jk/Desktop/obj/newWMS/application/api/controller/WmsArea.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.002976s ] mysql:host=10.20.10.217;port=3306;dbname=newwms;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_quality_check_wait` [ RunTime:0.037775s ]
+[ sql ] [ SQL ] SELECT * FROM `wms_quality_check_wait` [ RunTime:0.002090s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_quality_check` [ RunTime:0.037133s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181203-0001' LIMIT 1 [ RunTime:0.001828s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181203-0001'  AND `check_status` = 1 LIMIT 1 [ RunTime:0.002050s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_pur_order` [ RunTime:0.040280s ]
+[ sql ] [ SQL ] UPDATE `wms_pur_order`  SET `pur_order_status`=4,`modify_date`='2019-02-21 10:15:52'  WHERE  `pur_order_num` = 'OI-20170704-0001' [ RunTime:0.019810s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_reviewed_log` [ RunTime:0.038785s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('采购单' , 'OI-20170704-0001' , '已质检,待移库' , 'admin' , '2019-02-21 10:15:52' , '2019-02-21 10:15:52') [ RunTime:0.018933s ]
+[ sql ] [ SQL ] UPDATE `wms_quality_check_wait`  SET `check_wait_status`=2,`modify_date`='2019-02-21 10:15:52'  WHERE  `pur_order_num` = 'OI-20170704-0001' [ RunTime:0.017481s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('待质检单' , 'OI-20170704-0001' , '已质检' , 'admin' , '2019-02-21 10:15:52' , '2019-02-21 10:15:52') [ RunTime:0.014989s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181205-0001' LIMIT 1 [ RunTime:0.001894s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wms_quality_check` WHERE  `check_wait_num` = 'DZJ-20181205-0001'  AND `check_status` = 1 LIMIT 1 [ RunTime:0.001933s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('采购单' , 'OI-20170703-0002' , '已质检,待移库' , 'admin' , '2019-02-21 10:15:52' , '2019-02-21 10:15:52') [ RunTime:0.020038s ]
+[ sql ] [ SQL ] INSERT INTO `wms_reviewed_log` (`type_info` , `order_num` , `sh_info` , `createby` , `create_date` , `modify_date`) VALUES ('待质检单' , 'OI-20170703-0002' , '已质检' , 'admin' , '2019-02-21 10:15:52' , '2019-02-21 10:15:52') [ RunTime:0.016292s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wms_area` [ RunTime:0.037274s ]
+[ sql ] [ SQL ] SELECT * FROM `wms_area` WHERE  (  area_name='天津市' and area_level=2 ) LIMIT 1 [ RunTime:0.001887s ]
+[ sql ] [ SQL ] SELECT * FROM `wms_area` WHERE  (  parent_id=1002 ) [ RunTime:0.007119s ]
